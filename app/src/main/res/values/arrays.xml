@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="rabbits_arr">
+        <item>@mipmap/dropdown_animation1</item>
+        <item>@mipmap/dropdown_loading1</item>
+        <item>@mipmap/dropdown_loading2</item>
+        <item>@mipmap/dropdown_loading3</item>
+        <item>@mipmap/dropdown_loading4</item>
+        <item>@mipmap/dropdown_loading5</item>
+        <item>@mipmap/dropdown_loading6</item>
+        <item>@mipmap/dropdown_loading7</item>
+        <item>@mipmap/dropdown_loading8</item>
+        <item>@mipmap/dropdown_loading9</item>
+    </array>
+</resources>
