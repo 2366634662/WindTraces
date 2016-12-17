@@ -24,13 +24,12 @@ import butterknife.Unbinder;
  * Desc:
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity {
     /**
      * get activity layout
      */
     @LayoutRes
     protected abstract int getLayout();
-
 
     /**
      * init activity view
@@ -49,10 +48,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
        */
     protected abstract void loadData();
 
-    /**
-     * @return true 支持状态栏透明
-     */
-//    protected abstract boolean isTranslucentStatus();
 
     protected Activity mContext;
     protected boolean mIsFirstShow = true;
@@ -61,12 +56,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         mContext = this;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(getLayout());
-        initWindow();
+        setTranslucentStatus();
+//        initWindow();
 //        EventBus.getDefault().register(this);
         AppManager.getInstance().addActivity(this);
         mUnbinder = ButterKnife.bind(this);
@@ -80,6 +74,18 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         AppManager.getInstance().remove(this);
 //        EventBus.getDefault().unregister(this);
         mUnbinder.unbind();
+    }
+
+    /**
+     * 状态栏透明只有Android 4.4 以上才支持
+     */
+    public void setTranslucentStatus() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = getWindow();
+            WindowManager.LayoutParams layoutParams = window.getAttributes();
+            layoutParams.flags |= WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+            window.setAttributes(layoutParams);
+        }
     }
 
     /**
@@ -115,26 +121,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setStatusBarColor(color);
         }
-    }
-
-    protected <T extends View> T findView(int id) {
-
-        T view = (T) findViewById(id);
-
-        return view;
-    }
-
-    protected void setOnClick(Object... objects) {
-
-        for (Object object : objects) {
-            if (object instanceof View) {
-                ((View) object).setOnClickListener(this);
-            }
-            if (object instanceof Integer) {
-                findView((int) object).setOnClickListener(this);
-            }
-        }
-
     }
 
     @Override

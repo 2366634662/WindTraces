@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ac57">
 
-
     <permission
         android:name="com.ac57.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
@@ -20,8 +19,8 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- Optional. Required for location feature -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!--
-⽤于开启 debug 版本的应⽤在6.0 系统上 层叠窗⼝权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- ⽤于开启 debug 版本的应⽤在6.0 系统上 层叠窗⼝权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -33,16 +32,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name=".ui.main.activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <!-- Required SDK 核⼼功能-->
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".ui.main.activity.MainActivity"></activity>
+        <!-- Required SDK 核⼼功能 -->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
             android:name="cn.jpush.android.service.PushService"
@@ -63,15 +55,17 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.DaemonService" />
+
                 <category android:name="com.ac57" />
             </intent-filter>
         </service>
-        <!-- Required SDK核⼼功能-->
+        <!-- Required SDK核⼼功能 -->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
             android:enabled="true">
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+
                 <category android:name="com.ac57" />
             </intent-filter>
             <intent-filter>
@@ -86,7 +80,7 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        <!-- Required SDK核⼼功能-->
+        <!-- Required SDK核⼼功能 -->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -99,32 +93,45 @@
                 <category android:name="com.ac57" />
             </intent-filter>
         </activity>
-        <!-- Required SDK核⼼功能-->
+        <!-- Required SDK核⼼功能 -->
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
-            android:exported="false"></service>
-        <!-- Required SDK核⼼功能-->
+            android:exported="false" />
+        <!-- Required SDK核⼼功能 -->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
-        <!-- User defined. ⽤户⾃定义的⼴播接收器-->
+        <!-- User defined. ⽤户⾃定义的⼴播接收器 -->
         <receiver
             android:name=".jpushreciver.JPushMyReciver"
             android:enabled="true">
             <intent-filter>
-                <!--Required ⽤户注册SDK的intent-->
+
+                <!-- Required ⽤户注册SDK的intent -->
                 <action android:name="cn.jpush.android.intent.REGISTRATION" />
-                <!--Required ⽤户接收SDK消息的intent-->
+                <!-- Required ⽤户接收SDK消息的intent -->
                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
-                <!--Required ⽤户接收SDK通知栏信息的intent-->
+                <!-- Required ⽤户接收SDK通知栏信息的intent -->
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
-                <!--Required ⽤户打开⾃定义通知栏的intent-->
+                <!-- Required ⽤户打开⾃定义通知栏的intent -->
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
                 <!-- 接收⽹络变化 连接/断开 since 1.6.3 -->
                 <action android:name="cn.jpush.android.intent.CONNECTION" />
+
                 <category android:name="com.ac57" />
             </intent-filter>
         </receiver>
 
+        <activity android:name=".ui.main.activity.WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.main.activity.GuideActivity" />
+        <activity android:name=".ui.main.activity.LoginActivity" />
+        <activity android:name=".ui.main.activity.RegisterActivity" />
+        <activity android:name=".ui.main.activity.AppLogoActivity"></activity>
     </application>
 
 </manifest>
