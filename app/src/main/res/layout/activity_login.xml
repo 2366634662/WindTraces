@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:id="@+id/login_tops"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/DIMEN_60PX"
         android:background="#2c8dff">
 
@@ -41,13 +41,13 @@
 
     <LinearLayout
         android:id="@+id/login_view"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/login_tops"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/login_bottoms"
             android:layout_weight="1"
@@ -78,7 +78,7 @@
 
             <LinearLayout
                 android:id="@+id/login_center"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/login_top"
                 android:layout_marginTop="@dimen/DIMEN_90PX"
@@ -95,7 +95,7 @@
                     android:visibility="invisible" />
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/DIMEN_25PX"
                     android:layout_marginTop="@dimen/DIMEN_10PX"
                     android:orientation="horizontal"
@@ -104,12 +104,12 @@
 
                     <ImageView
                         android:layout_width="@dimen/DIMEN_20PX"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:src="@drawable/login_phone" />
 
                     <com.ac57.ui.view.ClearEditText
                         android:id="@+id/login_tel"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginLeft="@dimen/DIMEN_15PX"
@@ -126,7 +126,7 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginLeft="@dimen/DIMEN_58PX"
                     android:layout_marginRight="@dimen/DIMEN_58PX"
@@ -145,7 +145,7 @@
                     android:visibility="invisible" />
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/DIMEN_25PX"
                     android:layout_marginTop="@dimen/DIMEN_10PX"
                     android:orientation="horizontal"
@@ -154,7 +154,7 @@
 
                     <ImageView
                         android:layout_width="@dimen/DIMEN_20PX"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:src="@drawable/login_lock" />
 
                     <com.ac57.ui.view.ClearEditText
@@ -185,7 +185,7 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginLeft="@dimen/DIMEN_58PX"
                     android:layout_marginRight="@dimen/DIMEN_58PX"
@@ -195,7 +195,7 @@
 
             <TextView
                 android:id="@+id/login_bnt"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/DIMEN_55PX"
                 android:layout_below="@+id/login_center"
                 android:layout_marginLeft="@dimen/DIMEN_25PX"
@@ -221,7 +221,7 @@
 
             <LinearLayout
                 android:id="@+id/login_other"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/login_bnt"
                 android:layout_marginBottom="@dimen/DIMEN_25PX"
@@ -253,7 +253,7 @@
 
             <LinearLayout
                 android:id="@+id/login_bottom"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/DIMEN_52PX"
                 android:gravity="center"

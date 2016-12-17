@@ -5,6 +5,22 @@
         <attr name="border_color" format="color" />
         <attr name="border_overlay" format="boolean" />
     </declare-styleable>
+    <attr name="errorColor" format="color" />
+    <attr name="maxCharacters" format="integer" />
+    <declare-styleable name="materialEditText">
+        <!-- Highlight color of floating label text and underline. -->
+        <attr name="backgroundColor" format="color" />
+        <!-- Error color of under line text and underline. -->
+        <attr name="errorColor" />
+        <!-- Enable floating label text. -->
+        <attr name="floatingLabel" format="boolean" />
+        <!-- Max characters count limit. 0 means no max. -->
+        <attr name="maxCharacters" />
+        <!-- Icon (ImageView) associated to this EditText. -->
+        <attr name="withIcon" format="reference" />
+    </declare-styleable>
+
+
     <!-- 谷歌拖动刷新加载 -->
     <declare-styleable name="justice">
         <attr name="textSize" format="dimension" />

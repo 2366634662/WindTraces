@@ -28,12 +28,12 @@ public class SPHelper extends SharePrefrenceUtils {
     }
 
 
-    public void setCityId(String cityId) {
-        putString("cityId", cityId);
+    public void setUserId(String cityId) {
+        putString("id", cityId);
     }
 
-    public String cityId() {
-        return getString("cityId", "");
+    public String getUserId() {
+        return getString("id", "");
     }
 
 }

@@ -1,7 +1,6 @@
 package com.ac57.framework.retrofit;
 
 import android.accounts.NetworkErrorException;
-import android.util.Log;
 
 import com.ac57.framework.base.BaseEntity;
 
@@ -24,21 +23,13 @@ public abstract class BaseRepository {
                 .flatMap(new Func1<BaseEntity<T>, Observable<T>>() {
                     @Override
                     public Observable<T> call(BaseEntity<T> result) {
-
-                        Log.e("tag", "请求到的数据" + result.toString());
-
+//                        Log.e("tag", "请求到的数据" + result.toString());
                         if (result == null) {
                             return Observable.error(new NetworkErrorException());
-                        } else if (result.code == 200) {
-                            return Observable.just(result.datas);
-                        } else if (result.code == 210) {
-                            return Observable.error(new DefaultErrorException("存在逻辑错误(mark:描述问题)"));
-                        } else if (result.code == 220) {
-                            return Observable.error(new DefaultErrorException("token无效"));
-                        } else if (result.code == 300) {
-                            return Observable.error(new DefaultErrorException("缺少参数（mark:描述问题）"));
+                        } else if (result.code.equals("200")) {
+                            return Observable.just(result.data);
                         } else {
-                            return Observable.error(new DefaultErrorException("权限不足"));
+                            return Observable.error(new DefaultErrorException(result.desc));
                         }
                     }
 

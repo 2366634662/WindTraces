@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 
+import com.ac57.framework.base.BaseActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -28,7 +30,13 @@ public class AppManager {
             mActivityStack = new Stack<Activity>();
         }
     }
-
+    /**
+     * 閼惧嘲褰囨い璺虹湴Activity
+     */
+    public BaseActivity currentActivity() {
+        BaseActivity activity = (BaseActivity) mActivityStack.lastElement();
+        return activity;
+    }
     /**
      * 单一实例
      */

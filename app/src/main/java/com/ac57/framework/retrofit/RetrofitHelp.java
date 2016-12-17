@@ -3,6 +3,9 @@ package com.ac57.framework.retrofit;
 
 import com.ac57.ui.service.IAppNetService;
 
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -15,15 +18,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * 封装 Retrofit的网络请求过程  设置一些每次网络请求都要用到的默认参数
  */
 public class RetrofitHelp {
-    private static String URL_BASE = "http://yaan.cdth.cn/Appapi/";
+    private static String URL_BASE = "http://112.74.106.149/wind/Htdoc/";
     private static volatile Retrofit mRetrofit;
     private static volatile RetrofitHelp mClient;
 
-    /**
-     * 这是个单例模式
-     */
+
     private RetrofitHelp() {
+        OkHttpClient.Builder client = new OkHttpClient.Builder();
+        client.connectTimeout(5, TimeUnit.SECONDS);
+        client.addInterceptor(new BaseInterceptor());
         mRetrofit = new Retrofit.Builder()
+                .client(client.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(URL_BASE)

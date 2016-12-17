@@ -40,7 +40,7 @@ public abstract class DefaultSubscriber<T> extends Subscriber<T> {
         } else if (e instanceof SocketException) {
             reason = "连接超时";
         } else if (e instanceof DefaultErrorException) {
-            reason = "DefaultErrorException" + e.toString();
+            reason = e.toString();
         } else {
             reason = "其他错误";
         }

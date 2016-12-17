@@ -1,6 +1,7 @@
 package com.ac57.framework.base;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import butterknife.Unbinder;
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
+
     /**
      * get activity layout
      */
@@ -57,6 +59,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(getLayout());
         setTranslucentStatus();
@@ -68,13 +71,29 @@ public abstract class BaseActivity extends AppCompatActivity {
         initDatas();
     }
 
+    public Context getContext() {
+        return this;
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
         AppManager.getInstance().remove(this);
 //        EventBus.getDefault().unregister(this);
         mUnbinder.unbind();
     }
+
+
+    @Override
+    protected void onResume() {
+        if (mIsFirstShow) {
+            mIsFirstShow = false;
+            loadData();
+        }
+        super.onResume();
+    }
+
 
     /**
      * 状态栏透明只有Android 4.4 以上才支持
@@ -123,12 +142,4 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onResume() {
-        if (mIsFirstShow) {
-            mIsFirstShow = false;
-            loadData();
-        }
-        super.onResume();
-    }
 }
