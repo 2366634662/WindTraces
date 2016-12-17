@@ -6,10 +6,7 @@ package com.ac57.ui.utils;
  */
 
 public class UrlUtils {
-
-    public static final String BASE_URL = "http://yaan.cdth.cn/Appapi/";
-    public static final String URL_CLASSIFY = "Category/getlists";
-    public static final String HOME_BANNER_LIST = "Category/getCarouselList";
-    public static final String URL_HOTSTORE = "Category/hotstore";
+    public static final String BASE_URL = "http://112.74.106.149/wind/Htdoc";
+    public static final String USER_INFO_DATA = "Index/Login/local";
 
 }
