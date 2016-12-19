@@ -39,22 +39,26 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
     /**
      * 极光推送
      */
     // 此处以JPush 3.0.0 版本为例。
     // 此处以JCore 1.0.0 版本为例
+
     /**
      * Glide加载图片
      */
     /**
      * 各种Tab切换效果
      */
+
     testCompile 'junit:junit:4.12'
     /**
      * 注解
      */
     compile 'com.jakewharton:butterknife:8.4.0'
+
     /**
      * RxJava与Retrofit结合要依赖的库
      */
@@ -73,6 +77,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.android.support:support-v4:25.0.1'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
     compile 'cn.bingoogolapple:bga-banner:2.1.5@aar'
     compile 'com.android.support:support-v4:25.0.1'
     compile 'org.greenrobot:eventbus:3.0.0'

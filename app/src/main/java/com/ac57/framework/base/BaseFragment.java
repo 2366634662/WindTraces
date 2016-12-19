@@ -130,9 +130,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
             if (object instanceof View) {
                 ((View) object).setOnClickListener(this);
             }
-
         }
-
     }
 
     @Override

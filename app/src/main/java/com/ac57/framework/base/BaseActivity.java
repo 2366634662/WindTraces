@@ -50,6 +50,10 @@ public abstract class BaseActivity extends AppCompatActivity {
        */
     protected abstract void loadData();
 
+    /**
+     * @return true 支持状态栏透明
+     */
+//    protected abstract boolean isTranslucentStatus();
 
     protected Activity mContext;
     protected boolean mIsFirstShow = true;
@@ -58,8 +62,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mContext = this;
 
+
+        mContext = this;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(getLayout());
         setTranslucentStatus();
@@ -78,7 +83,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         AppManager.getInstance().remove(this);
 //        EventBus.getDefault().unregister(this);
         mUnbinder.unbind();
