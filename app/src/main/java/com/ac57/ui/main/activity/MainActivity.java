@@ -2,7 +2,6 @@ package com.ac57.ui.main.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.View;
 import android.widget.Toast;
 
 import com.ac57.R;
@@ -84,10 +83,6 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @Override
-    public void onClick(View view) {
-
-    }
 
     @Override
     public void onBackPressed() {
@@ -105,7 +100,7 @@ public class MainActivity extends BaseActivity {
                 public void run() {
                     isFirstBack = 0;
                 }
-            }, 1000);
+            }, 1500);
         } else if (isFirstBack == 1) {
             finish();
             System.exit(0);

@@ -5,14 +5,16 @@ package com.ac57.framework.base;
  */
 
 public class BaseEntity<T> {
-    public int code;
-    public T datas;
+    public String code;
+    public String desc;
+    public T data;
 
     @Override
     public String toString() {
         return "BaseEntity{" +
                 "code=" + code +
-                ", datas=" + datas +
+                ", datas=" + desc +
+                ", data=" + data +
                 '}';
     }
 }

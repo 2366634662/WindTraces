@@ -1,6 +1,7 @@
 package com.ac57.framework.base;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,8 +16,6 @@ import android.view.WindowManager;
 import com.ac57.R;
 import com.ac57.framework.tools.AppManager;
 
-import org.greenrobot.eventbus.EventBus;
-
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -26,13 +25,13 @@ import butterknife.Unbinder;
  * Desc:
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity {
+
     /**
      * get activity layout
      */
     @LayoutRes
     protected abstract int getLayout();
-
 
     /**
      * init activity view
@@ -68,20 +67,48 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         mContext = this;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(getLayout());
-        initWindow();
-        EventBus.getDefault().register(this);
+        setTranslucentStatus();
+//        initWindow();
+//        EventBus.getDefault().register(this);
         AppManager.getInstance().addActivity(this);
         mUnbinder = ButterKnife.bind(this);
         initView(savedInstanceState);
         initDatas();
     }
 
+    public Context getContext() {
+        return this;
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         AppManager.getInstance().remove(this);
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
         mUnbinder.unbind();
+    }
+
+
+    @Override
+    protected void onResume() {
+        if (mIsFirstShow) {
+            mIsFirstShow = false;
+            loadData();
+        }
+        super.onResume();
+    }
+
+
+    /**
+     * 状态栏透明只有Android 4.4 以上才支持
+     */
+    public void setTranslucentStatus() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = getWindow();
+            WindowManager.LayoutParams layoutParams = window.getAttributes();
+            layoutParams.flags |= WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+            window.setAttributes(layoutParams);
+        }
     }
 
     /**
@@ -119,32 +146,4 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    protected <T extends View> T findView(int id) {
-
-        T view = (T) findViewById(id);
-
-        return view;
-    }
-
-    protected void setOnClick(Object... objects) {
-
-        for (Object object : objects) {
-            if (object instanceof View) {
-                ((View) object).setOnClickListener(this);
-            }
-            if (object instanceof Integer) {
-                findView((int) object).setOnClickListener(this);
-            }
-        }
-
-    }
-
-    @Override
-    protected void onResume() {
-        if (mIsFirstShow) {
-            mIsFirstShow = false;
-            loadData();
-        }
-        super.onResume();
-    }
 }
