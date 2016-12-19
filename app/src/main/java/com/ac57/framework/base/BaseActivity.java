@@ -15,6 +15,8 @@ import android.view.WindowManager;
 import com.ac57.R;
 import com.ac57.framework.tools.AppManager;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -67,7 +69,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(getLayout());
         initWindow();
-//        EventBus.getDefault().register(this);
+        EventBus.getDefault().register(this);
         AppManager.getInstance().addActivity(this);
         mUnbinder = ButterKnife.bind(this);
         initView(savedInstanceState);
@@ -78,7 +80,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void onDestroy() {
         super.onDestroy();
         AppManager.getInstance().remove(this);
-//        EventBus.getDefault().unregister(this);
+        EventBus.getDefault().unregister(this);
         mUnbinder.unbind();
     }
 

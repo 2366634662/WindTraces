@@ -111,6 +111,4 @@ public class MainActivity extends BaseActivity {
             System.exit(0);
         }
     }
-
-
 }
