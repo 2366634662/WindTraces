@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ac57.R;
@@ -27,23 +26,19 @@ import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 
 public class LoginActivity extends MVPBaseActivity<LoginActivityPresenter, LoginActivityViewController> implements LoginActivityViewController {
-    @BindView(R.id.login_back)
-    ImageView loginBack;
-    @BindView(R.id.login_register)
-    TextView loginRegister;
-    @BindView(R.id.login_tops)
-    RelativeLayout loginTops;
-    @BindView(R.id.login_top)
-    RelativeLayout loginTop;
-    @BindView(R.id.login_phone_total)
-    TextView loginPhoneTotal;
+    @BindView(R.id.iv_login_back)
+    ImageView ivLoginBack;
+    @BindView(R.id.tv_login_register)
+    TextView tvLoginRegister;
+    @BindView(R.id.tv_login_phone_hint)
+    TextView tvLoginPhoneHint;
     @BindView(R.id.login_tel)
     ClearEditText loginTel;
     @BindView(R.id.login_pass_total)
     TextView loginPassTotal;
     @BindView(R.id.login_pass)
     ClearEditText loginPass;
-    @BindView(R.id.login_forget)
+    @BindView(R.id.tv_login_forget)
     TextView loginForget;
     @BindView(R.id.login_center)
     LinearLayout loginCenter;
@@ -89,16 +84,16 @@ public class LoginActivity extends MVPBaseActivity<LoginActivityPresenter, Login
     }
 
 
-    @OnClick({R.id.login_back, R.id.login_register, R.id.login_forget, R.id.login_bnt, R.id.login_weixin, R.id.login_qq})
+    @OnClick({R.id.iv_login_back, R.id.tv_login_register, R.id.tv_login_forget, R.id.login_bnt, R.id.login_weixin, R.id.login_qq})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.login_back:
-
+            case R.id.iv_login_back:
+                IntentUtils.finishActivity(this);
                 break;
-            case R.id.login_register:
-
+            case R.id.tv_login_register:
+                IntentUtils.startActivity(this, RegisterActivity.class);
                 break;
-            case R.id.login_forget:
+            case R.id.tv_login_forget:
 
                 break;
             case R.id.login_bnt:

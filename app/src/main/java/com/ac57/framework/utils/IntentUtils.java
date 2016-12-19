@@ -1,8 +1,13 @@
 package com.ac57.framework.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.ac57.R;
+import com.ac57.framework.base.BaseActivity;
+import com.ac57.framework.tools.AppManager;
 
 /**
  * description: 跳转utils
@@ -30,7 +35,17 @@ public class IntentUtils {
             intent.putExtras(pBundle);
         }
         context.startActivity(intent);
+        ((Activity) context).overridePendingTransition(R.anim.enter_righttoleft,
+                R.anim.exit_righttoleft);
     }
+
+
+    public static void finishActivity(BaseActivity activity) {
+        AppManager.getInstance().finishActivity(activity);
+        activity.overridePendingTransition(R.anim.enter_lefttoright,
+                R.anim.exit_lefttoright);
+    }
+
 
     /**
      * 通过Action启动Activity

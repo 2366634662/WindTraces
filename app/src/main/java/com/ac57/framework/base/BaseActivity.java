@@ -141,5 +141,4 @@ public abstract class BaseActivity extends AppCompatActivity {
             window.setStatusBarColor(color);
         }
     }
-
 }
