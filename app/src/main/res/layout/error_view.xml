@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/error_retry_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/DIMEN_131PX"
+        android:layout_height="@dimen/DIMEN_181PX"
+        android:src="@drawable/not_find" />
+
+    <TextView
+        android:id="@+id/no_data_tx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/DIMEN_30PX"
+        android:text="连接服务器失败"
+        android:textColor="#e2ebed"
+        android:textSize="@dimen/DIMEN_18PX" />
+</LinearLayout>

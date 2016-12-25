@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+
+    <declare-styleable name="EasyStatusView">
+        <attr name="esv_loading" format="reference" />
+        <attr name="esv_error" format="reference" />
+        <attr name="esv_empty" format="reference" />
+        <attr name="esv_noNet" format="reference" />
+    </declare-styleable>
+
     <declare-styleable name="CircleImageView">
         <attr name="border_width" format="dimension" />
         <attr name="border_color" format="color" />
@@ -21,29 +29,6 @@
     </declare-styleable>
 
 
-    <!-- 谷歌拖动刷新加载 -->
-    <declare-styleable name="justice">
-        <attr name="textSize" format="dimension" />
-        <attr name="textColor" format="color" />
-        <attr name="startImage" format="reference" />
-        <attr name="loadingImage" format="reference" />
-        <attr name="finishedImage" format="reference" />
-        <attr name="ptr" format="boolean" />
-        <attr name="ptl" format="boolean" />
-        <!-- 下拉 -->
-        <attr name="pullDownLabel" format="string" />
-        <attr name="refreshingLabel" format="string" />
-        <attr name="releaseDownLabel" format="string" />
-        <!-- 上拉 -->
-        <attr name="pullUpLabel" format="string" />
-        <attr name="loadingLabel" format="string" />
-        <attr name="releaseUpLabel" format="string" />
-        <attr name="animationStyle">
-            <flag name="rotate" value="0x0" />
-            <flag name="flip" value="0x1" />
-        </attr>
-    </declare-styleable>
-
     <declare-styleable name="Theme">
         <attr name="progressHintStyle" format="reference" />
     </declare-styleable>
@@ -59,75 +44,5 @@
         <attr name="popupDraggable" format="boolean" />
     </declare-styleable>
 
-    <!--TabIndicator的参数设置-->
-    <declare-styleable name="PagerSlidingTab">
-        <attr name="indicatorColor" format="color" />
-        <attr name="underlineColor" format="color" />
-        <attr name="dividerColor" format="color" />
-        <attr name="indicatorHeight" format="dimension" />
-        <attr name="underlineHeight" format="dimension" />
-        <attr name="pst_dividerPadding" format="dimension" />
-        <attr name="tabPaddingLeftRight" format="dimension" />
-        <attr name="scrollOffset" format="dimension" />
-        <attr name="tabBackgrounds" format="reference" />
-        <attr name="sameLine" format="boolean" />
-        <attr name="pst_textAllCaps" format="boolean" />
-    </declare-styleable>
 
-    <declare-styleable name="TagGroup">
-        <!--TagGroup attr-->
-        <attr name="tagHorizontalSpace" format="dimension|reference" />
-        <attr name="tagVerticalSpace" format="dimension|reference" />
-        <!--TagView attr-->
-        <attr name="tagHorizontalPadding" format="dimension|reference" />
-        <attr name="tagVerticalPadding" format="dimension|reference" />
-        <attr name="tagTextSize" format="dimension|reference" />
-        <attr name="tagTextColor1" format="color|reference" />
-        <attr name="tagStrokeColor1" format="color|reference" />
-        <attr name="tagTextColor2" format="color|reference" />
-        <attr name="tagStrokeColor2" format="color|reference" />
-        <attr name="tagBackgroundColor1" format="color|reference" />
-        <attr name="tagBackgroundColor2" format="color|reference" />
-        <attr name="tagCornerRadius" format="dimension|reference" />
-    </declare-styleable>
-
-    <declare-styleable name="round_textview">
-        <attr name="round_tv_color" format="reference"></attr>
-        <attr name="round_tv_corner_size" format="dimension"></attr>
-    </declare-styleable>
-
-    <declare-styleable name="FolderTextView">
-        <attr name="foldText" format="string"></attr>
-        <attr name="unFoldText" format="string"></attr>
-
-        <attr name="foldLine" format="integer"></attr>
-        <attr name="tailTextColor" format="color"></attr>
-        <attr name="canFoldAgain" format="boolean"></attr>
-    </declare-styleable>
-
-
-    <declare-styleable name="SwipeLayout">
-        <attr name="drag_edge" format="enum">
-            <enum name="left" value="0" />
-            <enum name="right" value="1" />
-            <enum name="top" value="2" />
-            <enum name="bottom" value="3" />
-        </attr>
-        <attr name="show_mode" format="enum">
-            <enum name="lay_down" value="0" />
-            <enum name="pull_out" value="1" />
-        </attr>
-    </declare-styleable>
-
-
-    <declare-styleable name="wheelview">
-        <attr name="gravity">
-            <enum name="center" value="17" />
-            <enum name="left" value="3" />
-            <enum name="right" value="5" />
-        </attr>
-        <attr name="textColorOut" format="color" />
-        <attr name="textColorCenter" format="color" />
-        <attr name="dividerColors" format="color" />
-    </declare-styleable>
 </resources>

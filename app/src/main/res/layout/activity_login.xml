@@ -12,7 +12,7 @@
 
         <ImageView
 
-            android:id="@+id/login_back"
+            android:id="@+id/iv_login_back"
             android:layout_width="@dimen/DIMEN_39PX"
             android:layout_height="@dimen/DIMEN_34PX"
             android:layout_marginLeft="@dimen/DIMEN_15PX"
@@ -24,7 +24,7 @@
             android:src="@drawable/login_back" />
 
         <TextView
-            android:id="@+id/login_register"
+            android:id="@+id/tv_login_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -43,7 +43,7 @@
         android:id="@+id/login_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/login_tops"
+        android:layout_below="@id/login_tops"
         android:orientation="vertical">
 
         <LinearLayout
@@ -80,12 +80,12 @@
                 android:id="@+id/login_center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/login_top"
+                android:layout_below="@id/login_top"
                 android:layout_marginTop="@dimen/DIMEN_90PX"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/login_phone_total"
+                    android:id="@+id/tv_login_phone_hint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/DIMEN_100PX"
@@ -175,7 +175,7 @@
                         android:textSize="@dimen/DIMEN_18PX" />
 
                     <TextView
-                        android:id="@+id/login_forget"
+                        android:id="@+id/tv_login_forget"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/DIMEN_10PX"

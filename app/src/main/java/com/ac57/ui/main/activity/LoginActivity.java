@@ -1,6 +1,8 @@
 package com.ac57.ui.main.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -8,14 +10,14 @@ import android.widget.TextView;
 
 import com.ac57.R;
 import com.ac57.framework.base.MVPBaseActivity;
+import com.ac57.framework.tools.AppManager;
 import com.ac57.framework.utils.IntentUtils;
-import com.ac57.ui.ToastManager;
-import com.ac57.ui.entity.ToastBean;
 import com.ac57.ui.entity.UserInfoData;
 import com.ac57.ui.presenter.LoginActivityPresenter;
-import com.ac57.ui.presenter.LoginActivityViewController;
+import com.ac57.ui.presenter.ILoginActivityViewController;
 import com.ac57.ui.view.ClearEditText;
-import com.ac57.ui.view.MyToast;
+import com.ac57.ui.view.customtoast.ToastUtils;
+import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +27,7 @@ import butterknife.OnClick;
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 
-public class LoginActivity extends MVPBaseActivity<LoginActivityPresenter, LoginActivityViewController> implements LoginActivityViewController {
+public class LoginActivity extends MVPBaseActivity<LoginActivityPresenter, ILoginActivityViewController> implements ILoginActivityViewController {
     @BindView(R.id.iv_login_back)
     ImageView ivLoginBack;
     @BindView(R.id.tv_login_register)
@@ -65,7 +67,7 @@ public class LoginActivity extends MVPBaseActivity<LoginActivityPresenter, Login
 
     @Override
     protected LoginActivityPresenter initPresenter() {
-        return new LoginActivityPresenter(this);
+        return new LoginActivityPresenter(this, this);
     }
 
     @Override
@@ -129,23 +131,36 @@ public class LoginActivity extends MVPBaseActivity<LoginActivityPresenter, Login
 //                });
                 break;
             case R.id.login_weixin:
-
+                mPresenter.doThreeLogin(SHARE_MEDIA.WEIXIN);
                 break;
             case R.id.login_qq:
-
+                mPresenter.doThreeLogin(SHARE_MEDIA.QQ);
                 break;
         }
     }
 
     @Override
     public void openHome(UserInfoData bean) {
+        ToastUtils.success("登陆成功");
+        Log.e("tag", "'" + bean.toString());
         IntentUtils.startActivity(LoginActivity.this, MainActivity.class);
+        AppManager.getInstance().killAllActivity();
         finish();
     }
 
     @Override
-    public void showDailog(String msg, MyToast.Types types) {
-        ToastManager.getToastManager().showToast(new ToastBean(msg, types), null);
+    public void showDailog(String msg) {
+        ToastUtils.success(msg);
+    }
+
+    @Override
+    public void disDailog() {
+
+    }
+
+    @Override
+    public void showError(String msg) {
+        ToastUtils.success(msg);
     }
 
     public void saveUser(UserInfoData bean) {
@@ -161,5 +176,11 @@ public class LoginActivity extends MVPBaseActivity<LoginActivityPresenter, Login
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mPresenter.threeLoginResult(requestCode, resultCode, data);
     }
 }

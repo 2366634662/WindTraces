@@ -51,6 +51,7 @@ public abstract class DefaultSubscriber<T> extends Subscriber<T> {
         _onNext(entity);
     }
 
+
     public abstract void _onNext(T entity);
 
     public abstract void _onError(String e);

@@ -42,6 +42,7 @@ public class StringUtils {
         return (string == null || string.trim().length() == 0);
     }
 
+
     /**
      * null转为长度为0的字符串
      *

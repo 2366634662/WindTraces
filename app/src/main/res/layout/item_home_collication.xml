@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/DIMEN_25PX">
+
+        <ImageView
+            android:id="@+id/iv_colllectinfoms_item_stat"
+            android:layout_width="@dimen/DIMEN_30PX"
+            android:layout_height="@dimen/DIMEN_30PX"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/DIMEN_25PX"
+            android:src="@drawable/personal_choose_gray"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:id="@+id/flayout_collectinformas_item_fa"
+            android:layout_width="@dimen/DIMEN_104PX"
+            android:layout_height="@dimen/DIMEN_90PX"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/iv_collectinformas_item_img"
+                android:layout_width="@dimen/DIMEN_104PX"
+                android:layout_height="@dimen/DIMEN_90PX"
+                android:scaleType="fitXY"
+                android:src="@drawable/group1" />
+
+            <TextView
+                android:id="@+id/tv_collectinformas_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/black"
+                android:gravity="center"
+                android:text="申购"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/DIMEN_18PX"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_collectinformas_item_img_stat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="#99727171"
+                    android:paddingBottom="@dimen/DIMEN_5PX"
+                    android:paddingLeft="@dimen/DIMEN_10PX"
+                    android:paddingRight="@dimen/DIMEN_10PX"
+                    android:paddingTop="@dimen/DIMEN_5PX"
+                    android:text="图集"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/DIMEN_12PX"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/DIMEN_90PX"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/DIMEN_25PX"
+            android:layout_toLeftOf="@id/flayout_collectinformas_item_fa"
+            android:layout_toRightOf="@id/iv_colllectinfoms_item_stat"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/tv_colllectinfoms_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="风迹每日课堂探索纪念币还会有未来吗?"
+                android:textColor="#1a2736"
+                android:textSize="@dimen/DIMEN_20PX" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingRight="@dimen/DIMEN_30PX"
+                android:paddingTop="@dimen/DIMEN_10PX">
+
+                <TextView
+                    android:id="@+id/tv_colllectinfoms_item_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/DIMEN_10PX"
+                    android:paddingRight="@dimen/DIMEN_30PX"
+                    android:paddingTop="@dimen/DIMEN_20PX"
+                    android:text="风迹独家"
+                    android:textColor="#308fff"
+                    android:textSize="@dimen/DIMEN_16PX" />
+
+                <TextView
+                    android:id="@+id/tv_collectinfoms_item_read"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/DIMEN_15PX"
+                    android:paddingTop="@dimen/DIMEN_20PX"
+                    android:text="21阅读"
+                    android:textColor="#9d9e9f"
+                    android:textSize="@dimen/DIMEN_16PX" />
+
+                <TextView
+                    android:id="@+id/tv_colllectinfoms_item_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/tv_collectinfoms_item_read"
+                    android:paddingTop="@dimen/DIMEN_20PX"
+                    android:text="3小时前"
+                    android:textColor="#9d9e9f"
+                    android:textSize="@dimen/DIMEN_16PX" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_12PX"
+        android:background="#f2f2f2" />
+
+</LinearLayout>

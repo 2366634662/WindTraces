@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/DIMEN_25PX">
+
+    <TextView
+        android:id="@+id/tv_information_list_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/DIMEN_25PX"
+        android:paddingRight="@dimen/DIMEN_25PX"
+        android:singleLine="true"
+        android:text="SDAS"
+        android:textColor="#172434"
+        android:textSize="@dimen/DIMEN_20PX" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_148PX"
+        android:layout_marginTop="@dimen/DIMEN_18PX"
+        android:paddingLeft="@dimen/DIMEN_25PX"
+        android:paddingRight="@dimen/DIMEN_25PX">
+
+        <ImageView
+            android:id="@+id/iv_information_list_item"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/DIMEN_148PX"
+            android:scaleType="centerCrop"
+            android:src="@drawable/group3" />
+
+        <TextView
+            android:id="@+id/tv_information_list_item_img_stat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="#99727171"
+            android:paddingBottom="@dimen/DIMEN_5PX"
+            android:paddingLeft="@dimen/DIMEN_10PX"
+            android:paddingRight="@dimen/DIMEN_10PX"
+            android:paddingTop="@dimen/DIMEN_5PX"
+            android:text="广告"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/DIMEN_12PX"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_information_list_item_img_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="#99727171"
+                android:paddingBottom="@dimen/DIMEN_5PX"
+                android:paddingLeft="@dimen/DIMEN_10PX"
+                android:paddingRight="@dimen/DIMEN_10PX"
+                android:paddingTop="@dimen/DIMEN_5PX"
+                android:text="图集"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/DIMEN_12PX"
+                android:visibility="visible" />
+        </RelativeLayout>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlayout_information_list_item_linear"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/DIMEN_10PX"
+        android:layout_marginTop="@dimen/DIMEN_10PX"
+        android:paddingLeft="@dimen/DIMEN_25PX"
+        android:paddingRight="@dimen/DIMEN_25PX">
+
+        <TextView
+            android:id="@+id/tv_information_list_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/DIMEN_10PX"
+            android:paddingRight="@dimen/DIMEN_15PX"
+            android:paddingTop="@dimen/DIMEN_10PX"
+            android:text="风迹独家"
+            android:textColor="#308fff"
+            android:textSize="@dimen/DIMEN_16PX" />
+
+        <TextView
+            android:id="@+id/tv_information_list_item_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/DIMEN_15PX"
+            android:paddingBottom="@dimen/DIMEN_10PX"
+            android:paddingTop="@dimen/DIMEN_10PX"
+            android:text="21阅读"
+            android:textColor="#9d9e9f"
+            android:textSize="@dimen/DIMEN_16PX" />
+
+        <TextView
+            android:id="@+id/tv_information_list_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/tv_information_list_item_read"
+            android:paddingBottom="@dimen/DIMEN_10PX"
+            android:paddingTop="@dimen/DIMEN_10PX"
+            android:text="3小时前"
+            android:textColor="#9d9e9f"
+            android:textSize="@dimen/DIMEN_16PX" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_12PX"
+        android:background="#f2f2f2" />
+</LinearLayout>

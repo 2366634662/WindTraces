@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -15,6 +16,8 @@ import android.view.WindowManager;
 
 import com.ac57.R;
 import com.ac57.framework.tools.AppManager;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -69,7 +72,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayout());
         setTranslucentStatus();
 //        initWindow();
-//        EventBus.getDefault().register(this);
+        try {
+            EventBus.getDefault().register(this);
+        } catch (Exception e) {
+            Log.e("tag", "错误了？" + e.toString());
+        }
         AppManager.getInstance().addActivity(this);
         mUnbinder = ButterKnife.bind(this);
         initView(savedInstanceState);
@@ -84,7 +91,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         AppManager.getInstance().remove(this);
-//        EventBus.getDefault().unregister(this);
+        EventBus.getDefault().unregister(this);
         mUnbinder.unbind();
     }
 
@@ -145,4 +152,5 @@ public abstract class BaseActivity extends AppCompatActivity {
             window.setStatusBarColor(color);
         }
     }
+
 }

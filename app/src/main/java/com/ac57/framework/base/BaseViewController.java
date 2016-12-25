@@ -1,7 +1,5 @@
 package com.ac57.framework.base;
 
-import com.ac57.ui.view.MyToast;
-
 /**
  * Created by Du_Li on 2016/12/17.
  */
@@ -14,10 +12,16 @@ public interface BaseViewController {
      *
      * @param msg message
      */
-    void showDailog(String msg, MyToast.Types types);
+    void showDailog(String msg);
 
-//    /**
-//     * 关闭对话框
-//     */
-//    void disDailog();
+    /**
+     * 关闭对话框
+     */
+    void disDailog();
+
+    /**
+     * 显示错误页面
+     */
+    void showError(String msg);
+
 }
