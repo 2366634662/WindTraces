@@ -26,10 +26,40 @@ android {
 
 
     }
+    signingConfigs {
+        config {
+            keyAlias 'fengji.keystore'
+            keyPassword 'aicheng'
+            storeFile file('F:\\weixiu\\project\\winds\\fengji.keystore')
+            storePassword 'aicheng'
+        }
+    }
+
+
     buildTypes {
+        debug {
+            signingConfig signingConfigs.config
+            debuggable true
+            minifyEnabled false
+
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.config
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        if (variant.buildType.name.equals('release')) {
+                            def fileName = "WindTraces${defaultConfig.versionName}_${releaseTime()}.apk"
+                            output.outputFile = new File(outputFile.parent, fileName)
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -40,46 +70,54 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    /**
-     * 极光推送
-     */
-    // 此处以JPush 3.0.0 版本为例。
-    // 此处以JCore 1.0.0 版本为例
 
-    /**
-     * Glide加载图片
-     */
-    /**
-     * 各种Tab切换效果
-     */
 
     testCompile 'junit:junit:4.12'
     /**
      * 注解
      */
     compile 'com.jakewharton:butterknife:8.4.0'
-
+    compile 'com.jakewharton:butterknife:8.4.0'
     /**
      * RxJava与Retrofit结合要依赖的库
      */
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'cn.jiguang.sdk:jpush:3.0.0'
-    compile 'cn.jiguang.sdk:jcore:1.0.0'
-    compile 'com.android.support:design:25.0.1'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.8@aar'
-    compile 'com.jakewharton:butterknife:8.4.0'
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
-    compile 'com.google.code.gson:gson:2.6.2'
+
+    /**
+     * 极光推送
+     */
+    compile 'cn.jiguang.sdk:jpush:3.0.0'
+    compile 'cn.jiguang.sdk:jcore:1.0.0'
+    compile 'com.android.support:design:25.0.1'
     compile 'com.android.support:support-v4:25.0.1'
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    /**
+     * Glide加载图片
+     */
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    /**
+     * 各种Tab切换效果
+     */
+    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.8@aar'
+    /**
+     * 轮播图  bga-banner
+     */
+    compile 'cn.bingoogolapple:bga-banner:2.1.5@aar'
+    compile 'com.google.code.gson:gson:2.6.2'
+    /**
+     * 下拉刷新和加载更多  RecyclerView
+     * use  ： https://github.com/jianghejie/XRecyclerView
+     */
+    compile 'com.jcodecraeer:xrecyclerview:1.3.2'
+
+
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'cn.bingoogolapple:bga-banner:2.1.5@aar'
-    compile 'com.android.support:support-v4:25.0.1'
     compile 'org.greenrobot:eventbus:3.0.0'
     apt 'org.greenrobot:eventbus-annotation-processor:3.0.1'
 
@@ -90,4 +128,8 @@ apt {
     arguments {
         eventBusIndex "com.afei.test.MyEventBusIndex"
     }
+}
+
+def releaseTime() {
+    return new Date().format("MMddHHmm", TimeZone.getTimeZone("GMT+8"))
 }

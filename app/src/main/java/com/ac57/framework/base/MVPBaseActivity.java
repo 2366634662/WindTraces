@@ -15,8 +15,10 @@ public abstract class MVPBaseActivity<T extends BasePresenter, M extends BaseVie
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = initPresenter();    //初始化Presenter，提供主持人，拥有主持人后才能提交界面数据给presenter
-        mPresenter.initData();
+        //初始化Presenter
+        if (mPresenter != null) {
+            mPresenter = initPresenter();
+        }
     }
 
     @Override

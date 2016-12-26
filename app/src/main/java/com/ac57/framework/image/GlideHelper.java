@@ -26,6 +26,5 @@ public class GlideHelper {
         Glide.with(activity)
                 .load(imgUrl)
                 .into(img);
-
     }
 }

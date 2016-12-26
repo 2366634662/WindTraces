@@ -1,13 +1,25 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ac57.ui.main.fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.ac57.ui.view.EasyStatusView
+        android:id="@+id/esv_home_multip"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:esv_empty="@layout/null_view"
+        app:esv_error="@layout/error_view"
+        app:esv_loading="@layout/load_view"
+        app:esv_noNet="@layout/not_network">
+
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:id="@+id/xrv_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.ac57.ui.view.EasyStatusView>
+
 
 </FrameLayout>

@@ -1,5 +1,7 @@
 package com.ac57.framework.base;
 
+import android.app.Activity;
+
 /**
  * Created by Du_Li on 2016/12/17.
  */
@@ -15,7 +17,10 @@ public abstract class BasePresenter<D extends BaseViewController> {
         this.model = model;
     }
 
-    public abstract void initData();
+    public BasePresenter(D model, Activity activity) {
+        this.model = model;
+    }
+
 
 
 }

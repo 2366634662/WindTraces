@@ -55,10 +55,10 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/register_one_center"
+        android:id="@+id/llayout_register_one_center"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/register_one_top"
+        android:layout_below="@id/register_one_top"
         android:layout_marginTop="@dimen/DIMEN_90PX"
         android:orientation="vertical">
 
@@ -115,7 +115,7 @@
         android:id="@+id/tv_register_one_bnt"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/DIMEN_55PX"
-        android:layout_below="@+id/register_one_center"
+        android:layout_below="@id/llayout_register_one_center"
         android:layout_marginLeft="@dimen/DIMEN_25PX"
         android:layout_marginRight="@dimen/DIMEN_25PX"
         android:layout_marginTop="@dimen/DIMEN_110PX"

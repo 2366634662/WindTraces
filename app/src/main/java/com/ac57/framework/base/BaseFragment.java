@@ -15,7 +15,7 @@ import butterknife.Unbinder;
  * Created by Du_Li on 2016/10/25.
  * Desc:Fragment懒加载
  */
-public abstract class BaseFragment extends Fragment implements View.OnClickListener {
+public abstract class BaseFragment extends Fragment  {
     private boolean isVisible = false;
     private boolean isInitView = false;
     private boolean isFirstLoad = true;
@@ -24,11 +24,9 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     private SparseArray<View> mViews;
     private Unbinder mUnbinder;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         if (convertView == null) {
             convertView = inflater.inflate(getLayoutId(), container, false);
             mUnbinder = ButterKnife.bind(this, convertView);
@@ -114,23 +112,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
             return view;
         }
         return null;
-    }
-
-    /**
-     * 根据id或者View设置点击事件
-     *
-     * @param objects
-     */
-    protected void setOnClick(Object... objects) {
-
-        for (Object object : objects) {
-            if (object instanceof Integer) {
-                findView((int) object).setOnClickListener(this);
-            }
-            if (object instanceof View) {
-                ((View) object).setOnClickListener(this);
-            }
-        }
     }
 
     @Override

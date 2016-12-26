@@ -8,15 +8,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ac57.R;
-import com.ac57.framework.base.BaseActivity;
+import com.ac57.framework.base.MVPBaseActivity;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.framework.utils.StringUtils;
 import com.ac57.ui.custominterface.IEditText;
+import com.ac57.ui.presenter.IRegisterViewControll;
+import com.ac57.ui.presenter.RegisterActivityPresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends MVPBaseActivity<RegisterActivityPresenter, IRegisterViewControll> implements IRegisterViewControll {
 
     @BindView(R.id.register_one_back)
     ImageView registerOneBack;
@@ -78,5 +80,25 @@ public class RegisterActivity extends BaseActivity {
 
                 break;
         }
+    }
+
+    @Override
+    protected RegisterActivityPresenter initPresenter() {
+        return new RegisterActivityPresenter(this);
+    }
+
+    @Override
+    public void showDailog(String msg) {
+
+    }
+
+    @Override
+    public void disDailog() {
+
+    }
+
+    @Override
+    public void showError(String msg) {
+
     }
 }

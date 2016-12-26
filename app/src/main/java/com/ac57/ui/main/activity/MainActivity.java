@@ -53,11 +53,11 @@ public class MainActivity extends BaseActivity {
 
     protected void initDatas() {
         adapter = new MyFragmentPageAdapter(getSupportFragmentManager());
-        mFragments.add(NewGoodsFragment.newInstance());
-        mFragments.add(NoticeFragment.newInstance());
-        mFragments.add(HomeFragment.newInstance());
-        mFragments.add(InteractiveFragment.newInstance());
-        mFragments.add(ReadingTypeFragment.newInstance());
+        mFragments.add(NewGoodsFragment.newInstance()); //新品
+        mFragments.add(NoticeFragment.newInstance());//公告
+        mFragments.add(HomeFragment.newInstance());//咨询
+        mFragments.add(InteractiveFragment.newInstance());//互动
+        mFragments.add(ReadingTypeFragment.newInstance());//看盘
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
         }
@@ -65,7 +65,9 @@ public class MainActivity extends BaseActivity {
         vp_main_page.setScanScroll(false);
         vp_main_page.setAdapter(adapter);
         ctlayoutMain.setTabData(mTabEntities);
+        //设置进入主页面时默认进入咨询页面
         ctlayoutMain.setCurrentTab(2);
+        vp_main_page.setCurrentItem(2);
         ctlayoutMain.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {

@@ -133,6 +133,47 @@
         <activity android:name=".ui.main.activity.LoginActivity" />
         <activity android:name=".ui.main.activity.RegisterActivity" />
         <activity android:name=".ui.main.activity.AppLogoActivity"></activity>
+
+        <!--友盟分享，第三方登陆-->
+        <!--微信-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!--QQ-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!--分享编辑页：-->
+        <activity
+            android:name="com.umeng.socialize.editorpage.ShareActivity"
+            android:excludeFromRecents="true"
+            />
+
+        <!--友盟APPkey-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5695e5cf67e58e533a001153" >
+        </meta-data>
     </application>
 
 </manifest>

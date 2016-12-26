@@ -89,6 +89,10 @@ public class UserInfoData {
         public String icon_show_color;
         public String is_follow;
 
+        //第三方登陆用的
+        public String icon_img_id;
+        public String icon_img;
+
         @Override
         public String toString() {
             return "ExchangeDataBean{" +
