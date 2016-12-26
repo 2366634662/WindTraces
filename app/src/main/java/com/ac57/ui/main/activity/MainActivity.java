@@ -65,6 +65,7 @@ public class MainActivity extends BaseActivity {
         vp_main_page.setScanScroll(false);
         vp_main_page.setAdapter(adapter);
         ctlayoutMain.setTabData(mTabEntities);
+        ctlayoutMain.setCurrentTab(2);
         ctlayoutMain.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {

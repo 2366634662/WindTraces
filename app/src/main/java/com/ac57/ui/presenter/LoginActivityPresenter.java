@@ -35,16 +35,16 @@ public class LoginActivityPresenter extends BasePresenter<LoginActivityViewContr
                     @Override
                     public void _onNext(UserInfoData entity) {
                         if (null != entity) {
-                            model.openHome(entity);
-                            model.showDailog("登录成功", MyToast.Types.OK);
+//                            model.openHome(entity);
+                            model.showDailog("登录成功", MyToast.Types.OK, entity);
                         } else {
-                            model.showDailog("用户名或密码错误", MyToast.Types.ERREY);
+                            model.showDailog("用户名或密码错误", MyToast.Types.ERREY, null);
                         }
                     }
 
                     @Override
                     public void _onError(String e) {
-                        model.showDailog("用户名或密码错误", MyToast.Types.ERREY);
+                        model.showDailog("用户名或密码错误", MyToast.Types.ERREY, null);
                     }
                 });
     }

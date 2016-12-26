@@ -1,6 +1,7 @@
 package com.ac57.ui.main.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -138,14 +139,26 @@ public class LoginActivity extends MVPBaseActivity<LoginActivityPresenter, Login
     }
 
     @Override
-    public void openHome(UserInfoData bean) {
-        IntentUtils.startActivity(LoginActivity.this, MainActivity.class);
-        finish();
-    }
+    public void showDailog(String msg, MyToast.Types types, UserInfoData infoData) {
+        ToastManager.getToastManager().showToast(new ToastBean(msg, types, 0, infoData), new ToastManager.ToastManagerListener() {
+            @Override
+            public void start(ToastBean bean) {
+                if (bean != null) {
+                    UserInfoData infoData = (UserInfoData) bean.getObj();
+                    Log.e("tag", "" + infoData.toString());
+                    saveUser(infoData);
+                }
 
-    @Override
-    public void showDailog(String msg, MyToast.Types types) {
-        ToastManager.getToastManager().showToast(new ToastBean(msg, types), null);
+            }
+
+            @Override
+            public void stop(ToastBean bean) {
+
+                IntentUtils.startActivity(LoginActivity.this, MainActivity.class);
+
+                finish();
+            }
+        });
     }
 
     public void saveUser(UserInfoData bean) {
@@ -161,5 +174,10 @@ public class LoginActivity extends MVPBaseActivity<LoginActivityPresenter, Login
 
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
