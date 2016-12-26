@@ -14,8 +14,8 @@ import com.ac57.framework.tools.AppManager;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.AppContext;
 import com.ac57.ui.entity.UserInfoData;
-import com.ac57.ui.presenter.LoginActivityPresenter;
 import com.ac57.ui.presenter.ILoginActivityViewController;
+import com.ac57.ui.presenter.LoginActivityPresenter;
 import com.ac57.ui.view.customtoast.ToastUtils;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
@@ -125,4 +125,5 @@ public class AppLogoActivity extends MVPBaseActivity<LoginActivityPresenter, ILo
         super.onActivityResult(requestCode, resultCode, data);
         mPresenter.threeLoginResult(requestCode, resultCode, data);
     }
+
 }

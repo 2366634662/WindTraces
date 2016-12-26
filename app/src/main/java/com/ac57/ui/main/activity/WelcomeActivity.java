@@ -23,7 +23,6 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void initDatas() {
-
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -31,6 +30,7 @@ public class WelcomeActivity extends BaseActivity {
                     IntentUtils.startActivity(WelcomeActivity.this, GuideActivity.class);
                     finish();
                 } else {
+
                     IntentUtils.startActivity(WelcomeActivity.this, AppLogoActivity.class);
                     finish();
                 }
@@ -43,4 +43,10 @@ public class WelcomeActivity extends BaseActivity {
 
     }
 
+
+    // This method will be called when a SomeOtherEvent is posted
+//    @Subscribe
+//    public void handleSomethingElse(SomeOtherEvent event) {
+//        doSomethingWith(event);
+//    }
 }
