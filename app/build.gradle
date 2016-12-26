@@ -30,7 +30,7 @@ android {
         config {
             keyAlias 'fengji.keystore'
             keyPassword 'aicheng'
-            storeFile file('F:\\weixiu\\project\\winds\\fengji.keystore')
+            storeFile file('E:\\wei\\winds\\fengji.keystore')
             storePassword 'aicheng'
         }
     }
@@ -120,6 +120,9 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'org.greenrobot:eventbus:3.0.0'
     apt 'org.greenrobot:eventbus-annotation-processor:3.0.1'
+
+    compile 'com.github.lzyzsd:jsbridge:1.0.4'
+
 }
 apt {
     arguments {

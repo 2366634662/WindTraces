@@ -8,11 +8,14 @@
     <cn.bingoogolapple.bgabanner.BGABanner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="234dp"
+        android:layout_height="150dp"
+        app:banner_indicatorGravity="right"
+        app:banner_numberIndicatorBackground="@color/pickerview_wheelview_textcolor_divider"
         app:banner_pageChangeDuration="2000"
         app:banner_pointAutoPlayAble="true"
         app:banner_pointContainerBackground="@android:color/transparent"
         app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+        app:banner_tipTextSize="16dp"
         app:banner_transitionEffect="alpha" />
 
 

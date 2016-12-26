@@ -15,7 +15,7 @@ import butterknife.Unbinder;
  * Created by Du_Li on 2016/10/25.
  * Desc:Fragment懒加载
  */
-public abstract class BaseFragment extends Fragment  {
+public abstract class BaseFragment extends Fragment {
     private boolean isVisible = false;
     private boolean isInitView = false;
     private boolean isFirstLoad = true;
@@ -119,4 +119,5 @@ public abstract class BaseFragment extends Fragment  {
         super.onDestroy();
         mUnbinder.unbind();
     }
+
 }

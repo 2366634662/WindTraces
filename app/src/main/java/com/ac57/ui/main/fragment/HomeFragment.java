@@ -36,6 +36,9 @@ public class HomeFragment extends MVPBaseFragment<HomeFragmentPresenter, IHomeVi
 
     private HomeListInfoAdapter infoAdapter;
 
+    private int page = 1;
+    private boolean isFirst = true;
+
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
         return fragment;
@@ -63,12 +66,25 @@ public class HomeFragment extends MVPBaseFragment<HomeFragmentPresenter, IHomeVi
         xrvHome.setLayoutManager(linearLayoutManager);
         infoAdapter = new HomeListInfoAdapter(getActivity(), R.layout.item_home_collication);
         xrvHome.setAdapter(infoAdapter);
+        xrvHome.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                page = 1;
+                mPresenter.getHomeInfoListData("all", page);
+            }
+
+            @Override
+            public void onLoadMore() {
+                page++;
+                mPresenter.getHomeInfoListData("all", page);
+            }
+        });
     }
 
     @Override
     protected void getData() {
         mPresenter.getHomeBannerData();
-        mPresenter.getHomeInfoListData("all", 1);
+        mPresenter.getHomeInfoListData("all", page);
     }
 
     @Override
@@ -92,13 +108,23 @@ public class HomeFragment extends MVPBaseFragment<HomeFragmentPresenter, IHomeVi
 
     @Override
     public void getHomeInfoData(List<HomeInfoListEntity> entity) {
+        if (page == 1) {
+            infoAdapter.clear();
+            xrvHome.refreshComplete();
+        } else {
+            xrvHome.loadMoreComplete();
+        }
+
         infoAdapter.addAll(entity);
         infoAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void showDailog(String msg) {
-        esvHomeMultip.loading();
+        if (isFirst) {
+            isFirst = false;
+            esvHomeMultip.loading();
+        }
     }
 
     @Override
