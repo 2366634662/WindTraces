@@ -1,25 +1,29 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.ac57.ui.main.fragment.HomeFragment">
 
-    <com.ac57.ui.view.EasyStatusView
+    <include
+        layout="@layout/base_title" />
+
+    <com.jcodecraeer.xrecyclerview.progressindicator.view.EasyStatusView
         android:id="@+id/esv_home_multip"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:esv_empty="@layout/null_view"
         app:esv_error="@layout/error_view"
         app:esv_loading="@layout/load_view"
-        app:esv_noNet="@layout/not_network">
+        app:esv_noNet="@layout/no_network">
 
         <com.jcodecraeer.xrecyclerview.XRecyclerView
             android:id="@+id/xrv_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </com.ac57.ui.view.EasyStatusView>
+    </com.jcodecraeer.xrecyclerview.progressindicator.view.EasyStatusView>
 
 
-</FrameLayout>
+</LinearLayout>

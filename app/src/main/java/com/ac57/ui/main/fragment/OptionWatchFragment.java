@@ -73,7 +73,7 @@ public class OptionWatchFragment extends MVPBaseFragment<OptionWatchPresenter, I
         recyclerViewTop = (RecyclerView) optionTop.findViewById(R.id.recyclerView_option);
         recyclerViewCenter = (RecyclerView) optionTop.findViewById(R.id.recyclerView_option_center);
         tv_top_title = (TextView) optionTop.findViewById(R.id.tv_option_watch_title);
-        //查看更多
+        //查看更多   
         rlayout_read_one_mores = (RelativeLayout) optionTop.findViewById(R.id.rlayout_read_one_mores);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);

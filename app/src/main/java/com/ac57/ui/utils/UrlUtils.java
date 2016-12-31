@@ -16,5 +16,14 @@ public class UrlUtils {
     public static final String HOME_BANNER = "Index/news/banner";
     //咨询页列表
     public static final String HOME_INFO_LIST_DATA = "Index/news/theList";
-
+    //互动活动专区
+    public static final String INTERACT_EVENT_LIST_URL = "Index/art/activityList";
+    //互动item列表
+    public static final String OTHER_TYPE_INTERACT_LIST_URL = "Index/Art/theList";
+    //已关注的文交所的行情
+    public static final String OPTION_WATCH_TOP_URL = "Index/Market/myFollowData";
+    //投资策略列表
+    public static final String OPTION_WATCH_CENTER_URL = "Index/Market/Routine";
+    //文交所行情列表
+    public static final String OPTION_WATCH_BOTTOM_URL = "Index/Market/allData";
 }

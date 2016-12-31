@@ -1,13 +1,57 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/read_bg_cor"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.ac57.ui.main.fragment.ReadingTypeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="@dimen/DIMEN_70PX">
 
-</FrameLayout>
+        <RadioGroup
+            android:id="@+id/read_title"
+            android:layout_width="@dimen/DIMEN_228PX"
+            android:layout_height="@dimen/DIMEN_36PX"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/read_rg_bg"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_read_option"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/read_rb_bg"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="行情看点"
+                android:textColor="@drawable/read_rb_tvcor"
+                android:textSize="@dimen/DIMEN_20PX" />
+
+            <RadioButton
+                android:id="@+id/rb_read_collection"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/read_rb_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="自选藏品"
+                android:textColor="@drawable/read_rb_tvcor"
+                android:textSize="@dimen/DIMEN_20PX" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <com.ac57.ui.view.MyViewPager
+        android:id="@+id/vp_radingtype"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

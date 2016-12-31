@@ -12,13 +12,13 @@ import com.ac57.framework.base.MVPBaseActivity;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.framework.utils.StringUtils;
 import com.ac57.ui.custominterface.IEditText;
-import com.ac57.ui.presenter.IRegisterViewControll;
-import com.ac57.ui.presenter.RegisterActivityPresenter;
+import com.ac57.ui.presenter.view.IRegisterView;
+import com.ac57.ui.presenter.RegisterPresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class RegisterActivity extends MVPBaseActivity<RegisterActivityPresenter, IRegisterViewControll> implements IRegisterViewControll {
+public class RegisterActivity extends MVPBaseActivity<RegisterPresenter, IRegisterView> implements IRegisterView {
 
     @BindView(R.id.register_one_back)
     ImageView registerOneBack;
@@ -83,8 +83,8 @@ public class RegisterActivity extends MVPBaseActivity<RegisterActivityPresenter,
     }
 
     @Override
-    protected RegisterActivityPresenter initPresenter() {
-        return new RegisterActivityPresenter(this);
+    protected RegisterPresenter initPresenter() {
+        return new RegisterPresenter(this);
     }
 
     @Override

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#202032"
+        android:paddingBottom="@dimen/DIMEN_30PX"
+        android:paddingLeft="@dimen/DIMEN_25PX"
+        android:paddingRight="@dimen/DIMEN_50PX"
+        android:paddingTop="@dimen/DIMEN_30PX">
+
+        <LinearLayout
+            android:id="@+id/bottom_item_tab1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <com.ac57.ui.view.CircleView
+                android:id="@+id/cv_bottom_item_img"
+                android:layout_width="@dimen/DIMEN_40PX"
+                android:layout_height="@dimen/DIMEN_40PX"
+                android:gravity="center"
+                android:text="金"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/DIMEN_20PX" />
+
+            <TextView
+                android:id="@+id/tv_bottom_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/DIMEN_12PX"
+                android:text="金马甲"
+                android:textColor="#bdbdc3"
+                android:textSize="@dimen/DIMEN_20PX" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_bottom_item_tab3"
+            android:layout_width="@dimen/DIMEN_80PX"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/DIMEN_20PX"
+            android:gravity="right"
+            android:text="99%"
+            android:textColor="@color/myoptional_red"
+            android:textSize="@dimen/DIMEN_18PX" />
+
+        <TextView
+            android:id="@+id/tv_bottom_item_tab2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/tv_bottom_item_tab3"
+            android:layout_toRightOf="@+id/bottom_item_tab1"
+            android:gravity="right"
+            android:text="3661"
+            android:textColor="@color/myoptional_red"
+            android:textSize="@dimen/DIMEN_18PX" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/read_line_bg"
+        android:layerType="software" />
+</LinearLayout>
