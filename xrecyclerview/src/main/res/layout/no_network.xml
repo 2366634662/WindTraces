@@ -8,16 +8,16 @@
 
     <ImageView
         android:id="@+id/no_data_img"
-        android:layout_width="@dimen/DIMEN_131PX"
-        android:layout_height="@dimen/DIMEN_181PX"
+        android:layout_width="132dp"
+        android:layout_height="180dp"
         android:src="@drawable/not_find" />
 
     <TextView
         android:id="@+id/no_data_tx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/DIMEN_30PX"
+        android:layout_marginTop="32dp"
         android:text="暂无数据"
         android:textColor="#e2ebed"
-        android:textSize="@dimen/DIMEN_18PX" />
+        android:textSize="24dp" />
 </LinearLayout>

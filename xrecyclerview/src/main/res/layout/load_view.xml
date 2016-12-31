@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.ac57.ui.view.RabbitsView
-        android:id="@+id/load_v"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/DIMEN_60PX"
+    <ImageView
+        android:id="@+id/loading_view"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
         android:layout_centerInParent="true"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:background="@drawable/pull_to_refresh_header" />
 </RelativeLayout>
