@@ -32,7 +32,7 @@ abstract class BaseRecyclerAdapter<T, H extends RecyclerAdapterHelper> extends R
 
     @Override
     public int getItemViewType(int position) {
-        if (getViewTypeCount() == 1) {    
+        if (getViewTypeCount() == 1) {
             return super.getItemViewType(position);
         }
 
