@@ -328,5 +328,20 @@ public class StringUtils {
         return dateString;
     }
 
+    public static String getTimes(String tm) {
+        long now_time = new Date().getTime();
+        long dtime = Long.parseLong(tm) * 1000;
+        long delay = (now_time - dtime) / 1000;
+        if (delay > 0 && delay <= 60) {
+            return delay + "秒前";
+        } else if (delay <= 0) {
+            return "刚刚";
+        } else if (delay > 60 && delay < 3600) {
+            return (delay / 60) + "分钟前";
+        } else {
+            String st = TimeUntil.timeStampT(dtime);
+            return st.substring(st.indexOf("-") + 1);
+        }
+    }
 
 }

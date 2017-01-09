@@ -13,8 +13,8 @@ import com.ac57.framework.base.MVPBaseActivity;
 import com.ac57.framework.tools.AppManager;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.entity.UserInfoData;
-import com.ac57.ui.presenter.LoginActivityPresenter;
-import com.ac57.ui.presenter.ILoginActivityViewController;
+import com.ac57.ui.presenter.LoginPresenter;
+import com.ac57.ui.presenter.view.ILoginActivityView;
 import com.ac57.ui.view.ClearEditText;
 import com.ac57.ui.view.customtoast.ToastUtils;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -27,7 +27,7 @@ import butterknife.OnClick;
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 
-public class LoginActivity extends MVPBaseActivity<LoginActivityPresenter, ILoginActivityViewController> implements ILoginActivityViewController {
+public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivityView> implements ILoginActivityView {
     @BindView(R.id.iv_login_back)
     ImageView ivLoginBack;
     @BindView(R.id.tv_login_register)
@@ -66,8 +66,8 @@ public class LoginActivity extends MVPBaseActivity<LoginActivityPresenter, ILogi
     }
 
     @Override
-    protected LoginActivityPresenter initPresenter() {
-        return new LoginActivityPresenter(this, this);
+    protected LoginPresenter initPresenter() {
+        return new LoginPresenter(this, this);
     }
 
     @Override

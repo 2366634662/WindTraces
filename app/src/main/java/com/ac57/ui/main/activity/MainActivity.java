@@ -1,5 +1,6 @@
 package com.ac57.ui.main.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
@@ -48,7 +49,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-
+        initWindow();
     }
 
     protected void initDatas() {
@@ -72,10 +73,18 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onTabSelect(int position) {
                 vp_main_page.setCurrentItem(position);
+                if (position == 4) {
+                    initWindowBarColor(Color.parseColor("#242438"));
+                    ctlayoutMain.setBackgroundColor(Color.parseColor("#242438"));
+                } else {
+                    initWindowBarColor(Color.WHITE);
+                    ctlayoutMain.setBackgroundColor(Color.WHITE);
+                }
             }
 
             @Override
             public void onTabReselect(int position) {
+
             }
         });
 

@@ -14,15 +14,15 @@ import com.ac57.framework.tools.AppManager;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.AppContext;
 import com.ac57.ui.entity.UserInfoData;
-import com.ac57.ui.presenter.LoginActivityPresenter;
-import com.ac57.ui.presenter.ILoginActivityViewController;
+import com.ac57.ui.presenter.view.ILoginActivityView;
+import com.ac57.ui.presenter.LoginPresenter;
 import com.ac57.ui.view.customtoast.ToastUtils;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class AppLogoActivity extends MVPBaseActivity<LoginActivityPresenter, ILoginActivityViewController> implements ILoginActivityViewController {
+public class AppLogoActivity extends MVPBaseActivity<LoginPresenter, ILoginActivityView> implements ILoginActivityView {
 
     @BindView(R.id.btn_login_or_reg)
     Button btnLoginOrReg;
@@ -116,8 +116,8 @@ public class AppLogoActivity extends MVPBaseActivity<LoginActivityPresenter, ILo
     }
 
     @Override
-    protected LoginActivityPresenter initPresenter() {
-        return new LoginActivityPresenter(this, this);
+    protected LoginPresenter initPresenter() {
+        return new LoginPresenter(this, this);
     }
 
     @Override
@@ -125,4 +125,5 @@ public class AppLogoActivity extends MVPBaseActivity<LoginActivityPresenter, ILo
         super.onActivityResult(requestCode, resultCode, data);
         mPresenter.threeLoginResult(requestCode, resultCode, data);
     }
+
 }

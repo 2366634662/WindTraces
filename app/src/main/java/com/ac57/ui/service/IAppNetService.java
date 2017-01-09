@@ -4,6 +4,11 @@ package com.ac57.ui.service;
 import com.ac57.framework.base.BaseEntity;
 import com.ac57.ui.entity.HomeBannerEntity;
 import com.ac57.ui.entity.HomeInfoListEntity;
+import com.ac57.ui.entity.InteractEventEntity;
+import com.ac57.ui.entity.OptionWatchBottomEntity;
+import com.ac57.ui.entity.OptionWatchCenterEntity;
+import com.ac57.ui.entity.OptionWatchTopEntity;
+import com.ac57.ui.entity.OtherTypesInteractEntity;
 import com.ac57.ui.entity.UserInfoData;
 import com.ac57.ui.utils.UrlUtils;
 
@@ -54,5 +59,28 @@ public interface IAppNetService {
     @POST(UrlUtils.HOME_INFO_LIST_DATA)
     @FormUrlEncoded
     Observable<BaseEntity<List<HomeInfoListEntity>>> getHomeInfoListData(@Field("art_type") String art_type, @Field("page") String page, @Field("pagesize") String pageSize);
+
+    //互动活动专区
+    @POST(UrlUtils.INTERACT_EVENT_LIST_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<List<InteractEventEntity>>> getInteractEventListData(@Field("page") String page, @Field("pagesize") String pageSize);
+
+    //互动发表的页面
+    @POST(UrlUtils.OTHER_TYPE_INTERACT_LIST_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<List<OtherTypesInteractEntity>>> getOtherTypesInteractListData(@Field("art_type") String art_type, @Field("page") String page, @Field("pagesize") String pageSize);
+
+    //行情看点顶部列表
+    @POST(UrlUtils.OPTION_WATCH_TOP_URL)
+    Observable<BaseEntity<OptionWatchTopEntity>> getOptionWatchTopData();
+
+    //行情看点中间列表
+    @POST(UrlUtils.OPTION_WATCH_CENTER_URL)
+    Observable<BaseEntity<List<OptionWatchCenterEntity>>> getOptionWatchCenterData();
+
+    //行情看点底部列表
+    @POST(UrlUtils.OPTION_WATCH_BOTTOM_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<List<OptionWatchBottomEntity>>> getOptionWatchBottomData(@Field("page") String page, @Field("pagesize") String pageSize, @Field("my_top") String my_top);
 
 }

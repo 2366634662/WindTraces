@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">风迹</string>
     <string name="applogo_title">重新定义\n邮币卡\n交易体验</string>
     <string name="login_title">使用您的风迹\n账户登录</string>

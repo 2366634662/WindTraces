@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 
-    <declare-styleable name="EasyStatusView">
-        <attr name="esv_loading" format="reference" />
-        <attr name="esv_error" format="reference" />
-        <attr name="esv_empty" format="reference" />
-        <attr name="esv_noNet" format="reference" />
+
+    <!--侧滑删除-->
+    <declare-styleable name="SwipeMenuLayout">
+        <attr name="swipeEnable" format="boolean" />
+        <attr name="ios" format="boolean" />
+        <attr name="leftSwipe" format="boolean" />
     </declare-styleable>
+
 
     <declare-styleable name="CircleImageView">
         <attr name="border_width" format="dimension" />

@@ -11,28 +11,33 @@ import com.ac57.framework.base.MVPBaseFragment;
 import com.ac57.ui.adapter.HomeListInfoAdapter;
 import com.ac57.ui.entity.HomeBannerEntity;
 import com.ac57.ui.entity.HomeInfoListEntity;
-import com.ac57.ui.presenter.HomeFragmentPresenter;
-import com.ac57.ui.presenter.IHomeViewControll;
-import com.ac57.ui.view.EasyStatusView;
+import com.ac57.ui.presenter.HomePresenter;
+import com.ac57.ui.presenter.view.IHomeView;
 import com.ac57.ui.view.customtoast.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.jcodecraeer.xrecyclerview.progressindicator.view.EasyStatusView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import cn.bingoogolapple.bgabanner.BGABanner;
 
 /**
  */
-public class HomeFragment extends MVPBaseFragment<HomeFragmentPresenter, IHomeViewControll> implements IHomeViewControll {
+public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> implements IHomeView {
 
     @BindView(R.id.xrv_home)
     XRecyclerView xrvHome;
     @BindView(R.id.esv_home_multip)
     EasyStatusView esvHomeMultip;
     BGABanner banner;
+    @BindView(R.id.iv_title_left)
+    ImageView ivTitleLeft;
+    @BindView(R.id.iv_title_right)
+    ImageView ivTitleRight;
 
     private HomeListInfoAdapter infoAdapter;
 
@@ -81,6 +86,16 @@ public class HomeFragment extends MVPBaseFragment<HomeFragmentPresenter, IHomeVi
         });
     }
 
+    @OnClick({R.id.iv_title_left, R.id.iv_title_right})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_title_left:
+                break;
+            case R.id.iv_title_right:
+                break;
+        }
+    }
+
     @Override
     protected void getData() {
         mPresenter.getHomeBannerData();
@@ -109,13 +124,17 @@ public class HomeFragment extends MVPBaseFragment<HomeFragmentPresenter, IHomeVi
     @Override
     public void getHomeInfoData(List<HomeInfoListEntity> entity) {
         if (page == 1) {
-            infoAdapter.clear();
+            infoAdapter.replaceAll(entity);
             xrvHome.refreshComplete();
         } else {
+            infoAdapter.addAll(entity);
             xrvHome.loadMoreComplete();
         }
-
-        infoAdapter.addAll(entity);
+        if (entity.size() < 10) {
+            xrvHome.setNoMore(true);
+        } else {
+            xrvHome.setNoMore(false);
+        }
         infoAdapter.notifyDataSetChanged();
     }
 
@@ -139,7 +158,9 @@ public class HomeFragment extends MVPBaseFragment<HomeFragmentPresenter, IHomeVi
     }
 
     @Override
-    protected HomeFragmentPresenter initPresenter() {
-        return new HomeFragmentPresenter(this, getActivity());
+    protected HomePresenter initPresenter() {
+        return new HomePresenter(this, getActivity());
     }
+
+
 }

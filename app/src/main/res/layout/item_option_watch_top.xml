@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llayout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <com.ac57.ui.view.CircleView
+            android:id="@+id/cv_top_item_img"
+            android:layout_width="@dimen/DIMEN_42PX"
+            android:layout_height="@dimen/DIMEN_42PX"
+            android:gravity="center"
+            android:text="金"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/DIMEN_24PX" />
+
+        <TextView
+            android:id="@+id/tv_top_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_5PX"
+            android:maxLines="1"
+            android:text="金马甲"
+            android:textColor="#b8b8bf"
+            android:textSize="@dimen/DIMEN_18PX" />
+
+        <TextView
+            android:id="@+id/tv_top_item_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_5PX"
+            android:text="2645.5"
+            android:textColor="@color/myoptional_green"
+            android:textSize="@dimen/DIMEN_18PX" />
+
+        <TextView
+            android:id="@+id/tv_top_item_mess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_5PX"
+            android:text="幅度39%"
+            android:textColor="@color/myoptional_green"
+            android:textSize="@dimen/DIMEN_14PX" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llayout_more"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/iv_option_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/market_more" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更多"
+            android:textColor="#b5b5bc"
+            android:textSize="@dimen/DIMEN_18PX" />
+    </LinearLayout>
+
+</RelativeLayout>

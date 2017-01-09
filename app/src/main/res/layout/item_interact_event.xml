@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_14PX"
+        android:background="#f2f2f2" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/DIMEN_24PX"
+            android:paddingLeft="@dimen/DIMEN_25PX"
+            android:paddingRight="@dimen/DIMEN_25PX"
+            android:paddingTop="@dimen/DIMEN_28PX">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_interact_event_item_name"
+                    android:layout_width="@dimen/DIMEN_40PX"
+                    android:layout_height="@dimen/DIMEN_19PX"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/interact_event_item_name_bg"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/DIMEN_14PX" />
+
+                <TextView
+                    android:id="@+id/tv_interact_event_item_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/DIMEN_13PX"
+                    android:singleLine="true"
+                    android:textColor="#273342"
+                    android:textSize="@dimen/DIMEN_20PX" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/DIMEN_154PX"
+                android:layout_marginTop="@dimen/DIMEN_17PX">
+
+                <ImageView
+                    android:id="@+id/iv_interact_event_item_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/simple" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_interact_event_item_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/DIMEN_35PX"
+                        android:layout_alignParentBottom="true"
+                        android:background="#807f7a78"
+                        android:gravity="right|center_vertical"
+                        android:paddingRight="@dimen/DIMEN_15PX"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/DIMEN_17PX" />
+                </RelativeLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_interact_event_item_stat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#808c8c8c"
+            android:gravity="center_horizontal"
+            android:paddingTop="@dimen/DIMEN_140PX"
+            android:text="已结束"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/DIMEN_20PX" />
+    </FrameLayout>
+
+</LinearLayout>

@@ -89,9 +89,9 @@ public abstract class BaseAdapterHelper<T> {
         return (T) this;
     }
 
-    public T setImageUrl(int viewId, String imageUrl) {
+    public T setImageUrl(int viewId, String imageUrl, int default_img) {
         ImageView view = retrieveView(viewId);
-        Glide.with(view.getContext()).load(imageUrl).into(view);
+        Glide.with(view.getContext()).load(imageUrl).placeholder(default_img).into(view);
         return (T) this;
     }
 
