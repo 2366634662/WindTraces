@@ -13,16 +13,16 @@ import java.util.TimerTask;
 public class WelcomeActivity extends BaseActivity {
 
     @Override
-    protected int getLayout() {
+    public int getLayout() {
         return R.layout.activity_welcome;
     }
 
     @Override
-    protected void initView(Bundle savedInstanceState) {
+    public void initView(Bundle savedInstanceState) {
     }
 
     @Override
-    protected void initDatas() {
+    public void initDatas() {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -39,7 +39,7 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     @Override
-    protected void loadData() {
+    public void loadData() {
 
     }
 

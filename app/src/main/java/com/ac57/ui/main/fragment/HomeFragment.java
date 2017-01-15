@@ -1,22 +1,25 @@
 package com.ac57.ui.main.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.ac57.R;
 import com.ac57.framework.base.MVPBaseFragment;
+import com.ac57.framework.refresh.RefreshLayout;
 import com.ac57.ui.adapter.HomeListInfoAdapter;
 import com.ac57.ui.entity.HomeBannerEntity;
 import com.ac57.ui.entity.HomeInfoListEntity;
+import com.ac57.ui.main.activity.SelfActivity;
 import com.ac57.ui.presenter.HomePresenter;
 import com.ac57.ui.presenter.view.IHomeView;
+import com.ac57.ui.view.EasyStatusView;
 import com.ac57.ui.view.customtoast.ToastUtils;
 import com.bumptech.glide.Glide;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.jcodecraeer.xrecyclerview.progressindicator.view.EasyStatusView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +30,10 @@ import cn.bingoogolapple.bgabanner.BGABanner;
 
 /**
  */
-public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> implements IHomeView {
+public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> implements IHomeView, RefreshLayout.BGARefreshLayoutDelegate {
 
     @BindView(R.id.xrv_home)
-    XRecyclerView xrvHome;
+    RecyclerView xrvHome;
     @BindView(R.id.esv_home_multip)
     EasyStatusView esvHomeMultip;
     BGABanner banner;
@@ -38,7 +41,8 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
     ImageView ivTitleLeft;
     @BindView(R.id.iv_title_right)
     ImageView ivTitleRight;
-
+    @BindView(R.id.refresh_layout)
+    RefreshLayout mRefreshLayout;
     private HomeListInfoAdapter infoAdapter;
 
     private int page = 1;
@@ -62,27 +66,19 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
     protected void initView(View convertView, Bundle savedInstanceState) {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.bga_banner_layout, null);
         banner = (BGABanner) view.findViewById(R.id.banner);
-        xrvHome.addHeaderView(view);
+        mRefreshLayout.setDelegate(this);
+        mRefreshLayout.setCustomHeaderView(view, true);
     }
 
     @Override
     protected void initData() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         xrvHome.setLayoutManager(linearLayoutManager);
-        infoAdapter = new HomeListInfoAdapter(getActivity(), R.layout.item_home_collication);
+        infoAdapter = new HomeListInfoAdapter(xrvHome);
         xrvHome.setAdapter(infoAdapter);
-        xrvHome.setLoadingListener(new XRecyclerView.LoadingListener() {
-            @Override
-            public void onRefresh() {
-                page = 1;
-                mPresenter.getHomeInfoListData("all", page);
-            }
-
-            @Override
-            public void onLoadMore() {
-                page++;
-                mPresenter.getHomeInfoListData("all", page);
-            }
+        esvHomeMultip.setMutipOnClick(() -> {
+            page = 1;
+            getData();
         });
     }
 
@@ -92,6 +88,8 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
             case R.id.iv_title_left:
                 break;
             case R.id.iv_title_right:
+                startActivity(new Intent(getActivity(), SelfActivity.class));
+
                 break;
         }
     }
@@ -124,23 +122,24 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
     @Override
     public void getHomeInfoData(List<HomeInfoListEntity> entity) {
         if (page == 1) {
-            infoAdapter.replaceAll(entity);
-            xrvHome.refreshComplete();
+            infoAdapter.setData(entity);
+            mRefreshLayout.endRefreshing();
         } else {
-            infoAdapter.addAll(entity);
-            xrvHome.loadMoreComplete();
+            infoAdapter.addMoreData(entity);
+            mRefreshLayout.endLoadingMore();
         }
+
         if (entity.size() < 10) {
-            xrvHome.setNoMore(true);
+            mRefreshLayout.setPullUpRefreshEnable(false);
         } else {
-            xrvHome.setNoMore(false);
+            mRefreshLayout.setPullUpRefreshEnable(true);
         }
         infoAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void showDailog(String msg) {
-        if (isFirst) {
+        if (infoAdapter == null) {
             isFirst = false;
             esvHomeMultip.loading();
         }
@@ -163,4 +162,16 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
     }
 
 
+    @Override
+    public void onBGARefreshLayoutBeginRefreshing(RefreshLayout refreshLayout) {
+        page = 1;
+        mPresenter.getHomeInfoListData("all", page);
+    }
+
+    @Override
+    public boolean onBGARefreshLayoutBeginLoadingMore(RefreshLayout refreshLayout) {
+        page++;
+        mPresenter.getHomeInfoListData("all", page);
+        return true;
+    }
 }

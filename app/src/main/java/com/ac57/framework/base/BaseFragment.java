@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.simple.eventbus.EventBus;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -33,8 +35,14 @@ public abstract class BaseFragment extends Fragment {
             mViews = new SparseArray<>();
             initView(convertView, savedInstanceState);
             isInitView = true;
-            lazyLoadData();
+            try {
+                EventBus.getDefault().register(this);
+            } catch (Exception e) {
+
+            }
             initData();
+            lazyLoadData();
+
         }
         ViewGroup parent = (ViewGroup) convertView.getParent();
         if (parent != null) {
@@ -118,6 +126,7 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         mUnbinder.unbind();
+        EventBus.getDefault().unregister(this);
     }
 
 }

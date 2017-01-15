@@ -4,16 +4,17 @@ package com.ac57.ui.main.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.ac57.R;
 import com.ac57.framework.base.MVPBaseFragment;
+import com.ac57.framework.refresh.RefreshLayout;
 import com.ac57.ui.adapter.InteractEventAdapter;
 import com.ac57.ui.entity.InteractEventEntity;
 import com.ac57.ui.presenter.InteractEventPresenter;
 import com.ac57.ui.presenter.view.IInteractEventView;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.jcodecraeer.xrecyclerview.progressindicator.view.EasyStatusView;
+import com.ac57.ui.view.EasyStatusView;
 
 import java.util.List;
 
@@ -25,10 +26,13 @@ import butterknife.BindView;
 public class InteractEventFragment extends MVPBaseFragment<InteractEventPresenter, IInteractEventView> implements IInteractEventView {
 
     InteractEventAdapter adapter;
-    @BindView(R.id.xRecyclerView)
-    XRecyclerView xRecyclerView;
+
+    @BindView(R.id.rv_content)
+    RecyclerView xRecyclerView;
     @BindView(R.id.esv_multip_view)
     EasyStatusView esvMultipView;
+    @BindView(R.id.refresh_layout)
+    RefreshLayout mRefreshLayout;
     private int page = 1;
     private boolean isFirst = true;
 
@@ -56,7 +60,7 @@ public class InteractEventFragment extends MVPBaseFragment<InteractEventPresente
 
     @Override
     protected void initView(View convertView, Bundle savedInstanceState) {
-        adapter = new InteractEventAdapter(getActivity(), R.layout.item_interact_event);
+        adapter = new InteractEventAdapter(xRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         xRecyclerView.setLayoutManager(linearLayoutManager);
         xRecyclerView.setAdapter(adapter);
@@ -64,19 +68,27 @@ public class InteractEventFragment extends MVPBaseFragment<InteractEventPresente
 
     @Override
     protected void initData() {
-        xRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+        mRefreshLayout.setDelegate(new RefreshLayout.BGARefreshLayoutDelegate() {
             @Override
-            public void onRefresh() {
+            public void onBGARefreshLayoutBeginRefreshing(RefreshLayout refreshLayout) {
                 page = 1;
                 mPresenter.getInteractEventData(page);
             }
 
             @Override
-            public void onLoadMore() {
+            public boolean onBGARefreshLayoutBeginLoadingMore(RefreshLayout refreshLayout) {
                 page++;
                 mPresenter.getInteractEventData(page);
+                return true;
             }
         });
+
+        esvMultipView.setMutipOnClick(() -> {
+            page = 1;
+            getData();
+        });
+
+
     }
 
     @Override
@@ -106,16 +118,16 @@ public class InteractEventFragment extends MVPBaseFragment<InteractEventPresente
     public void getInteractEventData(List<InteractEventEntity> entity) {
         esvMultipView.content();
         if (page == 1) {
-            adapter.replaceAll(entity);
-            xRecyclerView.refreshComplete();
+            adapter.setData(entity);
+            mRefreshLayout.endRefreshing();
         } else {
-            adapter.addAll(entity);
-            xRecyclerView.loadMoreComplete();
+            adapter.addMoreData(entity);
+            mRefreshLayout.endLoadingMore();
         }
         if (entity.size() < 10) {
-            xRecyclerView.setNoMore(true);
+            mRefreshLayout.setPullUpRefreshEnable(false);
         } else {
-            xRecyclerView.setNoMore(false);
+            mRefreshLayout.setPullUpRefreshEnable(true);
         }
         adapter.notifyDataSetChanged();
     }

@@ -10,7 +10,7 @@ import android.content.SharedPreferences;
 public class SharePrefrenceUtils {
     private SharedPreferences sharedPreferences;
 
-    private static final String SP_NAME = "share_tuanche";
+    private static final String SP_NAME = "share_WindTraces";
 
     protected SharePrefrenceUtils(Context context) {
         sharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);//Context.MODE_MULTI_PROCESS支持跨进程访问

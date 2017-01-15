@@ -2,7 +2,6 @@ package com.ac57.ui.main.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -11,6 +10,7 @@ import android.widget.TextView;
 import com.ac57.R;
 import com.ac57.framework.base.MVPBaseActivity;
 import com.ac57.framework.tools.AppManager;
+import com.ac57.framework.tools.SPHelper;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.entity.UserInfoData;
 import com.ac57.ui.presenter.LoginPresenter;
@@ -19,6 +19,7 @@ import com.ac57.ui.view.ClearEditText;
 import com.ac57.ui.view.customtoast.ToastUtils;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -61,27 +62,27 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
 
 
     @Override
-    protected int getLayout() {
+    public int getLayout() {
         return R.layout.activity_login;
     }
 
     @Override
-    protected LoginPresenter initPresenter() {
+    public LoginPresenter initPresenter() {
         return new LoginPresenter(this, this);
     }
 
     @Override
-    protected void initView(Bundle savedInstanceState) {
+    public void initView(Bundle savedInstanceState) {
 
     }
 
     @Override
-    protected void initDatas() {
+    public void initDatas() {
 
     }
 
     @Override
-    protected void loadData() {
+    public void loadData() {
 
     }
 
@@ -99,36 +100,9 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
 
                 break;
             case R.id.login_bnt:
+//                EventBus.getDefault().post(new MessageEvent("2222"));
+//                EventBus.getDefault().postSticky("33333");
                 mPresenter.doLogin(loginTel.getText().toString().trim(), loginPass.getText().toString().trim());
-//                String phoneNum = "";
-//                String password = "";
-//                String rand = ProjectUntil.randString(8);
-//                String login_sign = ProUntil.getLoginSign(rand, phoneNum, password);
-//                UserRepository.getInstance().getUserInfoData(phoneNum, rand, login_sign).subscribe(new DefaultSubscriber<UserInfoData>() {
-//                    @Override
-//                    public void _onNext(UserInfoData entity) {
-//
-//                        ToastManager.getToastManager().showToast(new ToastBean("登陆成功", MyToast.Types.OK, 1, entity), new ToastManager.ToastManagerListener() {
-//                            @Override
-//                            public void start(ToastBean bean) {
-//                                UserInfoData userInfoData = (UserInfoData) bean.getObj();
-//
-//                            }
-//
-//                            @Override
-//                            public void stop(ToastBean bean) {
-//                                IntentUtils.startActivity(LoginActivity.this, MainActivity.class);
-//                                finish();
-//                            }
-//                        });
-//
-//                    }
-//
-//                    @Override
-//                    public void _onError(String e) {
-//                        ToastManager.getToastManager().showToast(new ToastBean("用户名或密码错误", MyToast.Types.ERREY), null);
-//                    }
-//                });
                 break;
             case R.id.login_weixin:
                 mPresenter.doThreeLogin(SHARE_MEDIA.WEIXIN);
@@ -142,10 +116,25 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
     @Override
     public void openHome(UserInfoData bean) {
         ToastUtils.success("登陆成功");
-        Log.e("tag", "'" + bean.toString());
-        IntentUtils.startActivity(LoginActivity.this, MainActivity.class);
+        SPHelper.getInstence(this).setUserType(bean.user_model.user_type);
+        saveUser(bean);
+        Bundle bundle = new Bundle();
+//        bundle.putParcelableArrayList("",bean.exchange_data);
+        ArrayList<String> ex_title = new ArrayList<>();
+        ex_title.add("全部");
+        ArrayList<String> ex_id = new ArrayList<>();
+        ex_id.add("all");
+        for (UserInfoData.ExchangeDataBean s : bean.exchange_data) {
+            ex_title.add(s.name);
+            ex_id.add(s.id);
+        }
+        bundle.putStringArrayList("ex_title", ex_title);
+        bundle.putStringArrayList("ex_id", ex_id);
+        IntentUtils.startActivity(LoginActivity.this, MainActivity.class, bundle);
         AppManager.getInstance().killAllActivity();
         finish();
+
+
     }
 
     @Override
@@ -164,7 +153,9 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
     }
 
     public void saveUser(UserInfoData bean) {
-//        loginModel.saveUser(data, activitys, passwd);
+        SPHelper.getInstence(this).saveUserData(bean.user_model);
+        SPHelper.getInstence(this).setPassWord(loginPass.getText().toString().trim());
+
         String alias = bean.user_model.id;
         Set<String> set = new HashSet<>();
         set.add("register_data" + bean.user_model.register_data + "");

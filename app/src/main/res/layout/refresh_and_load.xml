@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.jcodecraeer.xrecyclerview.progressindicator.view.EasyStatusView
+    <com.ac57.ui.view.EasyStatusView
         android:id="@+id/esv_multip_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,10 +14,18 @@
         app:esv_loading="@layout/load_view"
         app:esv_noNet="@layout/no_network">
 
-        <com.jcodecraeer.xrecyclerview.XRecyclerView
-            android:id="@+id/xRecyclerView"
+        <com.ac57.framework.refresh.RefreshLayout
+            android:id="@+id/refresh_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </com.jcodecraeer.xrecyclerview.progressindicator.view.EasyStatusView>
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+        </com.ac57.framework.refresh.RefreshLayout>
+    </com.ac57.ui.view.EasyStatusView>
 
 </LinearLayout>

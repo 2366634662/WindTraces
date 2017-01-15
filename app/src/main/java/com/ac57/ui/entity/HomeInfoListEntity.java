@@ -7,29 +7,6 @@ import java.util.List;
  */
 
 public class HomeInfoListEntity {
-    /**
-     * id : 22
-     * user_id : 0
-     * art_type : 103
-     * exc_id : 0
-     * title_show_str : 测试22132113212
-     * title : 测试22132113212
-     * is_big_img : 102
-     * content_type : 101
-     * c_time : 0
-     * read_times : 0
-     * status : 101
-     * notice_type_id : 0
-     * type_name : 文交所动态
-     * exc_name :
-     * img_ids :
-     * content : 测试测试
-     * c_time_show_str : 01-01 08:00
-     * img_url_list : []
-     * cover_img : http://upload.news.cecb2b.com/2016/0412/1460442200606.jpg
-     * is_read : 101
-     * advert_info : {"id":"1","art_id":"20","advert_type":"101","advert_name":"测试,外部浏览器打开的广告1","advert_url":"http://wap.news.cecb2b.com/","advert_img_url":"http://upload.news.cecb2b.com/2016/0412/1460442200606.jpg"}
-     */
 
     public String id;
     public String user_id;
@@ -53,15 +30,34 @@ public class HomeInfoListEntity {
     public AdvertInfoBean advert_info;
     public List<?> img_url_list;
 
+    @Override
+    public String toString() {
+        return "HomeInfoListEntity{" +
+                "id='" + id + '\'' +
+                ", user_id='" + user_id + '\'' +
+                ", art_type='" + art_type + '\'' +
+                ", exc_id='" + exc_id + '\'' +
+                ", title_show_str='" + title_show_str + '\'' +
+                ", title='" + title + '\'' +
+                ", is_big_img='" + is_big_img + '\'' +
+                ", content_type='" + content_type + '\'' +
+                ", c_time='" + c_time + '\'' +
+                ", read_times='" + read_times + '\'' +
+                ", status='" + status + '\'' +
+                ", notice_type_id='" + notice_type_id + '\'' +
+                ", type_name='" + type_name + '\'' +
+                ", exc_name='" + exc_name + '\'' +
+                ", img_ids='" + img_ids + '\'' +
+                ", content='" + content + '\'' +
+                ", c_time_show_str='" + c_time_show_str + '\'' +
+                ", cover_img='" + cover_img + '\'' +
+                ", is_read='" + is_read + '\'' +
+                ", advert_info=" + advert_info +
+                ", img_url_list=" + img_url_list +
+                '}';
+    }
+
     public static class AdvertInfoBean {
-        /**
-         * id : 1
-         * art_id : 20
-         * advert_type : 101
-         * advert_name : 测试,外部浏览器打开的广告1
-         * advert_url : http://wap.news.cecb2b.com/
-         * advert_img_url : http://upload.news.cecb2b.com/2016/0412/1460442200606.jpg
-         */
 
         public String id;
         public String art_id;
@@ -69,5 +65,17 @@ public class HomeInfoListEntity {
         public String advert_name;
         public String advert_url;
         public String advert_img_url;
+
+        @Override
+        public String toString() {
+            return "AdvertInfoBean{" +
+                    "id='" + id + '\'' +
+                    ", art_id='" + art_id + '\'' +
+                    ", advert_type='" + advert_type + '\'' +
+                    ", advert_name='" + advert_name + '\'' +
+                    ", advert_url='" + advert_url + '\'' +
+                    ", advert_img_url='" + advert_img_url + '\'' +
+                    '}';
+        }
     }
 }

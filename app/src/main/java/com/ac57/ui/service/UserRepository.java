@@ -4,14 +4,19 @@ import com.ac57.framework.retrofit.BaseRepository;
 import com.ac57.framework.retrofit.RetrofitHelp;
 import com.ac57.framework.utils.sign.ProUntil;
 import com.ac57.framework.utils.sign.ProjectUntil;
+import com.ac57.ui.entity.CoustomCollectionEntity;
+import com.ac57.ui.entity.DeleteCoustomCollectionData;
 import com.ac57.ui.entity.HomeBannerEntity;
 import com.ac57.ui.entity.HomeInfoListEntity;
 import com.ac57.ui.entity.InteractEventEntity;
+import com.ac57.ui.entity.NewGoodsEntity;
+import com.ac57.ui.entity.NoticeEntity;
 import com.ac57.ui.entity.OptionWatchBottomEntity;
 import com.ac57.ui.entity.OptionWatchCenterEntity;
 import com.ac57.ui.entity.OptionWatchTopEntity;
 import com.ac57.ui.entity.OtherTypesInteractEntity;
 import com.ac57.ui.entity.UserInfoData;
+import com.ac57.ui.entity.UserInfoDetailEntity;
 
 import java.util.List;
 
@@ -50,7 +55,6 @@ public class UserRepository extends BaseRepository {
         return transform(RetrofitHelp.getIns().getAppservice().getVisitorLoginData(only_sign));
     }
 
-    //
     public Observable<List<HomeBannerEntity>> getHomeBannerData() {
         return transform(RetrofitHelp.getIns().getAppservice().getHomeBannerData());
     }
@@ -77,5 +81,25 @@ public class UserRepository extends BaseRepository {
 
     public Observable<List<OptionWatchBottomEntity>> getOptionWatchBottomData(String page) {
         return transform(RetrofitHelp.getIns().getAppservice().getOptionWatchBottomData(page, "10", "102"));
+    }
+
+    public Observable<List<NoticeEntity>> getAllTypeNoticeData(String page, String exc_id) {
+        return transform(RetrofitHelp.getIns().getAppservice().getAllTypeNoticeData(page, "10", exc_id));
+    }
+
+    public Observable<List<NewGoodsEntity>> getNewGoodsData(String page, String exc_id, String type) {
+        return transform(RetrofitHelp.getIns().getAppservice().getNewGoodsData(page, "10", exc_id, type));
+    }
+
+    public Observable<List<CoustomCollectionEntity>> getCoustomCollectionData(int page, String is_desc) {
+        return transform(RetrofitHelp.getIns().getAppservice().getCoustomCollectionData(page + "", "10", is_desc, ProUntil.getUserid()));
+    }
+
+    public Observable<DeleteCoustomCollectionData> deleteCoustomCollectionData(String trade_id, String action) {
+        return transform(RetrofitHelp.getIns().getAppservice().deleteCoustomCollectionData(trade_id, action));
+    }
+
+    public Observable<UserInfoDetailEntity> getUserDetailData() {
+        return transform(RetrofitHelp.getIns().getAppservice().getUserDetailData());
     }
 }

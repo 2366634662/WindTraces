@@ -22,7 +22,6 @@ public abstract class MVPBaseFragment<T extends BasePresenter, M extends BaseVie
         }
     }
 
-
     @Override
     public void onResume() {
         super.onResume();

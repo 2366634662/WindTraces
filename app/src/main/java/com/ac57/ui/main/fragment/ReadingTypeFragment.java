@@ -62,7 +62,6 @@ public class ReadingTypeFragment extends BaseFragment implements RadioGroup.OnCh
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        int cid = group.getCheckedRadioButtonId();
         switch (group.getCheckedRadioButtonId()) {
             case R.id.rb_read_option:
                 vpRadingtype.setCurrentItem(0);

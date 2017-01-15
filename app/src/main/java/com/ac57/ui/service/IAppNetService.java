@@ -2,14 +2,19 @@ package com.ac57.ui.service;
 
 
 import com.ac57.framework.base.BaseEntity;
+import com.ac57.ui.entity.CoustomCollectionEntity;
+import com.ac57.ui.entity.DeleteCoustomCollectionData;
 import com.ac57.ui.entity.HomeBannerEntity;
 import com.ac57.ui.entity.HomeInfoListEntity;
 import com.ac57.ui.entity.InteractEventEntity;
+import com.ac57.ui.entity.NewGoodsEntity;
+import com.ac57.ui.entity.NoticeEntity;
 import com.ac57.ui.entity.OptionWatchBottomEntity;
 import com.ac57.ui.entity.OptionWatchCenterEntity;
 import com.ac57.ui.entity.OptionWatchTopEntity;
 import com.ac57.ui.entity.OtherTypesInteractEntity;
 import com.ac57.ui.entity.UserInfoData;
+import com.ac57.ui.entity.UserInfoDetailEntity;
 import com.ac57.ui.utils.UrlUtils;
 
 import java.util.List;
@@ -82,5 +87,26 @@ public interface IAppNetService {
     @POST(UrlUtils.OPTION_WATCH_BOTTOM_URL)
     @FormUrlEncoded
     Observable<BaseEntity<List<OptionWatchBottomEntity>>> getOptionWatchBottomData(@Field("page") String page, @Field("pagesize") String pageSize, @Field("my_top") String my_top);
+
+    //行情看点底部列表
+    @POST(UrlUtils.NOTICE_LIST_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<List<NoticeEntity>>> getAllTypeNoticeData(@Field("page") String page, @Field("pagesize") String pageSize, @Field("exc_id") String exc_id);
+
+    //行情看点底部列表
+    @POST(UrlUtils.NEW_GOODS_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<List<NewGoodsEntity>>> getNewGoodsData(@Field("page") String page, @Field("pagesize") String pageSize, @Field("exc_id") String exc_id, @Field("new_goods_type") String new_goods_type);
+    //自选藏品列表
+    @POST(UrlUtils.COUSTOM_COLLECTION_LIST_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<List<CoustomCollectionEntity>>> getCoustomCollectionData(@Field("page") String page, @Field("pagesize") String pageSize, @Field("is_desc") String is_desc, @Field("show_user_id") String show_user_id);
+    //删除自选藏品列表
+    @POST(UrlUtils.DELETE_COUSTOM_COLLECTION_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<DeleteCoustomCollectionData>> deleteCoustomCollectionData(@Field("trade_id") String trade_id, @Field("action") String action);
+    //删除自选藏品列表
+    @POST(UrlUtils.USER_INFO_DETAIL_URL)
+    Observable<BaseEntity<UserInfoDetailEntity>> getUserDetailData();
 
 }

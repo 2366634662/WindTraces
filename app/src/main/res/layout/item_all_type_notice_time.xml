@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/DIMEN_25PX"
+    android:paddingRight="@dimen/DIMEN_25PX">
+
+    <LinearLayout
+        android:layout_width="@dimen/DIMEN_25PX"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="@dimen/DIMEN_27PX"
+            android:layout_gravity="center_horizontal"
+            android:background="#f3f4fa" />
+
+        <ImageView
+            android:layout_width="@dimen/DIMEN_22PX"
+            android:layout_height="@dimen/DIMEN_22PX"
+            android:src="@drawable/newgoods_circle" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="#f3f4fa" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_notice_time_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_28PX"
+            android:background="@drawable/announcement_date_rectangle"
+            android:gravity="center"
+            android:paddingBottom="@dimen/DIMEN_3PX"
+            android:paddingLeft="@dimen/DIMEN_15PX"
+            android:paddingRight="@dimen/DIMEN_15PX"
+            android:paddingTop="@dimen/DIMEN_3PX"
+            android:textColor="#318fff"
+            android:textSize="@dimen/DIMEN_14PX" />
+
+        <com.ac57.ui.view.MyListView
+            android:id="@+id/lv_notice_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/line_cor" />
+    </LinearLayout>
+</LinearLayout>

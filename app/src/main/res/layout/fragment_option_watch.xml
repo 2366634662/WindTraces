@@ -2,8 +2,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.ac57.ui.main.fragment.OptionWatchFragment">
 
     <include layout="@layout/refresh_and_load" />
 
+    <com.ac57.ui.view.EasyStatusView
+        android:id="@+id/esv_layout"
+        app:esv_empty="@layout/null_view"
+        app:esv_error="@layout/error_view"
+        app:esv_loading="@layout/load_view"
+        app:esv_noNet="@layout/no_network"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.ac57.framework.refresh.RefreshLayout
+            android:id="@+id/refresh_layout_option"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/layout_option_watch" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_bottom_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </com.ac57.framework.refresh.RefreshLayout>
+
+    </com.ac57.ui.view.EasyStatusView>
 </FrameLayout>

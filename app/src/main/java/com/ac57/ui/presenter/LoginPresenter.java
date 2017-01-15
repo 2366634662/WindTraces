@@ -77,7 +77,6 @@ public class LoginPresenter extends BasePresenter<ILoginActivityView> {
                 model.disDailog();
                 model.openHome(entity);
             }
-
             @Override
             public void _onError(String e) {
                 model.disDailog();
@@ -122,9 +121,8 @@ public class LoginPresenter extends BasePresenter<ILoginActivityView> {
             icon = data.get("profile_image_url");
             gender = data.get("gender");
             model.showDailog("登陆中");
-            UserRepository.getInstance().getThreeUserInfoData(login_type, name, icon, uid, gender)
+            UserRepository.getInstance().getThreeUserInfoData(login_type, name, icon, ProjectUntil.toMd5String(uid), gender)
                     .subscribe(new DefaultSubscriber<UserInfoData>() {
-
                         @Override
                         public void _onNext(UserInfoData entity) {
                             model.disDailog();

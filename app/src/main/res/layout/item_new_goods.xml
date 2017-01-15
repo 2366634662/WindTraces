@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_15PX"
+        android:background="@color/main_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/DIMEN_30PX"
+        android:paddingLeft="@dimen/DIMEN_25PX"
+        android:paddingRight="@dimen/DIMEN_25PX"
+        android:paddingTop="@dimen/DIMEN_30PX">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_new_goods_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:singleLine="true"
+                android:text="7月20日 18:50"
+                android:textColor="#919394"
+                android:textSize="@dimen/DIMEN_16PX" />
+
+
+            <TextView
+                android:id="@+id/tv_new_goods_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/tv_new_goods_time"
+                android:singleLine="true"
+                android:text="中国船舶工业特惠总邮票等"
+                android:textColor="#1e2b3a"
+                android:textSize="@dimen/DIMEN_22PX" />
+
+        </RelativeLayout>
+
+        <com.ac57.ui.view.RoundCornerTextView
+            android:id="@+id/rcn_new_goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_13PX"
+            android:paddingBottom="@dimen/DIMEN_3PX"
+            android:paddingLeft="@dimen/DIMEN_20PX"
+            android:paddingRight="@dimen/DIMEN_20PX"
+            android:paddingTop="@dimen/DIMEN_3PX"
+            android:text="中南"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/DIMEN_14PX"
+            app:round_tv_color="@color/myoptional_green"
+            app:round_tv_corner_size="@dimen/DIMEN_3PX" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_10PX">
+
+
+            <LinearLayout
+                android:id="@+id/new_goods_mess_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_new_goods_add_img"
+                    android:layout_width="@dimen/DIMEN_15PX"
+                    android:layout_height="@dimen/DIMEN_15PX"
+                    android:layout_marginRight="@dimen/DIMEN_5PX"
+                    android:src="@drawable/newgoods_add" />
+
+                <TextView
+                    android:id="@+id/tv_new_goods_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="中签公布 7月26日"
+                    android:textColor="#2e8eff"
+                    android:textSize="@dimen/DIMEN_18PX" />
+            </LinearLayout>
+
+            <com.ac57.ui.view.tag.TagGroup
+                android:id="@+id/tg_new_goods_tag"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/new_goods_mess_linear"
+                android:background="@android:color/white"
+                android:visibility="gone"
+                app:tagBackgroundColor1="#f6f6f6"
+                app:tagBackgroundColor2="#f6f6f6"
+                app:tagCornerRadius="@dimen/DIMEN_5PX"
+                app:tagHorizontalSpace="@dimen/DIMEN_15PX"
+                app:tagStrokeColor1="#f6f6f6"
+                app:tagStrokeColor2="#f6f6f6"
+                app:tagTextColor1="#9b9b9b"
+                app:tagTextColor2="#9b9b9b"
+                app:tagTextSize="@dimen/DIMEN_12PX"
+                app:tagVerticalSpace="@dimen/DIMEN_4PX" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

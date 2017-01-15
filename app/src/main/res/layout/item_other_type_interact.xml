@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
     android:orientation="vertical">
 
@@ -100,11 +101,18 @@
 
             </RelativeLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/interact_item_item_gv"
-                android:layout_width="fill_parent"
+            <cn.bingoogolapple.photopicker.widget.BGANinePhotoLayout
+                android:id="@+id/nine_interact_item_item_img"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="none" />
+                android:layout_marginTop="8dp"
+                app:bga_npl_itemCornerRadius="0dp"
+                app:bga_npl_itemSpanCount="3"
+                app:bga_npl_itemWhiteSpacing="4dp"
+                app:bga_npl_itemWidth="0dp"
+                app:bga_npl_otherWhiteSpacing="64dp"
+                app:bga_npl_placeholderDrawable="@mipmap/bga_pp_ic_holder_light"
+                app:bga_npl_showAsLargeWhenOnlyOne="true"/>
 
             <ImageView
                 android:id="@+id/iv_interact_item_item"

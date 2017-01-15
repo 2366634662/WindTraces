@@ -32,17 +32,17 @@ public class RegisterActivity extends MVPBaseActivity<RegisterPresenter, IRegist
     TextView tvRegisterOneBnt;
 
     @Override
-    protected int getLayout() {
+    public int getLayout() {
         return R.layout.activity_register;
     }
 
     @Override
-    protected void initView(Bundle savedInstanceState) {
+    public void initView(Bundle savedInstanceState) {
 
     }
 
     @Override
-    protected void initDatas() {
+    public void initDatas() {
         edRegisterOneTel.addTextChangedListener(new IEditText() {
             @Override
             public void afterTextChanged(Editable editable) {
@@ -63,7 +63,7 @@ public class RegisterActivity extends MVPBaseActivity<RegisterPresenter, IRegist
     }
 
     @Override
-    protected void loadData() {
+    public void loadData() {
 
     }
 

@@ -2,28 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_picture"
+    android:background="@drawable/login"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/DIMEN_45PX"
-        android:layout_marginTop="@dimen/DIMEN_70PX"
-        android:text="@string/applogo_title"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/DIMEN_32PX"
-        android:textStyle="bold"
-        android:visibility="visible" />
-
-    <ImageView
-        android:layout_width="@dimen/DIMEN_40PX"
-        android:layout_height="@dimen/DIMEN_40PX"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/DIMEN_40PX"
-        android:layout_marginTop="@dimen/DIMEN_80PX"
-        android:src="@drawable/login_logo"
-        android:visibility="visible" />
 
     <LinearLayout
         android:layout_width="match_parent"

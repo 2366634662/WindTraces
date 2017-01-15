@@ -10,34 +10,34 @@ public abstract class MVPBaseActivity<T extends BasePresenter, M extends BaseVie
 
     protected T mPresenter;
 
-    protected abstract T initPresenter();    //获取到主持人
+    protected abstract T initPresenter();    //
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //初始化Presenter
-        if (mPresenter != null) {
-            mPresenter = initPresenter();
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //如果presenter为空的时候，我们需要重新初始化presenter
         if (mPresenter == null) {
             mPresenter = initPresenter();
         }
     }
 
     @Override
-    protected void onDestroy() {
+    public void onResume() {
+        super.onResume();
+        //如果presenter为空的时候，重新初始化presenter
+        if (mPresenter == null) {
+            mPresenter = initPresenter();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
         super.onDestroy();
         mPresenter = null;
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         if (mPresenter == null)
             mPresenter = initPresenter();

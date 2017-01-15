@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:paddingBottom="1dp">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/DIMEN_25PX"
+        android:paddingLeft="@dimen/DIMEN_25PX"
+        android:paddingTop="@dimen/DIMEN_25PX">
+
+        <com.ac57.ui.view.CircleView
+            android:id="@+id/cv_notice_item_title"
+            android:layout_width="@dimen/DIMEN_50PX"
+            android:layout_height="@dimen/DIMEN_50PX"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/DIMEN_16PX" />
+
+        <TextView
+            android:id="@+id/tv_notice_item_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/DIMEN_15PX"
+            android:gravity="top"
+            android:textColor="#283443"
+            android:textSize="@dimen/DIMEN_18PX" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/my_announcement_item_line"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/DIMEN_80PX"
+        android:background="#f6f6f6" />
+</LinearLayout>
