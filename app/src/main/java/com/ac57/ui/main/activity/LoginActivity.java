@@ -3,6 +3,7 @@ package com.ac57.ui.main.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,7 +16,6 @@ import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.entity.UserInfoData;
 import com.ac57.ui.presenter.LoginPresenter;
 import com.ac57.ui.presenter.view.ILoginActivityView;
-import com.ac57.ui.view.ClearEditText;
 import com.ac57.ui.view.customtoast.ToastUtils;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
@@ -33,14 +33,10 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
     ImageView ivLoginBack;
     @BindView(R.id.tv_login_register)
     TextView tvLoginRegister;
-    @BindView(R.id.tv_login_phone_hint)
-    TextView tvLoginPhoneHint;
     @BindView(R.id.login_tel)
-    ClearEditText loginTel;
-    @BindView(R.id.login_pass_total)
-    TextView loginPassTotal;
+    EditText loginTel;
     @BindView(R.id.login_pass)
-    ClearEditText loginPass;
+    EditText loginPass;
     @BindView(R.id.tv_login_forget)
     TextView loginForget;
     @BindView(R.id.login_center)

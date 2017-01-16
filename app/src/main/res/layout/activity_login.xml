@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
 
     <RelativeLayout
         android:id="@+id/login_tops"
@@ -84,30 +85,17 @@
                 android:layout_marginTop="@dimen/DIMEN_90PX"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_login_phone_hint"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/DIMEN_100PX"
-                    android:text="手机号码"
-                    android:textColor="#9d9d9d"
-                    android:textSize="@dimen/DIMEN_16PX"
-                    android:visibility="invisible" />
 
-                <LinearLayout
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/DIMEN_25PX"
-                    android:layout_marginTop="@dimen/DIMEN_10PX"
-                    android:orientation="horizontal"
-                    android:paddingLeft="@dimen/DIMEN_58PX"
-                    android:paddingRight="@dimen/DIMEN_58PX">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    android:hint="手机号码"
 
-                    <ImageView
-                        android:layout_width="@dimen/DIMEN_20PX"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/login_phone" />
+                    android:textColorHint="#9d9d9d">
 
-                    <com.ac57.ui.view.ClearEditText
+                    <EditText
                         android:id="@+id/login_tel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -115,82 +103,62 @@
                         android:layout_marginLeft="@dimen/DIMEN_15PX"
                         android:background="@null"
                         android:cursorVisible="true"
-                        android:hint="手机号码"
+                        android:drawableLeft="@drawable/login_phone"
+                        android:drawablePadding="8dp"
                         android:inputType="phone"
                         android:maxLength="11"
-                        android:text=""
                         android:textColor="#4b4b4b"
-                        android:textColorHint="#9d9d9d"
                         android:textCursorDrawable="@null"
                         android:textSize="@dimen/DIMEN_18PX" />
-                </LinearLayout>
+                </android.support.design.widget.TextInputLayout>
 
-                <View
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="@dimen/DIMEN_58PX"
-                    android:layout_marginRight="@dimen/DIMEN_58PX"
-                    android:layout_marginTop="@dimen/DIMEN_18PX"
-                    android:background="#f2f2f2" />
-
-                <TextView
-                    android:id="@+id/login_pass_total"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/DIMEN_100PX"
-                    android:layout_marginTop="@dimen/DIMEN_15PX"
-                    android:text="密码"
-                    android:textColor="#9d9d9d"
-                    android:textSize="@dimen/DIMEN_16PX"
-                    android:visibility="invisible" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/DIMEN_25PX"
-                    android:layout_marginTop="@dimen/DIMEN_10PX"
-                    android:orientation="horizontal"
-                    android:paddingLeft="@dimen/DIMEN_58PX"
-                    android:paddingRight="@dimen/DIMEN_58PX">
-
-                    <ImageView
-                        android:layout_width="@dimen/DIMEN_20PX"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/login_lock" />
-
-                    <com.ac57.ui.view.ClearEditText
-                        android:id="@+id/login_pass"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_marginLeft="@dimen/DIMEN_15PX"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:cursorVisible="true"
-                        android:hint="密码"
-                        android:inputType="textPassword"
-                        android:text=""
-                        android:textColor="#4b4b4b"
-                        android:textColorHint="#9d9d9d"
-                        android:textCursorDrawable="@null"
-                        android:textSize="@dimen/DIMEN_18PX" />
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tv_login_forget"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/DIMEN_10PX"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="50dp"
                         android:text="忘记密码"
                         android:textColor="#6b6b6b"
                         android:textSize="@dimen/DIMEN_18PX" />
-                </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="@dimen/DIMEN_58PX"
-                    android:layout_marginRight="@dimen/DIMEN_58PX"
-                    android:layout_marginTop="@dimen/DIMEN_18PX"
-                    android:background="#f2f2f2" />
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@id/tv_login_forget"
+                        android:hint="密码"
+                        android:textColorHint="#9d9d9d">
+
+                        <EditText
+                            android:id="@+id/login_pass"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginLeft="@dimen/DIMEN_15PX"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:cursorVisible="true"
+                            android:drawableLeft="@drawable/login_lock"
+                            android:drawablePadding="8dp"
+                            android:inputType="textPassword"
+                            android:textColor="#4b4b4b"
+                            android:textCursorDrawable="@null"
+                            android:textSize="@dimen/DIMEN_18PX" />
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </RelativeLayout>
+
             </LinearLayout>
 
             <TextView
