@@ -86,6 +86,4 @@ public class IntentUtils {
         }
         context.startActivity(Intent);
     }
-
-
 }

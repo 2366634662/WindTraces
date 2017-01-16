@@ -7,7 +7,6 @@ import android.widget.Button;
 
 import com.ac57.R;
 import com.ac57.framework.base.BaseActivity;
-import com.ac57.framework.base.BasePresenter;
 import com.ac57.framework.tools.SPHelper;
 import com.ac57.framework.utils.IntentUtils;
 
@@ -24,16 +23,16 @@ public class GuideActivity extends BaseActivity {
 
 
     @Override
-    protected int getLayout() {
+    public int getLayout() {
         return R.layout.activity_guide;
     }
 
     @Override
-    protected void initView(Bundle savedInstanceState) {
+    public void initView(Bundle savedInstanceState) {
     }
 
     @Override
-    protected void initDatas() {
+    public void initDatas() {
         bgaGuide.setData(R.drawable.login_picture, R.drawable.login_picture, R.drawable.login_picture);
         bgaGuide.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -73,7 +72,7 @@ public class GuideActivity extends BaseActivity {
     }
 
     @Override
-    protected void loadData() {
+    public void loadData() {
 
     }
 

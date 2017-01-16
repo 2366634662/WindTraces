@@ -1,36 +1,12 @@
 package com.ac57.ui.entity;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by Du_Li on 2016/12/31.
  */
 
 public class OtherTypesInteractEntity {
-    /**
-     * id : 9
-     * user_id : 3
-     * art_type : 103
-     * exc_id : 0
-     * title : 测试文交所动态哈哈哈
-     * content_type : 101
-     * c_time : 1476844912
-     * read_times : 0
-     * status : 101
-     * notice_type_id : 0
-     * type_name : 文交所动态
-     * exc_name :
-     * img_ids : 1
-     * content : 测试文交所动态哈哈哈:我是内容23333333333333
-     * user_show_data : {"id":"3","nickname":"围观群众","level":"1","exp":"0","head_img":"http://127.0.0.1/wind/Public/upload/2016-10-8/123.png","user_type":"101","phone":"119","user_role":"1","role_name":"普通用户"}
-     * img_url_list : ["http://127.0.0.1/wind/Public/upload/test.png"]
-     * is_like : 102
-     * like_times : 0
-     * comment_times : 0
-     * topic : #文交所动态#
-     * c_time_show_str : 1小时前
-     * publisher_info : {"id":"3","nickname":"围观群众","level":"1","exp":"0","head_img":"http://127.0.0.1/wind/Public/upload/2016-10-8/123.png","user_type":"101","phone":"119","user_role":"1","role_name":"普通用户"}
-     */
 
     public String id;
     public String user_id;
@@ -53,7 +29,7 @@ public class OtherTypesInteractEntity {
     public String topic;
     public String c_time_show_str;
     public PublisherInfoBean publisher_info;
-    public List<String> img_url_list;
+    public ArrayList<String> img_url_list;
 
     @Override
     public String toString() {

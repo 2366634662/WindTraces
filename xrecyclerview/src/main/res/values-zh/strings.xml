@@ -1,9 +1,0 @@
-<resources>
-<string name="listview_header_hint_normal">PULL TO REFRESH</string>
-<string name="listview_header_hint_release">RELEASE TO REFRESH</string>
-<string name="listview_loading">REFRESHING...</string>
-<string name="nomore_loading">NO MORE</string>
-<string name="refreshing">REFRESHING...</string>
-<string name="refresh_done">REFRESH COMPLETE</string>
-<string name="listview_header_last_time">上次更新时间：</string>
-</resources>

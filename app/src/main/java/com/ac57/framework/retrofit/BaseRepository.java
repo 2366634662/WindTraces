@@ -1,6 +1,7 @@
 package com.ac57.framework.retrofit;
 
 import android.accounts.NetworkErrorException;
+import android.util.Log;
 
 import com.ac57.framework.base.BaseEntity;
 
@@ -23,7 +24,7 @@ public abstract class BaseRepository {
                 .flatMap(new Func1<BaseEntity<T>, Observable<T>>() {
                     @Override
                     public Observable<T> call(BaseEntity<T> result) {
-//                        Log.e("tag", "请求到的数据" + result.toString());
+                        Log.e("tag", "请求到的数据" + result.toString());
                         if (result == null) {
                             return Observable.error(new NetworkErrorException());
                         } else if (result.code.equals("200")) {

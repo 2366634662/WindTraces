@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_setting_actviity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/main_bg"
+    android:orientation="vertical"
+    tools:context="com.ac57.ui.main.activity.SettingActviity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/windowBackground">
+
+        <ImageView
+            android:id="@+id/iv_setting_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/personal_back"
+            android:padding="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="设置"
+            android:textColor="#565656"
+            android:textSize="24dp" />
+    </RelativeLayout>
+
+    <com.ac57.ui.view.SuperTextView
+        android:id="@+id/self_stv_tab1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/DIMEN_15PX"
+        android:background="@color/windowBackground"
+        app:sLeftIconRes="@drawable/personal_logo"
+        app:sLeftTextString="关于风迹"
+        app:sLineShow="bottom"
+        app:sRightIconRes="@drawable/personal_arrow_right"
+        app:sUseRipple="true" />
+
+    <com.ac57.ui.view.SuperTextView
+        android:id="@+id/self_stv_tab2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/windowBackground"
+        app:sLeftIconRes="@drawable/personal_clean"
+        app:sLeftTextString="清理缓存"
+        app:sLineShow="bottom"
+        app:sRightIconRes="@drawable/personal_arrow_right"
+        app:sRightTextString="8kb"
+        app:sUseRipple="true" />
+
+    <TextView
+        android:id="@+id/setting_loginout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/DIMEN_55PX"
+        android:layout_marginLeft="@dimen/DIMEN_25PX"
+        android:layout_marginRight="@dimen/DIMEN_25PX"
+        android:layout_marginTop="@dimen/DIMEN_25PX"
+        android:background="@drawable/login_bnt_bg2"
+        android:gravity="center"
+        android:text="退出"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
+
+</LinearLayout>

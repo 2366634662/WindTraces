@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.ac57.R;
 import com.ac57.framework.base.BaseFragment;
-import com.ac57.ui.adapter.TabAndVPAdapter;
+import com.ac57.ui.adapter.MyFragmentPageAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +26,9 @@ public class InteractiveFragment extends BaseFragment {
     ViewPager vpInteract;
     private List<String> titles;
     private String[] types;
-    List<Fragment> fragments;
+    private List<Fragment> fragments;
 
-    private TabAndVPAdapter tabAndVPAdapter;
+    private MyFragmentPageAdapter pageAdapter;
 
     public static InteractiveFragment newInstance() {
         InteractiveFragment fragment = new InteractiveFragment();
@@ -66,15 +66,15 @@ public class InteractiveFragment extends BaseFragment {
                 fragments.add(InteractEventFragment.getInstance(i));
             } else {
                 //全部  综述集锦  文交所动态  随便说说  现货看点
-                fragments.add(OtherTypesInteractFragment.getInstance(types[i]));//其他
+                fragments.add(OtherTypesInteractFragment.getInstance(types[i]));
             }
         }
-        tabAndVPAdapter = new TabAndVPAdapter(getFragmentManager(), fragments, titles);
-        vpInteract.setAdapter(tabAndVPAdapter);
+        pageAdapter = new MyFragmentPageAdapter(getFragmentManager());
+        pageAdapter.setmFragments(fragments);
+        pageAdapter.setTitle(titles);
+        vpInteract.setAdapter(pageAdapter);
         tlayoutInteractive.setupWithViewPager(vpInteract);
         tlayoutInteractive.setTabMode(TabLayout.MODE_SCROLLABLE);
-
-
     }
 
     @Override

@@ -14,6 +14,11 @@ import java.util.List;
 public class MyFragmentPageAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> mFragments;
+    private List<String> title;
+
+    public void setTitle(List<String> title) {
+        this.title = title;
+    }
 
     public void setmFragments(List<Fragment> mFragments) {
         this.mFragments = mFragments;
@@ -31,5 +36,10 @@ public class MyFragmentPageAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         return mFragments == null ? null : mFragments.get(position);
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return title.get(position);
     }
 }

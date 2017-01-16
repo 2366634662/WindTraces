@@ -1,13 +1,55 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ac57.ui.main.fragment.NewGoodsFragment">
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="50dp"
+        android:background="@android:color/white">
 
-</FrameLayout>
+        <RadioGroup
+            android:id="@+id/rgoup_new_goods_title"
+            android:layout_width="@dimen/DIMEN_228PX"
+            android:layout_height="@dimen/DIMEN_36PX"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/mytopic_rg_bg"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_new_goods_purchase"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/mytopic_rb_bg"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="新品申购"
+                android:textColor="@drawable/mytopic_rb_tvcor"
+                android:textSize="@dimen/DIMEN_18PX" />
+
+            <RadioButton
+                android:id="@+id/rb_new_goods_hosting"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/mytopic_rb_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="新品托管"
+                android:textColor="@drawable/mytopic_rb_tvcor"
+                android:textSize="@dimen/DIMEN_18PX" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <com.ac57.ui.view.MyViewPager
+        android:id="@+id/vp_new_goods_page"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/white" />
+
+</LinearLayout>

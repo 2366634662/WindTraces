@@ -4,35 +4,36 @@ package com.ac57.ui.main.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.ac57.R;
 import com.ac57.framework.base.MVPBaseFragment;
+import com.ac57.framework.refresh.RefreshLayout;
 import com.ac57.ui.adapter.OtherTypesInteractAdapter;
 import com.ac57.ui.entity.OtherTypesInteractEntity;
 import com.ac57.ui.presenter.OtherTypesInteractPresenter;
 import com.ac57.ui.presenter.view.IOtherTypesInteractView;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.jcodecraeer.xrecyclerview.progressindicator.view.EasyStatusView;
 
 import java.util.List;
 
 import butterknife.BindView;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class OtherTypesInteractFragment extends MVPBaseFragment<OtherTypesInteractPresenter, IOtherTypesInteractView> implements IOtherTypesInteractView {
 
-    @BindView(R.id.xRecyclerView)
-    XRecyclerView xRecyclerView;
+    @BindView(R.id.rv_content)
+    RecyclerView xRecyclerView;
     @BindView(R.id.esv_multip_view)
-    EasyStatusView esvMultipView;
+    com.ac57.ui.view.EasyStatusView esvMultipView;
+    @BindView(R.id.refresh_layout)
+    RefreshLayout mRefreshLayout;
     private String type;
     private int page = 1;
     private OtherTypesInteractAdapter adapter;
-    private boolean isFirst = true;
 
     public OtherTypesInteractFragment() {
         // Required empty public constructor
@@ -54,28 +55,31 @@ public class OtherTypesInteractFragment extends MVPBaseFragment<OtherTypesIntera
     @Override
     protected void initView(View convertView, Bundle savedInstanceState) {
         type = getArguments().getString("type");
-        Log.e("tag", "type = " + type);
-
     }
 
     @Override
     protected void initData() {
-        adapter = new OtherTypesInteractAdapter(getActivity(), R.layout.item_other_type_interact);
+        adapter = new OtherTypesInteractAdapter(xRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         xRecyclerView.setLayoutManager(linearLayoutManager);
         xRecyclerView.setAdapter(adapter);
-        xRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+
+        mRefreshLayout.setDelegate(new RefreshLayout.BGARefreshLayoutDelegate() {
             @Override
-            public void onRefresh() {
+            public void onBGARefreshLayoutBeginRefreshing(RefreshLayout refreshLayout) {
                 page = 1;
                 mPresenter.getOtherTypeInteractData(page, type);
             }
 
             @Override
-            public void onLoadMore() {
+            public boolean onBGARefreshLayoutBeginLoadingMore(RefreshLayout refreshLayout) {
                 page++;
                 mPresenter.getOtherTypeInteractData(page, type);
+                return true;
             }
+        });
+        esvMultipView.setMutipOnClick(() -> {
+            getData();
         });
     }
 
@@ -88,24 +92,23 @@ public class OtherTypesInteractFragment extends MVPBaseFragment<OtherTypesIntera
     public void getOtherTypesInteractDatas(List<OtherTypesInteractEntity> entity) {
         esvMultipView.content();
         if (page == 1) {
-            adapter.replaceAll(entity);
-            xRecyclerView.refreshComplete();
+            adapter.setData(entity);
+            mRefreshLayout.endRefreshing();
         } else {
-            adapter.addAll(entity);
-            xRecyclerView.loadMoreComplete();
+            adapter.addMoreData(entity);
+            mRefreshLayout.endLoadingMore();
         }
         if (entity.size() < 10) {
-            xRecyclerView.setNoMore(true);
+            mRefreshLayout.setPullUpRefreshEnable(false);
         } else {
-            xRecyclerView.setNoMore(false);
+            mRefreshLayout.setPullUpRefreshEnable(true);
         }
         adapter.notifyDataSetChanged();
     }
 
     @Override
     public void showDailog(String msg) {
-        if (isFirst) {
-            isFirst = false;
+        if (adapter == null || adapter.getData().size() == 0) {
             esvMultipView.loading();
         }
     }

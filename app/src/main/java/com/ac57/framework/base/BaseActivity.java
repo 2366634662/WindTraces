@@ -3,9 +3,13 @@ package com.ac57.framework.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,8 +20,14 @@ import android.view.WindowManager;
 
 import com.ac57.R;
 import com.ac57.framework.tools.AppManager;
+import com.ac57.ui.utils.EventBusUtils;
 
-import org.greenrobot.eventbus.EventBus;
+import org.simple.eventbus.EventBus;
+import org.simple.eventbus.Subscriber;
+import org.simple.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -34,24 +44,24 @@ public abstract class BaseActivity extends AppCompatActivity {
      * get activity layout
      */
     @LayoutRes
-    protected abstract int getLayout();
+    public abstract int getLayout();
 
     /**
      * init activity view
      *
      * @param savedInstanceState
      */
-    protected abstract void initView(Bundle savedInstanceState);
+    public abstract void initView(Bundle savedInstanceState);
 
     /**
      * init data
      */
-    protected abstract void initDatas();
+    public abstract void initDatas();
 
     /*
        * load data in onResume
        */
-    protected abstract void loadData();
+    public abstract void loadData();
 
     /**
      * @return true 支持状态栏透明
@@ -59,11 +69,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 //    protected abstract boolean isTranslucentStatus();
 
     protected Activity mContext;
-    protected boolean mIsFirstShow = true;
+    public boolean mIsFirstShow = true;
     private Unbinder mUnbinder;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -73,7 +83,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         try {
             EventBus.getDefault().register(this);
         } catch (Exception e) {
-            Log.e("tag", "错误了？" + e.toString());
+
         }
         AppManager.getInstance().addActivity(this);
         mUnbinder = ButterKnife.bind(this);
@@ -86,7 +96,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         AppManager.getInstance().remove(this);
         EventBus.getDefault().unregister(this);
@@ -150,5 +160,56 @@ public abstract class BaseActivity extends AppCompatActivity {
             window.setStatusBarColor(color);
         }
     }
+
+
+    public static final int REQUEST_PERMISSION_CODE = 1;
+    private static IPermissionsLinstener mPermissionsLinstener;
+
+    public static void requestPresmision(String[] permission, IPermissionsLinstener permissionsLinstener) {
+        mPermissionsLinstener = permissionsLinstener;
+        if (permissionsLinstener == null) {
+            return;
+        }
+        List<String> permissionList = new ArrayList<>();
+        for (String p : permission) {
+            if (ContextCompat.checkSelfPermission(AppManager.getInstance().getTopActivity(), p) != PackageManager.PERMISSION_GRANTED) {
+                permissionList.add(p);
+            }
+        }
+        if (!permissionList.isEmpty()) {
+            ActivityCompat.requestPermissions(AppManager.getInstance().getTopActivity(), permissionList.toArray(new String[permissionList.size()]), REQUEST_PERMISSION_CODE);
+        } else {
+            mPermissionsLinstener.permissionSuccess();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case REQUEST_PERMISSION_CODE:
+                if (grantResults.length > 0) {
+                    List<String> deniedPermissionsList = new ArrayList<>();
+                    for (int i = 0; i < grantResults.length; i++) {
+                        int grantResult = grantResults[i];
+                        String deniedPer = permissions[i];
+                        if (grantResult != PackageManager.PERMISSION_GRANTED) {
+                            deniedPermissionsList.add(deniedPer);
+                        }
+                        if (deniedPermissionsList.isEmpty()) {
+                            mPermissionsLinstener.permissionSuccess();
+                        } else {
+                            mPermissionsLinstener.permissionDenied(deniedPermissionsList);
+                        }
+                    }
+                }
+                break;
+        }
+    }
+    @Subscriber(mode = ThreadMode.MAIN, tag = EventBusUtils.ID_AND_NAME)
+    public void getName(int id) {
+        Log.e("tag", "BaseActivity     " + id);
+    }
+
 
 }

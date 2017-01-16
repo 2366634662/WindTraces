@@ -33,8 +33,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ui.main.activity.MainActivity"></activity>
+        <activity android:name=".ui.main.activity.MainActivity" />
         <!-- Required SDK 核⼼功能 -->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
@@ -132,10 +133,10 @@
         <activity android:name=".ui.main.activity.GuideActivity" />
         <activity android:name=".ui.main.activity.LoginActivity" />
         <activity android:name=".ui.main.activity.RegisterActivity" />
-        <activity android:name=".ui.main.activity.AppLogoActivity"></activity>
+        <activity android:name=".ui.main.activity.AppLogoActivity" />
 
-        <!--友盟分享，第三方登陆-->
-        <!--微信-->
+        <!-- 友盟分享，第三方登陆 -->
+        <!-- 微信 -->
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -143,7 +144,7 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <!--QQ-->
+        <!-- QQ -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
@@ -163,17 +164,26 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <!--分享编辑页：-->
+        <!-- 分享编辑页： -->
         <activity
             android:name="com.umeng.socialize.editorpage.ShareActivity"
-            android:excludeFromRecents="true"
-            />
+            android:excludeFromRecents="true" />
 
-        <!--友盟APPkey-->
+        <!-- 友盟APPkey -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5695e5cf67e58e533a001153" >
-        </meta-data>
+            android:value="5695e5cf67e58e533a001153" />
+
+        <activity android:name=".ui.main.activity.SelfActivity" />
+        <activity android:name=".ui.main.activity.MyTopicActivity" />
+        <activity android:name=".ui.main.activity.MyCollectionActivity" />
+        <activity android:name=".ui.main.activity.MyChoseActivity" />
+        <activity android:name=".ui.main.activity.ExchangeActivity" />
+        <activity android:name=".ui.main.activity.SelectExchangeActivity" />
+        <activity android:name=".ui.main.activity.HelpFeedbackActivity" />
+        <activity android:name=".ui.main.activity.SettingActviity" />
+        <activity android:name=".ui.main.activity.AccountSettingActviity" />
+        <activity android:name=".ui.main.activity.WebViewActivity"></activity>
     </application>
 
 </manifest>

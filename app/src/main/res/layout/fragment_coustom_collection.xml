@@ -1,13 +1,62 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#202032"
+    android:orientation="vertical"
     tools:context="com.ac57.ui.main.fragment.CoustomCollectionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/DIMEN_30PX"
+        android:paddingLeft="@dimen/DIMEN_25PX"
+        android:paddingRight="@dimen/DIMEN_25PX"
+        android:paddingTop="@dimen/DIMEN_30PX">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tv_coustom_collection_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="藏品/代码/文交所"
+            android:textColor="#7b7b87"
+            android:textSize="@dimen/DIMEN_18PX" />
+
+        <LinearLayout
+            android:id="@+id/llayout_coustom_collection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/DIMEN_32PX"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="涨幅"
+                android:textColor="#7b7b87"
+                android:textSize="@dimen/DIMEN_18PX" />
+
+            <ImageView
+                android:id="@+id/iv_coustom_collection_img"
+                android:layout_width="@dimen/DIMEN_15PX"
+                android:layout_height="@dimen/DIMEN_10PX"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/personal_arrow_down" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_coustom_collection_new_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/llayout_coustom_collection"
+            android:layout_toRightOf="@id/tv_coustom_collection_tab"
+            android:gravity="right"
+            android:text="最新价格"
+            android:textColor="#7b7b87"
+            android:textSize="@dimen/DIMEN_18PX" />
+    </RelativeLayout>
+
+    <include layout="@layout/refresh_and_load" />
+</LinearLayout>

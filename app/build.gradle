@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'com.neenbedankt.android-apt'
-
+apply plugin: 'me.tatarka.retrolambda'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.1"
@@ -27,6 +27,14 @@ android {
 
 
     }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     signingConfigs {
         config {
             keyAlias 'fengji.keystore'
@@ -109,17 +117,16 @@ dependencies {
      * use  ： https://github.com/jianghejie/XRecyclerView
      */
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
-    compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'org.greenrobot:eventbus:3.0.0'
-    apt 'org.greenrobot:eventbus-annotation-processor:3.0.1'
+
     compile 'com.github.lzyzsd:jsbridge:1.0.4'
     compile 'com.android.support:recyclerview-v7:25.0.1'
-    compile project(':xrecyclerview')
-}
-apt {
-    arguments {
-        eventBusIndex "com.afei.test.MyEventBusIndex"
-    }
+    //权限适配
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.1@aar'
+
+    //九宫格
+    compile 'cn.bingoogolapple:bga-photopicker:1.2.3@aar'
+    compile 'cn.bingoogolapple:bga-adapter:1.1.5@aar'
+
 }
 
 def releaseTime() {

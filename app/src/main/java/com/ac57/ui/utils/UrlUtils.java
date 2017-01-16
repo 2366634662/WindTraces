@@ -20,10 +20,22 @@ public class UrlUtils {
     public static final String INTERACT_EVENT_LIST_URL = "Index/art/activityList";
     //互动item列表
     public static final String OTHER_TYPE_INTERACT_LIST_URL = "Index/Art/theList";
+    //公告列表
+    public static final String NOTICE_LIST_URL = "Index/Notice/theList";
+    //新品列表
+    public static final String NEW_GOODS_URL = "Index/Newgoods/theList";
     //已关注的文交所的行情
     public static final String OPTION_WATCH_TOP_URL = "Index/Market/myFollowData";
     //投资策略列表
     public static final String OPTION_WATCH_CENTER_URL = "Index/Market/Routine";
     //文交所行情列表
     public static final String OPTION_WATCH_BOTTOM_URL = "Index/Market/allData";
+    //看盘自选藏品
+    public static final String COUSTOM_COLLECTION_LIST_URL = "Index/Trade/followList";
+    //删除自选藏品
+    public static final String DELETE_COUSTOM_COLLECTION_URL = "Index/Trade/followTrade";
+
+    //个人中心获取用户信息
+    public static final String USER_INFO_DETAIL_URL = "Index/My/userBaseInfo";
+
 }
