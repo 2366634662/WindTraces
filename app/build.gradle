@@ -31,7 +31,7 @@ android {
         config {
             keyAlias 'fengji.keystore'
             keyPassword 'aicheng'
-            storeFile file('F:\\weixiu\\project\\winds\\fengji.keystore')
+            storeFile file('../fengji.keystore')
             storePassword 'aicheng'
         }
     }

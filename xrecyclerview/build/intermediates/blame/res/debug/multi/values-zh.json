@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "F:\\MyDemo\\WindTraces\\xrecyclerview\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh\\values-zh.xml",
+        "outputFile": "E:\\MyWorkSpace\\WindTraces\\xrecyclerview\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh\\values-zh.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 122
                 },
                 "from": {
-                    "file": "F:\\MyDemo\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
+                    "file": "E:\\MyWorkSpace\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
                     "position": {
                         "startLine": 1,
                         "startColumn": 0,
@@ -30,7 +30,7 @@
                     "endOffset": 198
                 },
                 "from": {
-                    "file": "F:\\MyDemo\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
+                    "file": "E:\\MyWorkSpace\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 0,
@@ -49,7 +49,7 @@
                     "endOffset": 260
                 },
                 "from": {
-                    "file": "F:\\MyDemo\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
+                    "file": "E:\\MyWorkSpace\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 0,
@@ -68,7 +68,7 @@
                     "endOffset": 319
                 },
                 "from": {
-                    "file": "F:\\MyDemo\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
+                    "file": "E:\\MyWorkSpace\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 0,
@@ -87,7 +87,7 @@
                     "endOffset": 370
                 },
                 "from": {
-                    "file": "F:\\MyDemo\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
+                    "file": "E:\\MyWorkSpace\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 0,
@@ -106,7 +106,7 @@
                     "endOffset": 428
                 },
                 "from": {
-                    "file": "F:\\MyDemo\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
+                    "file": "E:\\MyWorkSpace\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 0,
@@ -125,7 +125,7 @@
                     "endOffset": 481
                 },
                 "from": {
-                    "file": "F:\\MyDemo\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
+                    "file": "E:\\MyWorkSpace\\WindTraces\\xrecyclerview\\src\\main\\res\\values-zh\\strings.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 0,

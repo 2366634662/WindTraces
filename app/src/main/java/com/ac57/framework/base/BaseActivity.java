@@ -89,10 +89,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         AppManager.getInstance().remove(this);
-        if (EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().unregister(this);
-        }
-
+        EventBus.getDefault().unregister(this);
         mUnbinder.unbind();
     }
 
