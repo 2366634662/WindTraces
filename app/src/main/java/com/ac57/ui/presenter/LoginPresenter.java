@@ -77,6 +77,7 @@ public class LoginPresenter extends BasePresenter<ILoginActivityView> {
                 model.disDailog();
                 model.openHome(entity);
             }
+
             @Override
             public void _onError(String e) {
                 model.disDailog();
