@@ -82,5 +82,30 @@
         <item name="android:layout_width">match_parent</item>
     </style>
 
+    <!--EditText的主題 Start-->
+    <style name="TextInputLayoutLineColor" parent="Theme.AppCompat.Light">
+        <!--没有获取焦点时的颜色-->
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <!--获取焦点时的颜色-->
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+    </style>
 
+    <!--浮动标签-->
+    <style name="hintAppearance" parent="TextAppearance.AppCompat">
+        <!--<item name="android:textSize">14sp</item>-->
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <!--错误提示信息-->
+    <style name="errorAppearance" parent="TextAppearance.AppCompat">
+        <!--<item name="android:textSize">14sp</item>-->
+        <item name="android:textColor">@android:color/holo_red_light</item>
+    </style>
+
+    <!--超出计数最大长度,浮动标签,下划线,计数文字都会改变颜色-->
+    <style name="counterOverflowTextAppearance" parent="TextAppearance.AppCompat">
+        <!--<item name="android:textSize">14sp</item>-->
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+    </style>
+    <!--EditText的主題 End-->
 </resources>

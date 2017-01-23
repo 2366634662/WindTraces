@@ -2,8 +2,9 @@ package com.ac57.ui.main.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
+import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +18,9 @@ import com.ac57.ui.entity.UserInfoData;
 import com.ac57.ui.presenter.LoginPresenter;
 import com.ac57.ui.presenter.view.ILoginActivityView;
 import com.ac57.ui.view.customtoast.ToastUtils;
+import com.ac57.ui.view.edittext.AutoCheckEditText;
+import com.ac57.ui.view.edittext.AutoCheckEditTextClass;
+import com.ac57.ui.view.edittext.EditTextType;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import java.util.ArrayList;
@@ -34,9 +38,9 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
     @BindView(R.id.tv_login_register)
     TextView tvLoginRegister;
     @BindView(R.id.login_tel)
-    EditText loginTel;
+    AutoCheckEditText loginTel;
     @BindView(R.id.login_pass)
-    EditText loginPass;
+    AutoCheckEditText loginPass;
     @BindView(R.id.tv_login_forget)
     TextView loginForget;
     @BindView(R.id.login_center)
@@ -55,7 +59,12 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
     LinearLayout loginBottoms;
     @BindView(R.id.login_view)
     LinearLayout loginView;
-
+    @BindView(R.id.tilayout_login_phone)
+    TextInputLayout tilayoutLoginPhone;
+    @BindView(R.id.tilayout_login_pass)
+    TextInputLayout tilayoutLoginPass;
+    AutoCheckEditTextClass aClass_phone;
+    AutoCheckEditTextClass aClass_pass;
 
     @Override
     public int getLayout() {
@@ -67,9 +76,32 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
         return new LoginPresenter(this, this);
     }
 
+    boolean phone;
+    boolean passWord;
+
     @Override
     public void initView(Bundle savedInstanceState) {
+        new AutoCheckEditTextClass(tilayoutLoginPhone, loginTel).checkType(EditTextType.TYPE_OF_MOBILE).setHintEnabled(true).setTextWatcher(hasContent -> {
+            phone = hasContent;
+            if (phone && passWord && loginTel.getText().toString().trim().length() == 11) {
+                loginBnt.setClickable(true);
+                loginBnt.setBackgroundResource(R.drawable.login_bnt_bg2);
+            } else {
+                loginBnt.setClickable(false);
+                loginBnt.setBackgroundResource(R.drawable.login_bnt_bg1);
+            }
+        });
+        new AutoCheckEditTextClass(tilayoutLoginPass, loginPass).checkType(EditTextType.TYPE_OF_USER_DEFINE).setHintEnabled(true).setTextWatcher(hasContent -> {
+            passWord = hasContent;
+            if (phone && passWord) {
+                loginBnt.setClickable(true);
+                loginBnt.setBackgroundResource(R.drawable.login_bnt_bg2);
+            } else {
+                loginBnt.setClickable(false);
+                loginBnt.setBackgroundResource(R.drawable.login_bnt_bg1);
+            }
 
+        });
     }
 
     @Override
@@ -96,9 +128,11 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
 
                 break;
             case R.id.login_bnt:
-//                EventBus.getDefault().post(new MessageEvent("2222"));
-//                EventBus.getDefault().postSticky("33333");
                 mPresenter.doLogin(loginTel.getText().toString().trim(), loginPass.getText().toString().trim());
+
+                Log.e("tag", "" + loginTel.getText().toString().trim());
+                Log.e("tag", "" + loginPass.getText().toString().trim());
+
                 break;
             case R.id.login_weixin:
                 mPresenter.doThreeLogin(SHARE_MEDIA.WEIXIN);

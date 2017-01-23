@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
@@ -62,51 +63,34 @@
         android:layout_marginTop="@dimen/DIMEN_90PX"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_register_one_hint"
-            android:layout_width="wrap_content"
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilayout_register"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/DIMEN_100PX"
-            android:text="手机号码"
-            android:textColor="#9d9d9d"
-            android:textSize="@dimen/DIMEN_16PX"
-            android:visibility="invisible" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/DIMEN_25PX"
             android:layout_marginTop="@dimen/DIMEN_10PX"
-            android:orientation="horizontal"
             android:paddingLeft="@dimen/DIMEN_58PX"
-            android:paddingRight="@dimen/DIMEN_58PX">
+            android:paddingRight="@dimen/DIMEN_58PX"
+            android:theme="@style/TextInputLayoutLineColor"
+            app:counterEnabled="true"
+            app:counterMaxLength="11"
+            app:counterOverflowTextAppearance="@style/counterOverflowTextAppearance"
+            app:errorTextAppearance="@style/errorAppearance"
+            app:hintTextAppearance="@style/hintAppearance">
 
-            <ImageView
-                android:layout_width="@dimen/DIMEN_20PX"
-                android:layout_height="fill_parent"
-                android:src="@drawable/login_phone" />
-
-            <EditText
-                android:id="@+id/ed_register_one_tel"
-                android:layout_width="fill_parent"
+            <com.ac57.ui.view.edittext.AutoCheckEditText
+                android:id="@+id/acet_register_phone"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="@dimen/DIMEN_15PX"
-                android:background="@null"
-                android:hint="手机号码!"
-                android:inputType="phone"
+                android:drawableEnd="@drawable/login_delete"
+                android:drawablePadding="8dp"
+                android:drawableStart="@drawable/login_phone"
+                android:hint="请输入手机号码"
+                android:imeOptions="actionDone"
+                android:inputType="number"
                 android:maxLength="11"
-                android:textColor="#4b4b4b"
-                android:textColorHint="#9d9d9d"
-                android:textSize="@dimen/DIMEN_18PX" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="@dimen/DIMEN_58PX"
-            android:layout_marginRight="@dimen/DIMEN_58PX"
-            android:layout_marginTop="@dimen/DIMEN_18PX"
-            android:background="#f2f2f2" />
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
 
 
     </LinearLayout>

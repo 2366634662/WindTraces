@@ -1,19 +1,19 @@
 package com.ac57.ui.main.activity;
 
 import android.os.Bundle;
-import android.text.Editable;
+import android.support.design.widget.TextInputLayout;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ac57.R;
 import com.ac57.framework.base.MVPBaseActivity;
 import com.ac57.framework.utils.IntentUtils;
-import com.ac57.framework.utils.StringUtils;
-import com.ac57.ui.custominterface.IEditText;
-import com.ac57.ui.presenter.view.IRegisterView;
 import com.ac57.ui.presenter.RegisterPresenter;
+import com.ac57.ui.presenter.view.IRegisterView;
+import com.ac57.ui.view.edittext.AutoCheckEditText;
+import com.ac57.ui.view.edittext.AutoCheckEditTextClass;
+import com.ac57.ui.view.edittext.EditTextType;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -24,12 +24,13 @@ public class RegisterActivity extends MVPBaseActivity<RegisterPresenter, IRegist
     ImageView registerOneBack;
     @BindView(R.id.register_one_login)
     TextView registerOneLogin;
-    @BindView(R.id.tv_register_one_hint)
-    TextView tvRegisterOneHint;
-    @BindView(R.id.ed_register_one_tel)
-    EditText edRegisterOneTel;
     @BindView(R.id.tv_register_one_bnt)
     TextView tvRegisterOneBnt;
+    @BindView(R.id.acet_register_phone)
+    AutoCheckEditText acetRegisterPhone;
+    @BindView(R.id.tilayout_register)
+    TextInputLayout tilayoutRegister;
+    AutoCheckEditTextClass aClass;
 
     @Override
     public int getLayout() {
@@ -38,28 +39,21 @@ public class RegisterActivity extends MVPBaseActivity<RegisterPresenter, IRegist
 
     @Override
     public void initView(Bundle savedInstanceState) {
-
+        aClass = new AutoCheckEditTextClass(tilayoutRegister, acetRegisterPhone);
+        aClass.checkType(EditTextType.TYPE_OF_MOBILE).setMaxLength(11, true).setTextWatcher(hasContent -> {
+            if (hasContent) {
+                tvRegisterOneBnt.setClickable(true);
+                tvRegisterOneBnt.setBackgroundResource(R.drawable.login_bnt_bg2);
+            } else {
+                tvRegisterOneBnt.setClickable(false);
+                tvRegisterOneBnt.setBackgroundResource(R.drawable.login_bnt_bg1);
+            }
+        });
     }
 
     @Override
     public void initDatas() {
-        edRegisterOneTel.addTextChangedListener(new IEditText() {
-            @Override
-            public void afterTextChanged(Editable editable) {
-                super.afterTextChanged(editable);
-                if (StringUtils.isNotEmpty(edRegisterOneTel.getText().toString())) {
-                    tvRegisterOneBnt.setClickable(true);
-                    tvRegisterOneBnt.setFocusable(true);
-                    tvRegisterOneBnt.setBackgroundResource(R.drawable.login_bnt_bg2);
-                    tvRegisterOneHint.setVisibility(View.VISIBLE);
-                } else {
-                    tvRegisterOneBnt.setClickable(false);
-                    tvRegisterOneBnt.setFocusable(false);
-                    tvRegisterOneBnt.setBackgroundResource(R.drawable.login_bnt_bg1);
-                    tvRegisterOneHint.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
+
     }
 
     @Override

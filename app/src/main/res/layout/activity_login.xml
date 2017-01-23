@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
@@ -82,42 +83,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/login_top"
-                android:layout_marginTop="@dimen/DIMEN_90PX"
+                android:layout_marginTop="24dp"
                 android:orientation="vertical">
 
-
                 <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/tilayout_login_phone"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginRight="24dp"
-                    android:hint="手机号码"
+                    android:layout_marginTop="@dimen/DIMEN_10PX"
+                    android:paddingLeft="@dimen/DIMEN_58PX"
+                    android:paddingRight="@dimen/DIMEN_58PX"
+                    android:theme="@style/TextInputLayoutLineColor"
+                    app:counterMaxLength="11"
+                    app:counterOverflowTextAppearance="@style/counterOverflowTextAppearance"
+                    app:errorTextAppearance="@style/errorAppearance"
+                    app:hintTextAppearance="@style/hintAppearance">
 
-                    android:textColorHint="#9d9d9d">
-
-                    <EditText
+                    <com.ac57.ui.view.edittext.AutoCheckEditText
                         android:id="@+id/login_tel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_marginLeft="@dimen/DIMEN_15PX"
-                        android:background="@null"
-                        android:cursorVisible="true"
-                        android:drawableLeft="@drawable/login_phone"
+                        android:drawableEnd="@drawable/login_delete"
                         android:drawablePadding="8dp"
-                        android:inputType="phone"
+                        android:drawableStart="@drawable/login_phone"
+                        android:hint="请输入手机号码"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
                         android:maxLength="11"
-                        android:textColor="#4b4b4b"
-                        android:textCursorDrawable="@null"
-                        android:textSize="@dimen/DIMEN_18PX" />
+                        android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>
 
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginRight="24dp"
                     android:layout_marginTop="16dp"
                     android:orientation="horizontal">
 
@@ -127,33 +126,37 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="50dp"
+                        android:layout_marginRight="40dp"
                         android:text="忘记密码"
                         android:textColor="#6b6b6b"
                         android:textSize="@dimen/DIMEN_18PX" />
 
                     <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
+                        android:id="@+id/tilayout_login_pass"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/DIMEN_10PX"
                         android:layout_toLeftOf="@id/tv_login_forget"
-                        android:hint="密码"
-                        android:textColorHint="#9d9d9d">
+                        android:paddingLeft="@dimen/DIMEN_58PX"
+                        android:paddingRight="@dimen/DIMEN_58PX"
+                        android:theme="@style/TextInputLayoutLineColor"
+                        app:counterMaxLength="11"
+                        app:counterOverflowTextAppearance="@style/counterOverflowTextAppearance"
+                        app:errorTextAppearance="@style/errorAppearance"
+                        app:hintTextAppearance="@style/hintAppearance">
 
-                        <EditText
+                        <com.ac57.ui.view.edittext.AutoCheckEditText
                             android:id="@+id/login_pass"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="bottom"
-                            android:layout_marginLeft="@dimen/DIMEN_15PX"
-                            android:layout_weight="1"
-                            android:background="@null"
-                            android:cursorVisible="true"
-                            android:drawableLeft="@drawable/login_lock"
+                            android:drawableEnd="@drawable/login_delete"
                             android:drawablePadding="8dp"
+                            android:drawableStart="@drawable/login_lock"
+                            android:hint="请输入密码"
+                            android:imeOptions="actionDone"
                             android:inputType="textPassword"
-                            android:textColor="#4b4b4b"
-                            android:textCursorDrawable="@null"
-                            android:textSize="@dimen/DIMEN_18PX" />
+                            android:maxLength="11"
+                            android:singleLine="true" />
                     </android.support.design.widget.TextInputLayout>
 
 
@@ -168,8 +171,8 @@
                 android:layout_below="@+id/login_center"
                 android:layout_marginLeft="@dimen/DIMEN_25PX"
                 android:layout_marginRight="@dimen/DIMEN_25PX"
-                android:layout_marginTop="@dimen/DIMEN_65PX"
-                android:background="@drawable/login_bnt_bg2"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/login_bnt_bg1"
                 android:button="@null"
                 android:clickable="false"
                 android:focusable="false"
@@ -180,66 +183,67 @@
 
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/login_bottoms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
         <LinearLayout
-            android:id="@+id/login_bottoms"
+            android:id="@+id/login_other"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical">
+            android:layout_below="@+id/login_bnt"
+            android:layout_marginBottom="@dimen/DIMEN_25PX"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/login_other"
-                android:layout_width="match_parent"
+            <View
+                android:layout_width="@dimen/DIMEN_50PX"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="#d9d9d9" />
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/login_bnt"
-                android:layout_marginBottom="@dimen/DIMEN_25PX"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:layout_marginLeft="@dimen/DIMEN_10PX"
+                android:layout_marginRight="@dimen/DIMEN_10PX"
+                android:text="其他登录方式"
+                android:textColor="#b9baba"
+                android:textSize="@dimen/DIMEN_16PX" />
 
-                <View
-                    android:layout_width="@dimen/DIMEN_50PX"
-                    android:layout_height="1dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="#d9d9d9" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/DIMEN_10PX"
-                    android:layout_marginRight="@dimen/DIMEN_10PX"
-                    android:text="其他登录方式"
-                    android:textColor="#b9baba"
-                    android:textSize="@dimen/DIMEN_16PX" />
-
-                <View
-                    android:layout_width="@dimen/DIMEN_50PX"
-                    android:layout_height="1dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="#d9d9d9" />
-            </LinearLayout>
+            <View
+                android:layout_width="@dimen/DIMEN_50PX"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="#d9d9d9" />
+        </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/login_bottom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/DIMEN_52PX"
-                android:gravity="center"
-                android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/login_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/DIMEN_52PX"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/login_weixin"
-                    android:layout_width="@dimen/DIMEN_65PX"
-                    android:layout_height="@dimen/DIMEN_65PX"
-                    android:src="@drawable/login_wechat_green" />
+            <ImageView
+                android:id="@+id/login_weixin"
+                android:layout_width="@dimen/DIMEN_65PX"
+                android:layout_height="@dimen/DIMEN_65PX"
+                android:src="@drawable/login_wechat_green" />
 
-                <ImageView
-                    android:id="@+id/login_qq"
-                    android:layout_width="@dimen/DIMEN_65PX"
-                    android:layout_height="@dimen/DIMEN_65PX"
-                    android:layout_marginLeft="@dimen/DIMEN_25PX"
-                    android:src="@drawable/qq_new" />
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/login_qq"
+                android:layout_width="@dimen/DIMEN_65PX"
+                android:layout_height="@dimen/DIMEN_65PX"
+                android:layout_marginLeft="@dimen/DIMEN_25PX"
+                android:src="@drawable/qq_new" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
