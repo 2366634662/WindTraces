@@ -1,5 +1,6 @@
 package com.ac57.ui.main.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.ac57.ui.presenter.view.IRegisterView;
 import com.ac57.ui.view.edittext.AutoCheckEditText;
 import com.ac57.ui.view.edittext.AutoCheckEditTextClass;
 import com.ac57.ui.view.edittext.EditTextType;
+import com.ac57.ui.view.statusbar.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -39,6 +41,9 @@ public class RegisterActivity extends MVPBaseActivity<RegisterPresenter, IRegist
 
     @Override
     public void initView(Bundle savedInstanceState) {
+
+        StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#2c8dff"));
+
         aClass = new AutoCheckEditTextClass(tilayoutRegister, acetRegisterPhone);
         aClass.checkType(EditTextType.TYPE_OF_MOBILE).setMaxLength(11, true).setTextWatcher(hasContent -> {
             if (hasContent) {

@@ -48,9 +48,19 @@ public class SPHelper extends SharePrefrenceUtils {
     public String getUserType() {
         return getString("user_type", "102");
     }
+
     public String getAnyString(String type) {
-        return getString("type", "102");
+        return getString(type, "102");
     }
+
+    public void setLoginPhone(String loginPhone) {
+        putString("login_phone", loginPhone);
+    }
+
+    public String getLoginPhone() {
+        return getString("login_phone");
+    }
+
 
     /**
      * 保存用户信息

@@ -57,7 +57,7 @@ public class ProjectUntil {
         return new String(resultCharArray);
     }
 
-    public static String randString(int length) {//8位随机字符串
+    public  static  String randString(int length){//8位随机字符串
         String base = "abcdefghijklmnopqrstuvwxyz0123456789";
         Random random = new Random();
         StringBuffer sb = new StringBuffer();

@@ -18,6 +18,7 @@ import com.ac57.ui.presenter.LoginPresenter;
 import com.ac57.ui.presenter.view.ILoginActivityView;
 import com.ac57.ui.utils.EventBusUtils;
 import com.ac57.ui.view.customtoast.ToastUtils;
+import com.ac57.ui.view.statusbar.StatusBarUtil;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
@@ -52,7 +53,7 @@ public class AppLogoActivity extends MVPBaseActivity<LoginPresenter, ILoginActiv
 
     @Override
     public void initView(Bundle savedInstanceState) {
-
+        StatusBarUtil.setTransparent(this);
     }
 
     @Override

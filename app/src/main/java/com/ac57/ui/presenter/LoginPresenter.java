@@ -41,7 +41,6 @@ public class LoginPresenter extends BasePresenter<ILoginActivityView> {
         model.showDailog("登录中");
         UserRepository.getInstance().getUserInfoData(phone, rand, login_sign)
                 .subscribe(new DefaultSubscriber<UserInfoData>() {
-
                     @Override
                     public void _onNext(UserInfoData entity) {
                         if (null != entity) {

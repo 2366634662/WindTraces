@@ -9,4 +9,9 @@
     <item name="sLeftBottomTextId2" type="id" />
     <item name="sRightTextId" type="id" />
     <item name="sRightIconId" type="id" />
+
+    <!--沉浸式状态栏-->
+    <item name="statusbarutil_fake_status_bar_view" type="id" />
+    <item name="statusbarutil_translucent_view" type="id" />
+
 </resources>

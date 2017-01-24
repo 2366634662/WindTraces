@@ -9,7 +9,7 @@ import com.ac57.ui.AppContext;
  */
 public class ProUntil {
     public static String getLoginSign(String rand, String phone, String pass) {
-        String passwd = ProjectUntil.toMd5String("ShiDian_" + pass);
+        String passwd = ProjectUntil.toMd5String(pass);
         String decrypt = ProjectUntil.SHA1(new String[]{phone, passwd, rand});
         return decrypt;
     }

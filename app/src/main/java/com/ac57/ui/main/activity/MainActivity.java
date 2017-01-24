@@ -17,6 +17,7 @@ import com.ac57.ui.main.fragment.NoticeFragment;
 import com.ac57.ui.main.fragment.ReadingTypeFragment;
 import com.ac57.ui.utils.EventBusUtils;
 import com.ac57.ui.view.MyViewPager;
+import com.ac57.ui.view.statusbar.StatusBarUtil;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -61,9 +62,10 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        initWindow();
+        StatusBarUtil.setColor(this, Color.WHITE, 30);
     }
 
+    @Override
     public void initDatas() {
 
         adapter = new MyFragmentPageAdapter(getSupportFragmentManager());
@@ -87,15 +89,16 @@ public class MainActivity extends BaseActivity {
         //设置进入主页面时默认进入咨询页面
         ctlayoutMain.setCurrentTab(2);
         vp_main_page.setCurrentItem(2);
+
         ctlayoutMain.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
                 vp_main_page.setCurrentItem(position);
                 if (position == 4) {
-                    initWindowBarColor(Color.parseColor("#242438"));
+                    StatusBarUtil.setColorNoTranslucent(MainActivity.this, getResources().getColor(R.color.read_bg_cor));
                     ctlayoutMain.setBackgroundColor(Color.parseColor("#242438"));
                 } else {
-                    initWindowBarColor(Color.WHITE);
+                    StatusBarUtil.setColor(MainActivity.this, Color.WHITE, 30);
                     ctlayoutMain.setBackgroundColor(Color.WHITE);
                 }
             }

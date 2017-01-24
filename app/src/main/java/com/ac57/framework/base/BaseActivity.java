@@ -78,7 +78,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         mContext = this;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(getLayout());
-        setTranslucentStatus();
+//        setTranslucentStatus();
 //        initWindow();
         try {
             EventBus.getDefault().register(this);
@@ -162,6 +162,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * 权限适配申请
+     */
+
     public static final int REQUEST_PERMISSION_CODE = 1;
     private static IPermissionsLinstener mPermissionsLinstener;
 
@@ -206,10 +210,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 break;
         }
     }
+
     @Subscriber(mode = ThreadMode.MAIN, tag = EventBusUtils.ID_AND_NAME)
     public void getName(int id) {
         Log.e("tag", "BaseActivity     " + id);
     }
-
 
 }

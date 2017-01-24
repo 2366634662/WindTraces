@@ -1,20 +1,20 @@
 <resources>
     <!--&lt;!&ndash; Base application theme. &ndash;&gt;-->
     <!--<style name="AppTheme" parent="Theme.AppCompat">-->
-        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
-        <!--<item name="android:windowBackground">@color/windowBackground</item>-->
+    <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+    <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+    <!--<item name="android:windowBackground">@color/windowBackground</item>-->
     <!--</style>-->
 
     <!--&lt;!&ndash;避免第一次进来白屏或黑屏&ndash;&gt;-->
     <!--<style name="AppTheme.Splash">-->
-        <!--<item name="windowActionBar">false</item>-->
-        <!--<item name="windowNoTitle">true</item>-->
-        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
-        <!--<item name="android:colorBackgroundCacheHint">@null</item>-->
-        <!--<item name="android:windowIsTranslucent">true</item>-->
-        <!--<item name="android:windowFullscreen">true</item>-->
-        <!--<item name="android:windowContentOverlay">@null</item>-->
+    <!--<item name="windowActionBar">false</item>-->
+    <!--<item name="windowNoTitle">true</item>-->
+    <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+    <!--<item name="android:colorBackgroundCacheHint">@null</item>-->
+    <!--<item name="android:windowIsTranslucent">true</item>-->
+    <!--<item name="android:windowFullscreen">true</item>-->
+    <!--<item name="android:windowContentOverlay">@null</item>-->
     <!--</style>-->
 
 
@@ -92,19 +92,19 @@
 
     <!--浮动标签-->
     <style name="hintAppearance" parent="TextAppearance.AppCompat">
-        <!--<item name="android:textSize">14sp</item>-->
+        <item name="android:textSize">8sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <!--错误提示信息-->
     <style name="errorAppearance" parent="TextAppearance.AppCompat">
-        <!--<item name="android:textSize">14sp</item>-->
+        <item name="android:textSize">8dp</item>
         <item name="android:textColor">@android:color/holo_red_light</item>
     </style>
 
     <!--超出计数最大长度,浮动标签,下划线,计数文字都会改变颜色-->
     <style name="counterOverflowTextAppearance" parent="TextAppearance.AppCompat">
-        <!--<item name="android:textSize">14sp</item>-->
+        <item name="android:textSize">8dp</item>
         <item name="android:textColor">@android:color/holo_red_dark</item>
     </style>
     <!--EditText的主題 End-->

@@ -9,6 +9,7 @@ import com.ac57.R;
 import com.ac57.framework.base.BaseActivity;
 import com.ac57.framework.tools.SPHelper;
 import com.ac57.framework.utils.IntentUtils;
+import com.ac57.ui.view.statusbar.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -29,6 +30,7 @@ public class GuideActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        StatusBarUtil.setTransparent(this);
     }
 
     @Override

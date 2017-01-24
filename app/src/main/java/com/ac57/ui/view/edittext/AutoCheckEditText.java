@@ -57,8 +57,6 @@ public class AutoCheckEditText extends TextInputEditText implements TextWatcher,
         mContext = context;
         mRightDrawable = getCompoundDrawablesRelative()[DRAWABLE_RIGHT];
         mLeftDrawable = getCompoundDrawablesRelative()[DRAWABLE_LEFT];
-//        this.setImeOptions(EditorInfo.IME_ACTION_DONE);
-//        this.setInputType(EditorInfo.TYPE_CLASS_TEXT);
         setCompoundDrawablesRelativeWithIntrinsicBounds(mLeftDrawable, null, null, null);
         this.addTextChangedListener(this);
         this.setOnFocusChangeListener(this);
@@ -147,7 +145,6 @@ public class AutoCheckEditText extends TextInputEditText implements TextWatcher,
             if (textWatcher != null) {
                 textWatcher.textWatcher(false);
             }
-//            setCompoundDrawables(null, null, null, null);
             changeWarnStatus(false, mWarningMsg.getMsg());
         }
 

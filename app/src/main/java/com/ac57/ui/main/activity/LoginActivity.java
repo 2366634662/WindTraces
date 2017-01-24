@@ -1,9 +1,9 @@
 package com.ac57.ui.main.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,6 +14,7 @@ import com.ac57.framework.base.MVPBaseActivity;
 import com.ac57.framework.tools.AppManager;
 import com.ac57.framework.tools.SPHelper;
 import com.ac57.framework.utils.IntentUtils;
+import com.ac57.framework.utils.StringUtils;
 import com.ac57.ui.entity.UserInfoData;
 import com.ac57.ui.presenter.LoginPresenter;
 import com.ac57.ui.presenter.view.ILoginActivityView;
@@ -21,6 +22,7 @@ import com.ac57.ui.view.customtoast.ToastUtils;
 import com.ac57.ui.view.edittext.AutoCheckEditText;
 import com.ac57.ui.view.edittext.AutoCheckEditTextClass;
 import com.ac57.ui.view.edittext.EditTextType;
+import com.ac57.ui.view.statusbar.StatusBarUtil;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import java.util.ArrayList;
@@ -81,6 +83,9 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#2c8dff"));
+
+
         new AutoCheckEditTextClass(tilayoutLoginPhone, loginTel).checkType(EditTextType.TYPE_OF_MOBILE).setHintEnabled(true).setTextWatcher(hasContent -> {
             phone = hasContent;
             if (phone && passWord && loginTel.getText().toString().trim().length() == 11) {
@@ -106,7 +111,12 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
 
     @Override
     public void initDatas() {
-
+        if (StringUtils.isNotEmpty(SPHelper.getInstence(this).getLoginPhone())) {
+            loginTel.setText(SPHelper.getInstence(this).getLoginPhone());
+            loginPass.requestFocus();
+        } else {
+            loginTel.requestFocus();
+        }
     }
 
     @Override
@@ -129,10 +139,6 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
                 break;
             case R.id.login_bnt:
                 mPresenter.doLogin(loginTel.getText().toString().trim(), loginPass.getText().toString().trim());
-
-                Log.e("tag", "" + loginTel.getText().toString().trim());
-                Log.e("tag", "" + loginPass.getText().toString().trim());
-
                 break;
             case R.id.login_weixin:
                 mPresenter.doThreeLogin(SHARE_MEDIA.WEIXIN);
@@ -147,6 +153,7 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
     public void openHome(UserInfoData bean) {
         ToastUtils.success("登陆成功");
         SPHelper.getInstence(this).setUserType(bean.user_model.user_type);
+        SPHelper.getInstence(this).setLoginPhone(loginTel.getText().toString().trim());
         saveUser(bean);
         Bundle bundle = new Bundle();
 //        bundle.putParcelableArrayList("",bean.exchange_data);
