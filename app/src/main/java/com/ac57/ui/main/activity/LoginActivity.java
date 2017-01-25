@@ -22,7 +22,6 @@ import com.ac57.ui.view.customtoast.ToastUtils;
 import com.ac57.ui.view.edittext.AutoCheckEditText;
 import com.ac57.ui.view.edittext.AutoCheckEditTextClass;
 import com.ac57.ui.view.edittext.EditTextType;
-import com.ac57.ui.view.statusbar.StatusBarUtil;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import java.util.ArrayList;
@@ -83,8 +82,8 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#2c8dff"));
-
+//        StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#2c8dff"));
+        setStatusBarColor(Color.parseColor("#2c8dff"), 0);
 
         new AutoCheckEditTextClass(tilayoutLoginPhone, loginTel).checkType(EditTextType.TYPE_OF_MOBILE).setHintEnabled(true).setTextWatcher(hasContent -> {
             phone = hasContent;

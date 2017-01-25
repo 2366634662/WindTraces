@@ -110,7 +110,8 @@
                         android:imeOptions="actionDone"
                         android:inputType="number"
                         android:maxLength="11"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textSize="16sp" />
                 </android.support.design.widget.TextInputLayout>
 
 
@@ -156,7 +157,8 @@
                             android:imeOptions="actionDone"
                             android:inputType="textPassword"
                             android:maxLength="11"
-                            android:singleLine="true" />
+                            android:singleLine="true"
+                            android:textSize="16sp" />
                     </android.support.design.widget.TextInputLayout>
 
 
@@ -171,7 +173,7 @@
                 android:layout_below="@+id/login_center"
                 android:layout_marginLeft="@dimen/DIMEN_25PX"
                 android:layout_marginRight="@dimen/DIMEN_25PX"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/login_bnt_bg1"
                 android:button="@null"
                 android:clickable="false"

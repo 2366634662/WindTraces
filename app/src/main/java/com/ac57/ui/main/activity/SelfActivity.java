@@ -1,5 +1,6 @@
 package com.ac57.ui.main.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -70,12 +71,14 @@ public class SelfActivity extends MVPBaseActivity<SelfPresenter, ISelfView> impl
                 R.drawable.level4,
                 R.drawable.level5,
                 R.drawable.level6};
+        setStatusBarColor(Color.WHITE, 30);
     }
 
     @Override
     public void initDatas() {
 
     }
+
 
     @Override
     public void loadData() {

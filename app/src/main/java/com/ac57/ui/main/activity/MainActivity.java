@@ -66,6 +66,11 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    public boolean isSupportSwipeBack() {
+        return false;
+    }
+
+    @Override
     public void initDatas() {
 
         adapter = new MyFragmentPageAdapter(getSupportFragmentManager());

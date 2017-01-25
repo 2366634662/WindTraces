@@ -24,6 +24,11 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     @Override
+    public boolean isSupportSwipeBack() {
+        return false;
+    }
+
+    @Override
     public void initDatas() {
         new Timer().schedule(new TimerTask() {
             @Override

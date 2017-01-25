@@ -57,6 +57,11 @@ public class AppLogoActivity extends MVPBaseActivity<LoginPresenter, ILoginActiv
     }
 
     @Override
+    public boolean isSupportSwipeBack() {
+        return false;
+    }
+
+    @Override
     public void initDatas() {
         RxPermissions rxPermissions = new RxPermissions(this);
         rxPermissions

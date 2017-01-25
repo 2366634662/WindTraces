@@ -20,6 +20,7 @@ import java.util.Map;
 
 /**
  * Created by Du_Li on 2016/12/30.
+ * 多状态布局
  */
 
 public class EasyStatusView extends RelativeLayout implements View.OnClickListener {

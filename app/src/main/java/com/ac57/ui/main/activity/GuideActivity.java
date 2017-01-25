@@ -74,6 +74,11 @@ public class GuideActivity extends BaseActivity {
     }
 
     @Override
+    public boolean isSupportSwipeBack() {
+        return false;
+    }
+
+    @Override
     public void loadData() {
 
     }

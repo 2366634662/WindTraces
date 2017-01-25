@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 
+import cn.bingoogolapple.swipebacklayout.BGASwipeBackManager;
 import cn.jpush.android.api.JPushInterface;
 
 /**
@@ -25,6 +26,7 @@ public class AppContext extends Application {
         JPushInterface.init(this);
         UMShareAPI.get(this);
         initShareLogin();
+        BGASwipeBackManager.getInstance().init(this);
     }
 
     /**

@@ -127,6 +127,10 @@ dependencies {
     compile 'cn.bingoogolapple:bga-photopicker:1.2.3@aar'
     compile 'cn.bingoogolapple:bga-adapter:1.1.5@aar'
 
+
+    //滑动返回
+    compile 'cn.bingoogolapple:bga-swipebacklayout:1.0.7@aar'
+
 }
 
 def releaseTime() {
