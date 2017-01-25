@@ -1,15 +1,30 @@
 package com.ac57.ui.main.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.ac57.R;
+import com.ac57.framework.base.BaseActivity;
 
-public class MyCollectionActivity extends AppCompatActivity {
+public class MyCollectionActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_collection);
+    public int getLayout() {
+        return R.layout.activity_my_collection;
+    }
+
+    @Override
+    public void initView(Bundle savedInstanceState) {
+        setStatusBarColor(Color.WHITE,30);
+    }
+
+    @Override
+    public void initDatas() {
+
+    }
+
+    @Override
+    public void loadData() {
+
     }
 }

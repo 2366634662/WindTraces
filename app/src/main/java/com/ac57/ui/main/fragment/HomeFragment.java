@@ -1,5 +1,6 @@
 package com.ac57.ui.main.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +11,6 @@ import android.widget.ImageView;
 import com.ac57.R;
 import com.ac57.framework.base.MVPBaseFragment;
 import com.ac57.framework.refresh.RefreshLayout;
-import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.adapter.HomeListInfoAdapter;
 import com.ac57.ui.entity.HomeBannerEntity;
 import com.ac57.ui.entity.HomeInfoListEntity;
@@ -88,7 +88,9 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
             case R.id.iv_title_left:
                 break;
             case R.id.iv_title_right:
-                IntentUtils.startActivity(getActivity(), SelfActivity.class);
+//                IntentUtils.startActivity(getActivity(), SelfActivity.class);
+                getActivity().startActivity(new Intent(getActivity(), SelfActivity.class));
+                getActivity().overridePendingTransition(cn.bingoogolapple.swipebacklayout.R.anim.bga_sbl_activity_forward_enter, cn.bingoogolapple.swipebacklayout.R.anim.bga_sbl_activity_forward_exit);
                 break;
         }
     }

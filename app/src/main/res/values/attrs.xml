@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-
+    <!--设置条目的View-->
     <declare-styleable name="SuperTextView">
         <attr name="sLeftIconRes" format="reference" />
         <attr name="sRightIconRes" format="reference" />
@@ -93,6 +93,7 @@
         <attr name="esv_empty" format="reference" />
         <attr name="esv_noNet" format="reference" />
     </declare-styleable>
+    <!--圆形图-->
     <declare-styleable name="CircleImageView">
         <attr name="border_width" format="dimension" />
         <attr name="border_color" format="color" />
@@ -100,20 +101,8 @@
     </declare-styleable>
     <attr name="errorColor" format="color" />
     <attr name="maxCharacters" format="integer" />
-    <declare-styleable name="materialEditText">
-        <!-- Highlight color of floating label text and underline. -->
-        <attr name="backgroundColor" format="color" />
-        <!-- Error color of under line text and underline. -->
-        <attr name="errorColor" />
-        <!-- Enable floating label text. -->
-        <attr name="floatingLabel" format="boolean" />
-        <!-- Max characters count limit. 0 means no max. -->
-        <attr name="maxCharacters" />
-        <!-- Icon (ImageView) associated to this EditText. -->
-        <attr name="withIcon" format="reference" />
-    </declare-styleable>
 
-
+    <!--个人中心的进度条-->
     <declare-styleable name="Theme">
         <attr name="progressHintStyle" format="reference" />
     </declare-styleable>

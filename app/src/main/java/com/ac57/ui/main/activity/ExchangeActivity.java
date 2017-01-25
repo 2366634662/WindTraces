@@ -1,18 +1,33 @@
 package com.ac57.ui.main.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.ac57.R;
+import com.ac57.framework.base.BaseActivity;
 
 /**
  * 定制的文交所
  */
-public class ExchangeActivity extends AppCompatActivity {
+public class ExchangeActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exchange);
+    public int getLayout() {
+        return R.layout.activity_exchange;
+    }
+
+    @Override
+    public void initView(Bundle savedInstanceState) {
+        setStatusBarColor(Color.WHITE,30);
+    }
+
+    @Override
+    public void initDatas() {
+
+    }
+
+    @Override
+    public void loadData() {
+
     }
 }

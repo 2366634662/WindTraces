@@ -145,22 +145,28 @@ public class SelfActivity extends MVPBaseActivity<SelfPresenter, ISelfView> impl
                 IntentUtils.startActivity(this, ExchangeActivity.class, bundle);
                 break;
             case R.id.self_stv_tab2:
-                startNextActivity(MyTopicActivity.class);
+//                startNextActivity(MyTopicActivity.class);
+                mSwipeBackHelper.forward(MyTopicActivity.class);
                 break;
             case R.id.self_stv_tab3:
-                startNextActivity(MyCollectionActivity.class);
+//                startNextActivity(MyCollectionActivity.class);
+                mSwipeBackHelper.forward(MyCollectionActivity.class);
                 break;
             case R.id.self_stv_tab4:
-                startNextActivity(MyChoseActivity.class);
+//                startNextActivity(MyChoseActivity.class);
+                mSwipeBackHelper.forward(MyChoseActivity.class);
                 break;
             case R.id.self_stv_tab5:
-                IntentUtils.startActivity(this, SelectExchangeActivity.class);
+//                IntentUtils.startActivity(this, SelectExchangeActivity.class);
+                mSwipeBackHelper.forward(SelectExchangeActivity.class);
                 break;
             case R.id.self_stv_tab6:
-                IntentUtils.startActivity(this, HelpFeedbackActivity.class);
+                mSwipeBackHelper.forward(HelpFeedbackActivity.class);
+//                IntentUtils.startActivity(this, HelpFeedbackActivity.class);
                 break;
             case R.id.self_stv_tab7:
-                IntentUtils.startActivity(this, SettingActviity.class);
+//                IntentUtils.startActivity(this, SettingActviity.class);
+                mSwipeBackHelper.forward(SettingActviity.class);
                 break;
         }
     }

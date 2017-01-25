@@ -3,7 +3,6 @@ package com.ac57.ui.main.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.ac57.R;
@@ -15,15 +14,11 @@ import com.ac57.ui.main.fragment.InteractiveFragment;
 import com.ac57.ui.main.fragment.NewGoodsFragment;
 import com.ac57.ui.main.fragment.NoticeFragment;
 import com.ac57.ui.main.fragment.ReadingTypeFragment;
-import com.ac57.ui.utils.EventBusUtils;
 import com.ac57.ui.view.MyViewPager;
 import com.ac57.ui.view.statusbar.StatusBarUtil;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
-
-import org.simple.eventbus.Subscriber;
-import org.simple.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -143,10 +138,6 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    @Subscriber(mode = ThreadMode.MAIN, tag = EventBusUtils.ID_AND_NAME)
-    public void getName(int id) {
-        Log.e("taggg", "ex_name " + id);
-    }
 
     @Override
     public void onDestroy() {

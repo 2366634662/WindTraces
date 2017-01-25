@@ -31,5 +31,4 @@ public class SelfPresenter extends BasePresenter<ISelfView> {
             }
         });
     }
-
 }

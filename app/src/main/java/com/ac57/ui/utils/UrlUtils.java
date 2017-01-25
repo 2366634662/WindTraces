@@ -34,7 +34,6 @@ public class UrlUtils {
     public static final String COUSTOM_COLLECTION_LIST_URL = "Index/Trade/followList";
     //删除自选藏品
     public static final String DELETE_COUSTOM_COLLECTION_URL = "Index/Trade/followTrade";
-
     //个人中心获取用户信息
     public static final String USER_INFO_DETAIL_URL = "Index/My/userBaseInfo";
 
