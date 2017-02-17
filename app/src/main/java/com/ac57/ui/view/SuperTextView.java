@@ -539,6 +539,15 @@ public class SuperTextView extends RelativeLayout {
         if (rightIconRes != null) {
             rightIconIV.setImageDrawable(rightIconRes);
         }
+        rightIconIV.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onSuperTextViewClickListener != null) {
+                    onSuperTextViewClickListener.onRightIconClick();
+                }
+            }
+        });
+
         addView(rightIconIV);
     }
 
@@ -900,6 +909,8 @@ public class SuperTextView extends RelativeLayout {
         }
 
         public void onLeftBottomClick2() {
+        }
+        public void onRightIconClick() {
         }
 
     }

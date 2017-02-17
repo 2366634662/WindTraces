@@ -33,7 +33,6 @@ public abstract class BaseRepository {
                             return Observable.error(new DefaultErrorException(result.desc));
                         }
                     }
-
                 });
     }
 

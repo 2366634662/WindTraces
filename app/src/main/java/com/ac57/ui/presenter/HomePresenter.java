@@ -12,7 +12,6 @@ import com.ac57.ui.presenter.view.IHomeView;
 import java.util.List;
 
 /**
- * Created by Du_Li on 2016/12/25.
  */
 
 public class HomePresenter extends BasePresenter<IHomeView> {

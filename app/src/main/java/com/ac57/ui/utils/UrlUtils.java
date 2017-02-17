@@ -36,5 +36,20 @@ public class UrlUtils {
     public static final String DELETE_COUSTOM_COLLECTION_URL = "Index/Trade/followTrade";
     //个人中心获取用户信息
     public static final String USER_INFO_DETAIL_URL = "Index/My/userBaseInfo";
-
+    //某用户的消息列表
+    public static final String SELF_MESSAGE_URL = "Index/Msg/listForUser";
+    //文交所开户
+    public static final String SELECTEXCHANGE_URL = "Index/My/excOpeningList";
+    //文交所列表
+    public static final String EXCHANGE_LIST_INFO_URL = "Index/Exchange/theList";
+    //我的话题列表
+    public static final String TOPIC_ITEM_LIST_INFO_URL = "Index/My/myTopicList";
+    //某文交所的行情
+    public static final String EXCHANGEQUO_TOP_LIST_INFO_URL = "Index/exchange/market";
+    //某文交所所属的藏品行情列表
+    public static final String EXCHANGEQUO_LIST_INFO_URL = "Index/Trade/listForExc";
+    //某用户的主页
+    public static final String OTHER_USER_INFO_URL = "Index/My/homePage";
+    //其他用户的话题列表
+    public static final String OTHSER_ONE_TWO_LIST_INFO_URL ="Index/My/myTopicList";
 }

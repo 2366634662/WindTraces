@@ -4,15 +4,23 @@ package com.ac57.ui.service;
 import com.ac57.framework.base.BaseEntity;
 import com.ac57.ui.entity.CoustomCollectionEntity;
 import com.ac57.ui.entity.DeleteCoustomCollectionData;
+import com.ac57.ui.entity.ExchangeEntity;
 import com.ac57.ui.entity.HomeBannerEntity;
 import com.ac57.ui.entity.HomeInfoListEntity;
 import com.ac57.ui.entity.InteractEventEntity;
+import com.ac57.ui.entity.MyReleaseAndInvoledEntity;
 import com.ac57.ui.entity.NewGoodsEntity;
 import com.ac57.ui.entity.NoticeEntity;
+import com.ac57.ui.entity.OptionDetailListEntity;
+import com.ac57.ui.entity.OptionDetailListTopEntity;
 import com.ac57.ui.entity.OptionWatchBottomEntity;
 import com.ac57.ui.entity.OptionWatchCenterEntity;
 import com.ac57.ui.entity.OptionWatchTopEntity;
 import com.ac57.ui.entity.OtherTypesInteractEntity;
+import com.ac57.ui.entity.OtherUserInfoEntity;
+import com.ac57.ui.entity.ReleaseOrInvoledEntity;
+import com.ac57.ui.entity.SelectExchangeEntity;
+import com.ac57.ui.entity.SelfMessageEntity;
 import com.ac57.ui.entity.UserInfoData;
 import com.ac57.ui.entity.UserInfoDetailEntity;
 import com.ac57.ui.utils.UrlUtils;
@@ -97,16 +105,60 @@ public interface IAppNetService {
     @POST(UrlUtils.NEW_GOODS_URL)
     @FormUrlEncoded
     Observable<BaseEntity<List<NewGoodsEntity>>> getNewGoodsData(@Field("page") String page, @Field("pagesize") String pageSize, @Field("exc_id") String exc_id, @Field("new_goods_type") String new_goods_type);
+
     //自选藏品列表
     @POST(UrlUtils.COUSTOM_COLLECTION_LIST_URL)
     @FormUrlEncoded
     Observable<BaseEntity<List<CoustomCollectionEntity>>> getCoustomCollectionData(@Field("page") String page, @Field("pagesize") String pageSize, @Field("is_desc") String is_desc, @Field("show_user_id") String show_user_id);
+
     //删除自选藏品列表
     @POST(UrlUtils.DELETE_COUSTOM_COLLECTION_URL)
     @FormUrlEncoded
     Observable<BaseEntity<DeleteCoustomCollectionData>> deleteCoustomCollectionData(@Field("trade_id") String trade_id, @Field("action") String action);
+
     //删除自选藏品列表
     @POST(UrlUtils.USER_INFO_DETAIL_URL)
     Observable<BaseEntity<UserInfoDetailEntity>> getUserDetailData();
+
+    //获取个人消息中心数据列表
+    @POST(UrlUtils.SELF_MESSAGE_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<List<SelfMessageEntity>>> getSelfMessageData(@Field("page") int page, @Field("pagesize") int pagesize);
+
+    //获取定制文交所列表
+    @POST(UrlUtils.EXCHANGE_LIST_INFO_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<List<ExchangeEntity>>> getExchangeData(@Field("page") int page, @Field("pagesize") int pagesize);
+
+    //获取文交所列表数据
+    @POST(UrlUtils.SELECTEXCHANGE_URL)
+    Observable<BaseEntity<SelectExchangeEntity>> getSelectExchangeData();
+
+    //获取我发布的话题列表
+    @POST(UrlUtils.TOPIC_ITEM_LIST_INFO_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<List<MyReleaseAndInvoledEntity>>> getMyReleaseData(@Field("page") int page, @Field("pagesize") int pagesize, @Field("is_mine") String type, @Field("show_user_id") String show_user_id);
+
+
+    //删除自选藏品列表
+    @POST(UrlUtils.EXCHANGEQUO_TOP_LIST_INFO_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<OptionDetailListTopEntity>> getOptionDetailTopData(@Field("exc_id") String exc_id);
+
+    //自选藏品列表
+    @POST(UrlUtils.EXCHANGEQUO_LIST_INFO_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<List<OptionDetailListEntity>>> getOptionDetailListData(@Field("page") int page, @Field("pagesize") String pageSize, @Field("exc_id") String exc_id, @Field("order_key") String order_key, @Field("is_desc") int is_desc);
+
+    //查看用户的信息
+    @POST(UrlUtils.OTHER_USER_INFO_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<OtherUserInfoEntity>> getOtherUserInfoData(@Field("show_user_id") String show_user_id);
+
+    //自选藏品列表
+    @POST(UrlUtils.OTHSER_ONE_TWO_LIST_INFO_URL)
+    @FormUrlEncoded
+    Observable<BaseEntity<List<ReleaseOrInvoledEntity>>> getReleaseOrInvoledListData(@Field("page") int page, @Field("pagesize") String pageSize, @Field("is_mine") String is_mine, @Field("show_user_id") String show_user_id);
+
 
 }

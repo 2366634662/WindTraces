@@ -1,18 +1,22 @@
 package com.ac57.ui.adapter;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.view.View;
 import android.widget.TextView;
 
 import com.ac57.R;
+import com.ac57.framework.tools.SPHelper;
+import com.ac57.framework.utils.IntentUtils;
 import com.ac57.framework.utils.StringUtils;
 import com.ac57.ui.entity.OtherTypesInteractEntity;
 import com.ac57.ui.entity.emoji.DrawPaser;
 import com.ac57.ui.entity.emoji.TextBeans;
 import com.ac57.ui.entity.emoji.TextImgBean;
 import com.ac57.ui.entity.emoji.TextsUntil;
+import com.ac57.ui.main.activity.OtherUserActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -31,7 +35,6 @@ public class OtherTypesInteractAdapter extends BGARecyclerViewAdapter<OtherTypes
 
     private TextView tv_open_content;
     private TextView tv_interact_item_item_content;
-
 
     public OtherTypesInteractAdapter(RecyclerView xRecyclerView) {
         super(xRecyclerView, R.layout.item_other_type_interact);
@@ -71,6 +74,7 @@ public class OtherTypesInteractAdapter extends BGARecyclerViewAdapter<OtherTypes
         }
         List<TextImgBean> ibean = new DrawPaser(mContext).getDrawBean(con + "");
         final TextBeans beans = new TextBeans(mContext);
+        beans.setImgSize(Math.abs(tv_interact_item_item_content.getPaint().getFontMetricsInt().top));
         SpannableString bea = new TextBeans(mContext, content).init();
         SpannableString[] sp = beans.inits(ibean);
         tv_open_content.setText("查看全部");
@@ -125,6 +129,17 @@ public class OtherTypesInteractAdapter extends BGARecyclerViewAdapter<OtherTypes
         else
             helper.setText(R.id.tv__interact_item_item_write, "回复");
 
+
+        helper.getView(R.id.cv_interact_item_item_head).setOnClickListener(v -> {
+            if (!SPHelper.getInstence(mContext).getUserId().equals(item.user_show_data.id)) {
+                Bundle bundle = new Bundle();
+                bundle.putString("show_user_id", item.user_show_data.id);
+                IntentUtils.startActivity(mContext, OtherUserActivity.class, bundle);
+            } else {
+                //跳个人主页
+            }
+        });
+
     }
 
     private void setTextViewColor(TextView tv, boolean isTrue) {
@@ -141,4 +156,6 @@ public class OtherTypesInteractAdapter extends BGARecyclerViewAdapter<OtherTypes
     public void onClickNinePhotoItem(BGANinePhotoLayout ninePhotoLayout, View view, int position, String model, List<String> models) {
 
     }
+
+
 }

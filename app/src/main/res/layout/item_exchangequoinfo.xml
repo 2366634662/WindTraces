@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llayout_exchangequoinfo_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/DIMEN_20PX"
+        android:paddingLeft="@dimen/DIMEN_25PX"
+        android:paddingRight="@dimen/DIMEN_25PX"
+        android:paddingTop="@dimen/DIMEN_20PX">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/exchangequoinfo_item_title_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tv_exchangequoinfo_item_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="亚太电信套票"
+                    android:textColor="#5c5c5c"
+                    android:textSize="@dimen/DIMEN_20PX" />
+
+                <TextView
+                    android:id="@+id/tv_exchangequoinfo_item_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/DIMEN_8PX"
+                    android:text="5412"
+                    android:textColor="#565656"
+                    android:textSize="@dimen/DIMEN_14PX" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_exchangequoinfo_item_zf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/DIMEN_32PX"
+                android:text="9.99%"
+                android:textColor="@color/myoptional_red"
+                android:textSize="@dimen/DIMEN_20PX" />
+
+            <TextView
+                android:id="@+id/tv_exchangequoinfo_item_item_prcie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/tv_exchangequoinfo_item_zf"
+                android:layout_toRightOf="@id/exchangequoinfo_item_title_linear"
+                android:gravity="right"
+                android:text="331.11"
+                android:textColor="@color/myoptional_red"
+                android:textSize="@dimen/DIMEN_20PX" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_exchangequoinfo_item_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/DIMEN_25PX"
+        android:background="@color/otheruser_center_tv_cor" />
+</LinearLayout>

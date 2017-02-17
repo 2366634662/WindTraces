@@ -18,7 +18,6 @@ import com.ac57.framework.utils.StringUtils;
 import com.ac57.ui.entity.UserInfoData;
 import com.ac57.ui.presenter.LoginPresenter;
 import com.ac57.ui.presenter.view.ILoginActivityView;
-import com.ac57.ui.view.customtoast.ToastUtils;
 import com.ac57.ui.view.edittext.AutoCheckEditText;
 import com.ac57.ui.view.edittext.AutoCheckEditTextClass;
 import com.ac57.ui.view.edittext.EditTextType;
@@ -150,7 +149,7 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
 
     @Override
     public void openHome(UserInfoData bean) {
-        ToastUtils.success("登陆成功");
+//        ToastUtils.success("登陆成功");
         SPHelper.getInstence(this).setUserType(bean.user_model.user_type);
         SPHelper.getInstence(this).setLoginPhone(loginTel.getText().toString().trim());
         saveUser(bean);
@@ -169,13 +168,11 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
         IntentUtils.startActivity(LoginActivity.this, MainActivity.class, bundle);
         AppManager.getInstance().killAllActivity();
         finish();
-
-
     }
 
     @Override
     public void showDailog(String msg) {
-        ToastUtils.success(msg);
+//        ToastUtils.success(msg);
     }
 
     @Override
@@ -185,7 +182,7 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
 
     @Override
     public void showError(String msg) {
-        ToastUtils.success(msg);
+//        ToastUtils.success(msg);
     }
 
     public void saveUser(UserInfoData bean) {

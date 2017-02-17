@@ -3,6 +3,7 @@ package com.ac57.ui.main.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -16,13 +17,10 @@ import com.ac57.ui.AppContext;
 import com.ac57.ui.entity.UserInfoData;
 import com.ac57.ui.presenter.LoginPresenter;
 import com.ac57.ui.presenter.view.ILoginActivityView;
-import com.ac57.ui.utils.EventBusUtils;
 import com.ac57.ui.view.customtoast.ToastUtils;
 import com.ac57.ui.view.statusbar.StatusBarUtil;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.umeng.socialize.bean.SHARE_MEDIA;
-
-import org.simple.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -75,9 +73,15 @@ public class AppLogoActivity extends MVPBaseActivity<LoginPresenter, ILoginActiv
                 });
     }
 
+    ArrayList<String> ex_id;
+    ArrayList<String> ex_title;
+
     @Override
     public void loadData() {
-
+        ex_title = new ArrayList<>();
+        ex_title.add("全部");
+        ex_id = new ArrayList<>();
+        ex_id.add("all");
     }
 
     @OnClick({R.id.btn_login_or_reg, R.id.llayout_login_weixin, R.id.llayout_login_qq, R.id.tv_login_visitor})
@@ -107,7 +111,10 @@ public class AppLogoActivity extends MVPBaseActivity<LoginPresenter, ILoginActiv
                 if (AppContext.getMyAppContext().verifyNetwork()) {
                     mPresenter.doVisitorLogin();
                 } else {
-                    ToastUtils.success("没有网络,请检查");
+                    Bundle bundle = new Bundle();
+                    bundle.putStringArrayList("ex_title", ex_title);
+                    bundle.putStringArrayList("ex_id", ex_id);
+                    IntentUtils.startActivity(AppLogoActivity.this, MainActivity.class, bundle);
                 }
                 break;
         }
@@ -119,14 +126,10 @@ public class AppLogoActivity extends MVPBaseActivity<LoginPresenter, ILoginActiv
         saveUser(bean);
         SPHelper.getInstence(this).setUserType(bean.user_model.user_type);
         if (!isVisitor) {
-            ToastUtils.success("登陆成功");
+//            ToastUtils.success("登陆成功");
         }
-        EventBus.getDefault().post(1, EventBusUtils.ID_AND_NAME);
         Bundle bundle = new Bundle();
-        ArrayList<String> ex_title = new ArrayList<>();
-        ex_title.add("全部");
-        ArrayList<String> ex_id = new ArrayList<>();
-        ex_id.add("all");
+
         for (UserInfoData.ExchangeDataBean s : bean.exchange_data) {
             ex_title.add(s.name);
             ex_id.add(s.id);
@@ -149,7 +152,7 @@ public class AppLogoActivity extends MVPBaseActivity<LoginPresenter, ILoginActiv
 
     @Override
     public void showError(String msg) {
-
+        Log.e("tag", "" + msg);
     }
 
     @Override

@@ -8,10 +8,17 @@
     <ImageView
         android:id="@+id/iv_title_left"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_centerVertical="true"
-        android:layout_margin="16dp"
-        android:background="@drawable/news" />
+        android:padding="16dp"
+        android:src="@drawable/news" />
+
+    <TextView
+        android:id="@+id/tv_title_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/iv_title_center"
@@ -27,6 +34,6 @@
         android:layout_height="50dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_margin="16dp"
+        android:padding="16dp"
         android:src="@drawable/news_personal" />
 </RelativeLayout>

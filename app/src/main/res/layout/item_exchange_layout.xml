@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="@dimen/DIMEN_48PX"
+        android:layout_height="@dimen/DIMEN_42PX">
+
+        <com.ac57.ui.view.CircleView
+            android:id="@+id/cv_exchange_img"
+            android:layout_width="@dimen/DIMEN_42PX"
+            android:layout_height="@dimen/DIMEN_42PX"
+            android:gravity="center"
+            android:text="金"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/DIMEN_18PX" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_exchange_stat"
+                android:layout_width="@dimen/DIMEN_20PX"
+                android:layout_height="@dimen/DIMEN_20PX"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/login_choose" />
+        </RelativeLayout>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_exchange_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/DIMEN_30PX"
+        android:layout_marginTop="@dimen/DIMEN_16PX"
+        android:text="金马甲"
+        android:textColor="#253140"
+        android:textSize="@dimen/DIMEN_16PX" />
+</LinearLayout>

@@ -139,7 +139,6 @@
             </intent-filter>
         </activity>
 
-
         <!-- 友盟分享，第三方登陆 -->
         <!-- 微信 -->
         <activity
@@ -180,9 +179,7 @@
             android:value="5695e5cf67e58e533a001153" />
 
         <activity android:name=".ui.main.activity.AppLogoActivity" />
-
         <activity android:name=".ui.main.activity.GuideActivity" />
-
         <activity
             android:name=".ui.main.activity.LoginActivity"
             android:screenOrientation="portrait"
@@ -193,7 +190,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-
         <activity
             android:name=".ui.main.activity.SelfActivity"
             android:screenOrientation="portrait"
@@ -241,6 +237,26 @@
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".ui.main.activity.WebViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Transparent"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.main.activity.SelfMessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Transparent"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.main.activity.OptionDetailListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Transparent"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.main.activity.ReadCollectInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Transparent"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.main.activity.OtherUserActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent"
             android:windowSoftInputMode="stateHidden|adjustResize"></activity>

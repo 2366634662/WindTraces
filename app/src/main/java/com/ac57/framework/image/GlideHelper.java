@@ -10,14 +10,18 @@ import com.bumptech.glide.Glide;
  * Desc:
  */
 public class GlideHelper {
-    private static GlideHelper mGlideHelper;
+    private volatile static GlideHelper mGlideHelper;
 
     private GlideHelper() {
     }
 
     public static GlideHelper getInstance() {
         if (mGlideHelper == null) {
-            mGlideHelper = new GlideHelper();
+            synchronized (GlideHelper.class) {
+                if (mGlideHelper == null) {
+                    mGlideHelper = new GlideHelper();
+                }
+            }
         }
         return mGlideHelper;
     }

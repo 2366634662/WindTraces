@@ -1,11 +1,15 @@
 package com.ac57.ui.adapter;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
 import com.ac57.R;
+import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.entity.OptionWatchBottomEntity;
+import com.ac57.ui.main.activity.OptionDetailListActivity;
 import com.ac57.ui.view.CircleView;
 
 import cn.bingoogolapple.androidcommon.adapter.BGARecyclerViewAdapter;
@@ -22,7 +26,7 @@ public class OptionWatchBottomAdapter extends BGARecyclerViewAdapter<OptionWatch
     private TextView tv_bottom_item_tab3;
 
     public OptionWatchBottomAdapter(RecyclerView xRecyclerView) {
-        super(xRecyclerView,  R.layout.item_option_bottom);
+        super(xRecyclerView, R.layout.item_option_bottom);
     }
 
     @Override
@@ -49,6 +53,14 @@ public class OptionWatchBottomAdapter extends BGARecyclerViewAdapter<OptionWatch
             tv_bottom_item_tab2.setTextColor(mContext.getResources().getColor(R.color.myoptional_yellow));
             tv_bottom_item_tab3.setTextColor(mContext.getResources().getColor(R.color.myoptional_yellow));
         }
+        helper.getView(R.id.rlayout_option_content).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("id", item.id);
+                IntentUtils.startActivity(mContext, OptionDetailListActivity.class, bundle);
+            }
+        });
 
     }
 }

@@ -99,7 +99,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BGASwipe
         // 设置是否仅仅跟踪左侧边缘的滑动返回。默认值为 true
         mSwipeBackHelper.setIsOnlyTrackingLeftEdge(true);
         // 设置是否是微信滑动返回样式。默认值为 true
-        mSwipeBackHelper.setIsWeChatStyle(true);
+        mSwipeBackHelper.setIsWeChatStyle(false);
         // 设置阴影资源 id。默认值为 R.drawable.bga_sbl_shadow
         mSwipeBackHelper.setShadowResId(R.drawable.bga_sbl_shadow);
         // 设置是否显示滑动返回的阴影效果。默认值为 true
@@ -155,7 +155,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BGASwipe
      * @param color
      */
     protected void setStatusBarColor(@ColorInt int color) {
-        setStatusBarColor(color, StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
+        setStatusBarColor(color, 30);
     }
 
     /**
@@ -199,7 +199,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BGASwipe
     public static final int REQUEST_PERMISSION_CODE = 1;
     private static IPermissionsLinstener mPermissionsLinstener;
 
-    public static void requestPresmision(String[] permission, IPermissionsLinstener permissionsLinstener) {
+    public static void requestPresmision(IPermissionsLinstener permissionsLinstener, String... permission) {
         mPermissionsLinstener = permissionsLinstener;
         if (permissionsLinstener == null) {
             return;

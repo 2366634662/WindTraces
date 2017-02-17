@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:paddingBottom="0.5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/DIMEN_15PX"
+        android:paddingLeft="@dimen/DIMEN_25PX"
+        android:paddingRight="@dimen/DIMEN_25PX"
+        android:paddingTop="@dimen/DIMEN_15PX">
+
+        <com.ac57.ui.view.CircleView
+            android:id="@+id/cv_select_exchange_type"
+            android:layout_width="@dimen/DIMEN_42PX"
+            android:layout_height="@dimen/DIMEN_42PX"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/DIMEN_20PX" />
+
+        <TextView
+            android:id="@+id/tv_select_exchange_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/DIMEN_15PX"
+            android:layout_weight="1"
+            android:text="华夏"
+            android:textColor="#182535"
+            android:textSize="@dimen/DIMEN_18PX" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="@dimen/DIMEN_20PX"
+            android:src="@drawable/personal_arrow_right" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/DIMEN_25PX"
+        android:background="#f2f2f2" />
+</LinearLayout>

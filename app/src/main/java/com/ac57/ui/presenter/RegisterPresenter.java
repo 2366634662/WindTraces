@@ -4,7 +4,6 @@ import com.ac57.framework.base.BasePresenter;
 import com.ac57.ui.presenter.view.IRegisterView;
 
 /**
- * Created by Du_Li on 2016/12/20.
  */
 
 public class RegisterPresenter extends BasePresenter<IRegisterView> {

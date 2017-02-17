@@ -7,7 +7,6 @@ import com.ac57.ui.presenter.view.ISelfView;
 import com.ac57.ui.service.UserRepository;
 
 /**
- * Created by Du_Li on 2017/1/15.
  */
 
 public class SelfPresenter extends BasePresenter<ISelfView> {

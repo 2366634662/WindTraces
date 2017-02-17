@@ -5,7 +5,6 @@ package com.ac57.ui.entity;
  */
 
 public class OptionWatchBottomEntity {
-
     public String id;
     public String name;
     public String icon_show_str;
@@ -19,23 +18,4 @@ public class OptionWatchBottomEntity {
     public String volume_show_str;
     public String turn_volume_show_str;
     public String is_up;
-
-    @Override
-    public String toString() {
-        return "OptionWatchBottomEntity{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", icon_show_str='" + icon_show_str + '\'' +
-                ", icon_show_color='" + icon_show_color + '\'' +
-                ", price='" + price + '\'' +
-                ", rises='" + rises + '\'' +
-                ", volume='" + volume + '\'' +
-                ", turn_volume='" + turn_volume + '\'' +
-                ", price_show_str='" + price_show_str + '\'' +
-                ", rises_show_str='" + rises_show_str + '\'' +
-                ", volume_show_str='" + volume_show_str + '\'' +
-                ", turn_volume_show_str='" + turn_volume_show_str + '\'' +
-                ", is_up='" + is_up + '\'' +
-                '}';
-    }
 }

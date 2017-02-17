@@ -9,7 +9,6 @@ import com.ac57.ui.service.UserRepository;
 import java.util.List;
 
 /**
- * Created by Du_Li on 2017/1/2.
  */
 
 public class AllTypeNoticePresenter extends BasePresenter<IAllTypeNoticeView> {
@@ -25,7 +24,6 @@ public class AllTypeNoticePresenter extends BasePresenter<IAllTypeNoticeView> {
                 model.disDailog();
                 model.getAllTypeNoticeData(entity);
             }
-
             @Override
             public void _onError(String e) {
                 model.disDailog();

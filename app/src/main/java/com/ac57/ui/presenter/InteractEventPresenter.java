@@ -9,7 +9,6 @@ import com.ac57.ui.presenter.view.IInteractEventView;
 import java.util.List;
 
 /**
- * Created by Du_Li on 2016/12/31.
  */
 
 public class InteractEventPresenter extends BasePresenter<IInteractEventView> {

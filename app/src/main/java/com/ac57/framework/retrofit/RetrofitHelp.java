@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * 封装 Retrofit的网络请求过程  设置一些每次网络请求都要用到的默认参数
  */
 public class RetrofitHelp {
-    private static String URL_BASE = "http://112.74.106.149/wind/Htdoc/";
+    private static String URL_BASE = "http://api.18wind.com/wind/Htdoc/";
     private static volatile Retrofit mRetrofit;
     private static volatile RetrofitHelp mClient;
 

@@ -47,6 +47,8 @@ public class SettingActviity extends BaseActivity {
 
     }
 
+
+
     @Override
     public void initDatas() {
         rxPermissions = new RxPermissions(this);

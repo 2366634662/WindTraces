@@ -87,8 +87,6 @@ public class InteractEventFragment extends MVPBaseFragment<InteractEventPresente
             page = 1;
             getData();
         });
-
-
     }
 
     @Override
@@ -116,21 +114,23 @@ public class InteractEventFragment extends MVPBaseFragment<InteractEventPresente
 
     @Override
     public void getInteractEventData(List<InteractEventEntity> entity) {
-        esvMultipView.content();
-        if (page == 1) {
-            adapter.setData(entity);
-            mRefreshLayout.endRefreshing();
+        if (entity.isEmpty()) {
+            esvMultipView.empty();
         } else {
-            adapter.addMoreData(entity);
-            mRefreshLayout.endLoadingMore();
+            esvMultipView.content();
+            if (page == 1) {
+                adapter.setData(entity);
+                mRefreshLayout.endRefreshing();
+            } else {
+                adapter.addMoreData(entity);
+                mRefreshLayout.endLoadingMore();
+            }
+            if (entity.size() < 10) {
+                mRefreshLayout.setPullUpRefreshEnable(false);
+            } else {
+                mRefreshLayout.setPullUpRefreshEnable(true);
+            }
+            adapter.notifyDataSetChanged();
         }
-        if (entity.size() < 10) {
-            mRefreshLayout.setPullUpRefreshEnable(false);
-        } else {
-            mRefreshLayout.setPullUpRefreshEnable(true);
-        }
-        adapter.notifyDataSetChanged();
     }
-
-
 }

@@ -30,8 +30,9 @@ public class GuideActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.hideStatusbar(this);
     }
+
 
     @Override
     public void initDatas() {
@@ -39,12 +40,10 @@ public class GuideActivity extends BaseActivity {
         bgaGuide.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
             public void onPageSelected(int position) {
-
                 if (position == bgaGuide.getItemCount() - 1) {
                     btnGuideEnter.setVisibility(View.VISIBLE);
                 } else {

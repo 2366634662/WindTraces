@@ -81,6 +81,7 @@ public class OtherTypesInteractFragment extends MVPBaseFragment<OtherTypesIntera
         esvMultipView.setMutipOnClick(() -> {
             getData();
         });
+
     }
 
     @Override

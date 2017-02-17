@@ -3,7 +3,6 @@ package com.ac57.framework.base;
 import android.content.Context;
 
 /**
- * Created by Du_Li on 2016/12/25.
  */
 
 public abstract class MVPBaseFragment<T extends BasePresenter, M extends BaseViewController> extends BaseFragment {

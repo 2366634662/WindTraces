@@ -13,5 +13,6 @@
     <!--沉浸式状态栏-->
     <item name="statusbarutil_fake_status_bar_view" type="id" />
     <item name="statusbarutil_translucent_view" type="id" />
-
+    <!--RecyclerView 悬浮头-->
+    <item name="sectioning_adapter_tag_key_view_viewholder" type="id" />
 </resources>

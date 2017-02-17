@@ -12,7 +12,6 @@ import com.ac57.ui.service.UserRepository;
 import java.util.List;
 
 /**
- * Created by Du_Li on 2017/1/11.
  */
 
 public class CoustomCollectionPresenter extends BasePresenter<ICoustomCollectionView> {

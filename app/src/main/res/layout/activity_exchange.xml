@@ -4,7 +4,107 @@
     android:id="@+id/activity_exchange"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/read_bg_cor"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context="com.ac57.ui.main.activity.ExchangeActivity">
 
+    <RelativeLayout
+        android:id="@+id/rlayout_exchange_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/iv_title_left"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:padding="16dp"
+            android:src="@drawable/news" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="定制文交所"
+            android:textColor="#565656"
+            android:textSize="@dimen/DIMEN_24PX" />
+
+        <TextView
+            android:id="@+id/iv_title_right"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="16dp"
+            android:text="确定"
+            android:textColor="#2c8dff"
+            android:textSize="@dimen/DIMEN_18PX" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_line_exchange"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/rlayout_exchange_title"
+        android:background="#f2f2f2" />
+
+    <TextView
+        android:id="@+id/tv_exchange_toast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_line_exchange"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:paddingBottom="@dimen/DIMEN_30PX"
+        android:paddingTop="@dimen/DIMEN_28PX"
+        android:text="您已关注0家文交所，还可以关注5家文交所"
+        android:textColor="#a0a0a0"
+        android:textSize="@dimen/DIMEN_18PX" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_exchange_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_exchange_toast" />
+
+    <LinearLayout
+        android:id="@+id/llayout_exchange_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/DIMEN_25PX"
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_exchange_skip"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/DIMEN_55PX"
+            android:layout_below="@+id/login_center"
+            android:layout_marginLeft="@dimen/DIMEN_25PX"
+            android:layout_weight="1"
+            android:background="@drawable/exchange_bnt1_bg"
+            android:clickable="false"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="跳过"
+            android:textColor="#fdfdfd"
+            android:textSize="@dimen/DIMEN_16PX" />
+
+        <TextView
+            android:id="@+id/tv_exchange_confim"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/DIMEN_55PX"
+            android:layout_below="@+id/login_center"
+            android:layout_marginLeft="@dimen/DIMEN_10PX"
+            android:layout_marginRight="@dimen/DIMEN_25PX"
+            android:layout_weight="1"
+            android:background="@drawable/login_bnt_bg2"
+            android:clickable="false"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="确定(0)"
+            android:textColor="#fdfdfd"
+            android:textSize="@dimen/DIMEN_16PX" />
+    </LinearLayout>
 </RelativeLayout>

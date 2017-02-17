@@ -84,6 +84,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:lineSpacingExtra="6sp"
                     android:maxLines="4"
                     android:textColor="#4a4a4a"
                     android:textSize="@dimen/DIMEN_20PX" />

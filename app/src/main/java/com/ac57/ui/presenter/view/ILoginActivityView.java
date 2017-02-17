@@ -4,7 +4,6 @@ import com.ac57.framework.base.BaseViewController;
 import com.ac57.ui.entity.UserInfoData;
 
 /**
- * Created by Du_Li on 2016/12/17.
  */
 
 public interface ILoginActivityView extends BaseViewController {

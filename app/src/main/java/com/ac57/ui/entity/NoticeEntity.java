@@ -13,15 +13,6 @@ public class NoticeEntity {
     public String time_show_str;
     public List<ArtListBean> art_list;
 
-    @Override
-    public String toString() {
-        return "NoticeEntity{" +
-                "id='" + id + '\'' +
-                ", art_id='" + art_id + '\'' +
-                ", time_show_str='" + time_show_str + '\'' +
-                ", art_list=" + art_list +
-                '}';
-    }
 
     public class ArtListBean {
 

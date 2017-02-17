@@ -2,6 +2,7 @@ package com.ac57.ui.entity.emoji;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -68,18 +69,18 @@ public class TextBeans implements Serializable {
     }
 
     public TextBeans(Context context, String str) {
-        this(context,  R.color.actionsheet_gray, false, str, -2, null);
+        this(context, R.color.actionsheet_gray, false, str, -2, null);
     }
 
     public TextBeans(Context context, String str, int po) {
-        this(context,  R.color.actionsheet_gray, false, str, po, null);
+        this(context, R.color.actionsheet_gray, false, str, po, null);
     }
 
     public TextBeans(Context context, int cor, String str, int po, Object obj) {
-        this(context,  cor, false, str, po, obj);
+        this(context, cor, false, str, po, obj);
     }
 
-    public TextBeans(Context context,  int cor, boolean isClick, String str, int po, Object obj) {
+    public TextBeans(Context context, int cor, boolean isClick, String str, int po, Object obj) {
 
         this.cor = cor;
         this.isClick = isClick;
@@ -95,7 +96,7 @@ public class TextBeans implements Serializable {
             spans = new SpannableString(Html.fromHtml(str));
         } else {
             spans = new SpannableString(str);
-            spans.setSpan(new MySimpleClickText(context, cor,  po, obj), 0, str.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spans.setSpan(new MySimpleClickText(context, cor, po, obj), 0, str.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return spans;
     }
@@ -109,12 +110,20 @@ public class TextBeans implements Serializable {
                 if (bean.type == 1) {//文字
                     spans.setSpan(new ForegroundColorSpan(Color.parseColor("#73717a")), 0, str.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 } else if (bean.type == 2) {//，表情
-                    spans.setSpan(new MyImageSpan(context, bean.draw, R.dimen.DIMEN_20PX), 0, str.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    Drawable drawable = bean.draw;
+                    drawable.setBounds(0, 0, imgSize, imgSize);
+                    spans.setSpan(new CenteredImageSpan(drawable),
+                            0, str.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//                    spans.setSpan(new MyImageSpan(context, bean.draw, R.dimen.DIMEN_20PX), 0, str.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
                 list.add(spans);
             }
         }
         return (SpannableString[]) list.toArray(new SpannableString[list.size()]);
+    }
+    private int imgSize;
+    public void setImgSize(int imgSize) {
+        this.imgSize = imgSize;
     }
 }
 

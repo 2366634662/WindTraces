@@ -11,7 +11,6 @@ import com.ac57.ui.service.UserRepository;
 import java.util.List;
 
 /**
- * Created by Du_Li on 2016/12/31.
  */
 
 public class OtherTypesInteractPresenter extends BasePresenter<IOtherTypesInteractView> {

@@ -7,7 +7,6 @@ import com.ac57.ui.entity.HomeInfoListEntity;
 import java.util.List;
 
 /**
- * Created by Du_Li on 2016/12/25.
  */
 
 public interface IHomeView extends BaseViewController {

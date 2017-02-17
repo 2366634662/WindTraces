@@ -6,7 +6,6 @@ import com.ac57.ui.entity.NoticeEntity;
 import java.util.List;
 
 /**
- * Created by Du_Li on 2017/1/2.
  */
 
 public interface IAllTypeNoticeView extends BaseViewController {

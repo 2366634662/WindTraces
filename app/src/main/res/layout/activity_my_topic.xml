@@ -1,10 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_my_topic"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/read_bg_cor"
-    tools:context="com.ac57.ui.main.activity.MyTopicActivity">
+    android:background="@color/main_bg"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:id="@+id/iv_topic_title_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:padding="16dp"
+            android:src="@drawable/personal_back" />
+
+        <RadioGroup
+            android:id="@+id/rg_mytopic_title"
+            android:layout_width="@dimen/DIMEN_228PX"
+            android:layout_height="@dimen/DIMEN_36PX"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/mytopic_rg_bg"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_mytopic_rb1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/mytopic_rb_bg"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="我的发布"
+                android:textColor="@drawable/mytopic_rb_tvcor"
+                android:textSize="@dimen/DIMEN_20PX" />
+
+            <RadioButton
+                android:id="@+id/rb_mytopic_rb2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/mytopic_rb_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="我的参与"
+                android:textColor="@drawable/mytopic_rb_tvcor"
+                android:textSize="@dimen/DIMEN_20PX" />
+        </RadioGroup>
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_mytopic_pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="@dimen/DIMEN_15PX"
+        android:background="@android:color/white" />
+
+</LinearLayout>

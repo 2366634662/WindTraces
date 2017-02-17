@@ -1,6 +1,5 @@
 package com.ac57.ui.main.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,15 +10,23 @@ import android.widget.ImageView;
 import com.ac57.R;
 import com.ac57.framework.base.MVPBaseFragment;
 import com.ac57.framework.refresh.RefreshLayout;
+import com.ac57.framework.utils.IntentUtils;
+import com.ac57.framework.utils.StringUtils;
+import com.ac57.framework.utils.diskcache.DiskLruCacheHelper;
+import com.ac57.ui.AppContext;
 import com.ac57.ui.adapter.HomeListInfoAdapter;
 import com.ac57.ui.entity.HomeBannerEntity;
 import com.ac57.ui.entity.HomeInfoListEntity;
 import com.ac57.ui.main.activity.SelfActivity;
+import com.ac57.ui.main.activity.SelfMessageActivity;
 import com.ac57.ui.presenter.HomePresenter;
 import com.ac57.ui.presenter.view.IHomeView;
+import com.ac57.ui.utils.DiskLruCacheTagUtils;
+import com.ac57.ui.utils.GsonUtils;
 import com.ac57.ui.view.EasyStatusView;
 import com.ac57.ui.view.customtoast.ToastUtils;
 import com.bumptech.glide.Glide;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +35,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bingoogolapple.bgabanner.BGABanner;
 
-/**
- */
 public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> implements IHomeView, RefreshLayout.BGARefreshLayoutDelegate {
 
     @BindView(R.id.xrv_home)
@@ -47,6 +52,7 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
 
     private int page = 1;
     private boolean isFirst = true;
+
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
@@ -68,6 +74,9 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
         banner = (BGABanner) view.findViewById(R.id.banner);
         mRefreshLayout.setDelegate(this);
         mRefreshLayout.setCustomHeaderView(view, true);
+        if (!AppContext.getMyAppContext().verifyNetwork()) {
+            mRefreshLayout.setPullDownRefreshEnable(false);
+        }
     }
 
     @Override
@@ -86,19 +95,28 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_title_left:
+                IntentUtils.startActivity(getActivity(), SelfMessageActivity.class);
                 break;
             case R.id.iv_title_right:
-//                IntentUtils.startActivity(getActivity(), SelfActivity.class);
-                getActivity().startActivity(new Intent(getActivity(), SelfActivity.class));
-                getActivity().overridePendingTransition(cn.bingoogolapple.swipebacklayout.R.anim.bga_sbl_activity_forward_enter, cn.bingoogolapple.swipebacklayout.R.anim.bga_sbl_activity_forward_exit);
+                IntentUtils.startActivity(getActivity(), SelfActivity.class);
                 break;
         }
     }
 
     @Override
     protected void getData() {
-        mPresenter.getHomeBannerData();
-        mPresenter.getHomeInfoListData("all", page);
+        if (AppContext.getMyAppContext().verifyNetwork()) {
+            mPresenter.getHomeBannerData();
+            mPresenter.getHomeInfoListData("all", page);
+        } else {
+            ArrayList<HomeInfoListEntity> entities = new ArrayList<>();
+            if (StringUtils.isNotEmpty(DiskLruCacheHelper.getIns(getContext()).getAsString(DiskLruCacheTagUtils.HOME_INFO_LIST + page))) {
+                entities = GsonUtils.getInstance().fromJson(DiskLruCacheHelper.getIns(getContext()).getAsString(DiskLruCacheTagUtils.HOME_INFO_LIST + page), new TypeToken<List<HomeInfoListEntity>>() {
+                }.getType());
+                if (!entities.isEmpty())
+                    getHomeInfoData(entities);
+            }
+        }
     }
 
     @Override
@@ -122,6 +140,16 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
 
     @Override
     public void getHomeInfoData(List<HomeInfoListEntity> entity) {
+
+        String json = GsonUtils.getInstance().toJson(entity);
+
+        ArrayList<HomeInfoListEntity> entities = new ArrayList<>();
+        entities = GsonUtils.getInstance().fromJson(json, new TypeToken<List<HomeInfoListEntity>>() {
+        }.getType());
+
+        DiskLruCacheHelper.getIns(getContext()).put(DiskLruCacheTagUtils.HOME_INFO_LIST + page, json);
+//        DiskLruCacheHelper.getIns(getContext()).put("page", "" + page);
+
         if (page == 1) {
             infoAdapter.setData(entity);
             mRefreshLayout.endRefreshing();
@@ -129,13 +157,11 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
             infoAdapter.addMoreData(entity);
             mRefreshLayout.endLoadingMore();
         }
-
         if (entity.size() < 10) {
             mRefreshLayout.setPullUpRefreshEnable(false);
         } else {
             mRefreshLayout.setPullUpRefreshEnable(true);
         }
-        infoAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -172,7 +198,8 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
     @Override
     public boolean onBGARefreshLayoutBeginLoadingMore(RefreshLayout refreshLayout) {
         page++;
-        mPresenter.getHomeInfoListData("all", page);
+//        mPresenter.getHomeInfoListData("all", page);
+        getData();
         return true;
     }
 }

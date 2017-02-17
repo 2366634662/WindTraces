@@ -32,12 +32,6 @@ public class NewGoodsEntity {
     public List<String> tag_arr;
 
     public class ArtExcInfoBean {
-        /**
-         * id : 1
-         * name : 测试1
-         * icon_show_str : 测
-         * icon_show_color : ef6666
-         */
 
         public String id;
         public String name;

@@ -20,7 +20,7 @@ public class BaseInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request original = chain.request();
-        String device_id = ProjectUntil.toMd5String(ProUntil.getUuid());
+        String device_id =  ProjectUntil.toMd5String(ProUntil.getUuid());
         Log.e("tag", "网络请求的ID  " + ProUntil.getUserid());
         HttpUrl url = original.url().newBuilder()
                 .addQueryParameter("client_info", ProjectUntil.getClientInfo())

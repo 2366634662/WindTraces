@@ -3,7 +3,6 @@ package com.ac57.framework.base;
 import android.os.Bundle;
 
 /**
- * Created by Du_Li on 2016/12/17.
  */
 
 public abstract class MVPBaseActivity<T extends BasePresenter, M extends BaseViewController> extends BaseActivity {

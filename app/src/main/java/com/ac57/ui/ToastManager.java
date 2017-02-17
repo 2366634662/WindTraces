@@ -10,12 +10,15 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class ToastManager {
-    private static ToastManager toastManager;
+    private static volatile ToastManager toastManager;
     private Queue<MyToast> toasts;
 
     public static ToastManager getToastManager() {
         if (toastManager == null) {
-            toastManager = new ToastManager();
+            synchronized (ToastManager.class) {
+                if (toastManager == null)
+                    toastManager = new ToastManager();
+            }
         }
         return toastManager;
     }

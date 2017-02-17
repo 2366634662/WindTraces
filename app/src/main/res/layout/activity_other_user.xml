@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_other_user"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical"
+    tools:context="com.ac57.ui.main.activity.OtherUserActivity">
+
+    <include layout="@layout/base_title" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_cor" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:elevation="0dp">
+
+            <LinearLayout
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/DIMEN_25PX">
+
+                        <com.ac57.ui.view.CircleImageView
+                            android:id="@+id/otheruser_info_top_head"
+                            android:layout_width="@dimen/DIMEN_80PX"
+                            android:layout_height="@dimen/DIMEN_80PX"
+                            android:src="@drawable/personal_head_portrait" />
+
+                        <LinearLayout
+                            android:id="@+id/otheruser_info_top_v"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/DIMEN_15PX"
+                            android:layout_toLeftOf="@+id/otheruser_info_top_bnt"
+                            android:layout_toRightOf="@+id/otheruser_info_top_head"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/otheruser_info_top_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=""
+                                    android:textColor="#4a4a4a"
+                                    android:textSize="@dimen/DIMEN_20PX" />
+
+                                <ImageView
+                                    android:id="@+id/otheruser_info_top_level"
+                                    android:layout_width="@dimen/DIMEN_37PX"
+                                    android:layout_height="@dimen/DIMEN_20PX"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="@dimen/DIMEN_10PX"
+                                    android:src="@drawable/level1" />
+
+                                <TextView
+                                    android:id="@+id/otheruser_info_top_auto"
+                                    android:layout_width="@dimen/DIMEN_40PX"
+                                    android:layout_height="@dimen/DIMEN_16PX"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="@dimen/DIMEN_5PX"
+                                    android:background="@drawable/otheruser_top_auto_bg"
+                                    android:gravity="center"
+                                    android:text="认证"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="@dimen/DIMEN_12PX" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/DIMEN_13PX"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="关注:"
+                                    android:textColor="#9c9e9f"
+                                    android:textSize="@dimen/DIMEN_14PX"
+                                    android:visibility="gone" />
+
+                                <TextView
+                                    android:id="@+id/otheruser_info_top_count"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=""
+                                    android:textColor="#9c9e9f"
+                                    android:textSize="@dimen/DIMEN_14PX" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/otheruser_info_top_bnt"
+                            android:layout_width="@dimen/DIMEN_72PX"
+                            android:layout_height="@dimen/DIMEN_30PX"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignTop="@+id/otheruser_info_top_v"
+                            android:layout_marginTop="@dimen/DIMEN_15PX"
+                            android:background="@drawable/release_item_bnt_bg"
+                            android:gravity="center"
+                            android:text="+关注"
+                            android:textColor="@color/otheruser_top_bnt_cor"
+                            android:textSize="@dimen/DIMEN_16PX" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <include layout="@layout/otheruser_center_linear" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/otheruser_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        </android.support.v4.view.ViewPager>
+    </android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

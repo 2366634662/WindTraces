@@ -2,6 +2,7 @@ package com.ac57.ui.presenter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 
 import com.ac57.framework.base.BasePresenter;
 import com.ac57.framework.retrofit.DefaultSubscriber;
@@ -17,7 +18,6 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import java.util.Map;
 
 /**
- * Created by Du_Li on 2016/12/17.
  */
 
 public class LoginPresenter extends BasePresenter<ILoginActivityView> {
@@ -79,6 +79,7 @@ public class LoginPresenter extends BasePresenter<ILoginActivityView> {
 
             @Override
             public void _onError(String e) {
+                Log.e("tag", "====" + e);
                 model.disDailog();
                 model.showError("登陆失败");
             }

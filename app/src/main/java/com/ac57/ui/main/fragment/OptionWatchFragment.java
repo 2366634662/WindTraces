@@ -88,13 +88,8 @@ public class OptionWatchFragment extends MVPBaseFragment<OptionWatchPresenter, I
         int spacingInPixels = getActivity().getResources().getDimensionPixelSize(R.dimen.DIMEN_15PX);
         recyclerViewCenter.addItemDecoration(new SpaceItemDecoration(spacingInPixels));
         recyclerViewCenter.setAdapter(centerAdapter);
-//        xRecyclerView.setRefreshHeaderBackGround(Color.parseColor("#242438"));
-//        xRecyclerView.addHeaderView(optionTop);
-
-//        mRefreshLayout.setCustomHeaderView(optionTop, true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         bottomAdapter = new OptionWatchBottomAdapter(xRecyclerView);
-//        bottomAdapter.addHeaderView(optionTop);
         xRecyclerView.setLayoutManager(layoutManager);
         xRecyclerView.setAdapter(bottomAdapter);
     }
@@ -102,6 +97,7 @@ public class OptionWatchFragment extends MVPBaseFragment<OptionWatchPresenter, I
     @Override
     protected void initData() {
 
+//        mRefreshLayout.setCustomHeaderView(optionTop, true);
         mRefreshLayout.setDelegate(new RefreshLayout.BGARefreshLayoutDelegate() {
             @Override
             public void onBGARefreshLayoutBeginRefreshing(RefreshLayout refreshLayout) {
