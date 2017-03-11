@@ -5,15 +5,19 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseFragment;
+import com.ac57.framework.base.BaseMVPFragment;
 import com.ac57.framework.refresh.RefreshLayout;
 import com.ac57.ui.adapter.AllTypeNoticeAdapter;
 import com.ac57.ui.entity.NoticeEntity;
 import com.ac57.ui.presenter.AllTypeNoticePresenter;
 import com.ac57.ui.presenter.view.IAllTypeNoticeView;
 import com.ac57.ui.view.EasyStatusView;
+
+import org.simple.eventbus.Subscriber;
+import org.simple.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -23,7 +27,7 @@ import butterknife.BindView;
 /**
  * 公告呈现数据的fragment
  */
-public class AllTypeNoticeFragment extends MVPBaseFragment<AllTypeNoticePresenter, IAllTypeNoticeView> implements IAllTypeNoticeView {
+public class AllTypeNoticeFragment extends BaseMVPFragment<IAllTypeNoticeView, AllTypeNoticePresenter> implements IAllTypeNoticeView {
 
     @BindView(R.id.rv_content)
     RecyclerView xRecyclerView;
@@ -52,11 +56,12 @@ public class AllTypeNoticeFragment extends MVPBaseFragment<AllTypeNoticePresente
         return R.layout.fragment_all_type_notice;
     }
 
-    String id;
+    private String id;
 
     @Override
     protected void initView(View convertView, Bundle savedInstanceState) {
         id = getArguments().getString("ex_id");
+        setEasyStatusView(esvMultipView);
     }
 
     @Override
@@ -88,15 +93,10 @@ public class AllTypeNoticeFragment extends MVPBaseFragment<AllTypeNoticePresente
 
     @Override
     protected void getData() {
+        loading();
         mPresenter.getAllTypeNoticeData(page, getArguments().getString("ex_id"));
     }
 
-    @Override
-    public void showDailog(String msg) {
-        if (adapter == null || adapter.getData().size() == 0) {
-            esvMultipView.loading();
-        }
-    }
 
     @Override
     public void getAllTypeNoticeData(List<NoticeEntity> noticeEntities) {
@@ -121,18 +121,12 @@ public class AllTypeNoticeFragment extends MVPBaseFragment<AllTypeNoticePresente
     }
 
     @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-        esvMultipView.error();
-    }
-
-    @Override
     protected AllTypeNoticePresenter initPresenter() {
-        return new AllTypeNoticePresenter(this);
+        return new AllTypeNoticePresenter();
     }
 
+    @Subscriber(mode = ThreadMode.MAIN, tag = "my_mssage")
+    public void update(String msg) {
+        Toast.makeText(getActivity(), "网络请求  " + msg, Toast.LENGTH_SHORT).show();
+    }
 }

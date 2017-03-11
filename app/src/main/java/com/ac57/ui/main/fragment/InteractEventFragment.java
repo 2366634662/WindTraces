@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseFragment;
+import com.ac57.framework.base.BaseMVPFragment;
 import com.ac57.framework.refresh.RefreshLayout;
 import com.ac57.ui.adapter.InteractEventAdapter;
 import com.ac57.ui.entity.InteractEventEntity;
@@ -23,7 +23,7 @@ import butterknife.BindView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class InteractEventFragment extends MVPBaseFragment<InteractEventPresenter, IInteractEventView> implements IInteractEventView {
+public class InteractEventFragment extends BaseMVPFragment<IInteractEventView, InteractEventPresenter> implements IInteractEventView {
 
     InteractEventAdapter adapter;
 
@@ -34,7 +34,6 @@ public class InteractEventFragment extends MVPBaseFragment<InteractEventPresente
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     private int page = 1;
-    private boolean isFirst = true;
 
     public InteractEventFragment() {
         // Required empty public constructor
@@ -50,7 +49,7 @@ public class InteractEventFragment extends MVPBaseFragment<InteractEventPresente
 
     @Override
     protected InteractEventPresenter initPresenter() {
-        return new InteractEventPresenter(this);
+        return new InteractEventPresenter();
     }
 
     @Override
@@ -60,6 +59,7 @@ public class InteractEventFragment extends MVPBaseFragment<InteractEventPresente
 
     @Override
     protected void initView(View convertView, Bundle savedInstanceState) {
+        setEasyStatusView(easyStatusView);
         adapter = new InteractEventAdapter(xRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         xRecyclerView.setLayoutManager(linearLayoutManager);
@@ -91,33 +91,16 @@ public class InteractEventFragment extends MVPBaseFragment<InteractEventPresente
 
     @Override
     protected void getData() {
+        loading();
         mPresenter.getInteractEventData(page);
     }
 
-    @Override
-    public void showDailog(String msg) {
-        if (isFirst) {
-            isFirst = false;
-            esvMultipView.loading();
-        }
-    }
-
-    @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-        esvMultipView.error();
-    }
 
     @Override
     public void getInteractEventData(List<InteractEventEntity> entity) {
         if (entity.isEmpty()) {
-            esvMultipView.empty();
+            empty();
         } else {
-            esvMultipView.content();
             if (page == 1) {
                 adapter.setData(entity);
                 mRefreshLayout.endRefreshing();

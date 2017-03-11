@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseFragment;
+import com.ac57.framework.base.BaseMVPFragment;
 import com.ac57.framework.refresh.RefreshLayout;
 import com.ac57.ui.adapter.OptionWatchBottomAdapter;
 import com.ac57.ui.adapter.OptionWatchCenterAdapter;
@@ -32,7 +32,7 @@ import butterknife.BindView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OptionWatchFragment extends MVPBaseFragment<OptionWatchPresenter, IOptionWatchView> implements IOptionWatchView {
+public class OptionWatchFragment extends BaseMVPFragment<IOptionWatchView, OptionWatchPresenter> implements IOptionWatchView {
     @BindView(R.id.rv_bottom_content)
     RecyclerView xRecyclerView;
     @BindView(R.id.esv_layout)
@@ -70,6 +70,9 @@ public class OptionWatchFragment extends MVPBaseFragment<OptionWatchPresenter, I
 
     @Override
     protected void initView(View convertView, Bundle savedInstanceState) {
+
+        setEasyStatusView(easyStatusView);
+
         optionTop = View.inflate(getActivity(), R.layout.layout_option_watch, null);
         recyclerViewTop = (RecyclerView) convertView.findViewById(R.id.recyclerView_option);
         recyclerViewCenter = (RecyclerView) convertView.findViewById(R.id.recyclerView_option_center);
@@ -96,7 +99,6 @@ public class OptionWatchFragment extends MVPBaseFragment<OptionWatchPresenter, I
 
     @Override
     protected void initData() {
-
 //        mRefreshLayout.setCustomHeaderView(optionTop, true);
         mRefreshLayout.setDelegate(new RefreshLayout.BGARefreshLayoutDelegate() {
             @Override
@@ -121,29 +123,16 @@ public class OptionWatchFragment extends MVPBaseFragment<OptionWatchPresenter, I
 
     @Override
     protected void getData() {
+        loading();
         mPresenter.getOptionWatchTopData();
+        mPresenter.getOptionWatchCenterData();
+        mPresenter.getOptionWatchBottomData(page);
     }
 
-    @Override
-    public void showDailog(String msg) {
-        if (bottomAdapter == null) {
-            esvMultipView.loading();
-        }
-    }
-
-    @Override
-    public void disDailog() {
-        esvMultipView.content();
-    }
-
-    @Override
-    public void showError(String msg) {
-        esvMultipView.error();
-    }
 
     @Override
     protected OptionWatchPresenter initPresenter() {
-        return new OptionWatchPresenter(this);
+        return new OptionWatchPresenter();
     }
 
     @Override

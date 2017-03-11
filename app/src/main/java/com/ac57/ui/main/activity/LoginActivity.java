@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseActivity;
+import com.ac57.framework.base.BaseMVPActivity;
 import com.ac57.framework.tools.AppManager;
 import com.ac57.framework.tools.SPHelper;
 import com.ac57.framework.utils.IntentUtils;
@@ -32,7 +32,7 @@ import butterknife.OnClick;
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 
-public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivityView> implements ILoginActivityView {
+public class LoginActivity extends BaseMVPActivity<ILoginActivityView,LoginPresenter> implements ILoginActivityView {
     @BindView(R.id.iv_login_back)
     ImageView ivLoginBack;
     @BindView(R.id.tv_login_register)
@@ -73,7 +73,7 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
 
     @Override
     public LoginPresenter initPresenter() {
-        return new LoginPresenter(this, this);
+        return new LoginPresenter(this);
     }
 
     boolean phone;
@@ -81,6 +81,7 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
 //        StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#2c8dff"));
         setStatusBarColor(Color.parseColor("#2c8dff"), 0);
 
@@ -168,21 +169,6 @@ public class LoginActivity extends MVPBaseActivity<LoginPresenter, ILoginActivit
         IntentUtils.startActivity(LoginActivity.this, MainActivity.class, bundle);
         AppManager.getInstance().killAllActivity();
         finish();
-    }
-
-    @Override
-    public void showDailog(String msg) {
-//        ToastUtils.success(msg);
-    }
-
-    @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-//        ToastUtils.success(msg);
     }
 
     public void saveUser(UserInfoData bean) {

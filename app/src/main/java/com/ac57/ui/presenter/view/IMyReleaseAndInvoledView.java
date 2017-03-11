@@ -1,6 +1,6 @@
 package com.ac57.ui.presenter.view;
 
-import com.ac57.framework.base.BaseViewController;
+import com.ac57.framework.base.IBaseStatusView;
 import com.ac57.ui.entity.MyReleaseAndInvoledEntity;
 
 import java.util.List;
@@ -10,6 +10,6 @@ import java.util.List;
  * Desc :
  */
 
-public interface IMyReleaseAndInvoledView extends BaseViewController {
+public interface IMyReleaseAndInvoledView extends IBaseStatusView {
     void getMyReleaseData(List<MyReleaseAndInvoledEntity> entities);
 }

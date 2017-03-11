@@ -15,7 +15,7 @@ public class MyChoseActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        setStatusBarColor(Color.WHITE,30);
+        setStatusBarColor(Color.WHITE, 30);
     }
 
     @Override

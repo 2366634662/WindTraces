@@ -12,22 +12,22 @@ import java.util.List;
  */
 
 public class AllTypeNoticePresenter extends BasePresenter<IAllTypeNoticeView> {
-    public AllTypeNoticePresenter(IAllTypeNoticeView model) {
-        super(model);
-    }
 
     public void getAllTypeNoticeData(int page, String exc_id) {
-        model.showDailog("加载中");
         UserRepository.getInstance().getAllTypeNoticeData(page + "", exc_id).subscribe(new DefaultSubscriber<List<NoticeEntity>>() {
             @Override
             public void _onNext(List<NoticeEntity> entity) {
-                model.disDailog();
-                model.getAllTypeNoticeData(entity);
+                if (getView() != null) {
+                    getView().content();
+                    getView().getAllTypeNoticeData(entity);
+                }
+
             }
+
             @Override
             public void _onError(String e) {
-                model.disDailog();
-                model.showError(e);
+                if (getView() != null)
+                    getView().error(e);
             }
         });
     }

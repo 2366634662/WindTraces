@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseActivity;
+import com.ac57.framework.base.BaseMVPActivity;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.adapter.SelectExchangeAdapter;
 import com.ac57.ui.entity.SelectExchangeEntity;
@@ -30,7 +30,7 @@ import rx.Observable;
 /**
  * 文交所开户
  */
-public class SelectExchangeActivity extends MVPBaseActivity<SelectExchangePresenter, ISelectExchangeView> implements ISelectExchangeView {
+public class SelectExchangeActivity extends BaseMVPActivity<ISelectExchangeView, SelectExchangePresenter> implements ISelectExchangeView {
 
     @BindView(R.id.iv_title_left)
     ImageView ivTitleLeft;
@@ -62,6 +62,7 @@ public class SelectExchangeActivity extends MVPBaseActivity<SelectExchangePresen
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
         setStatusBarColor(Color.WHITE, 30);
         ivTitleLeft.setImageResource(R.drawable.personal_back);
         tvTitleCenter.setText("123456");
@@ -72,7 +73,6 @@ public class SelectExchangeActivity extends MVPBaseActivity<SelectExchangePresen
 
     @Override
     public void initDatas() {
-
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
         rvSelectExchangeHot.setLayoutManager(gridLayoutManager);
         adapter = new BGARecyclerViewAdapter<SelectExchangeEntity.HotExcListBean>(rvSelectExchangeHot, R.layout.item_select_eschange_hot_list) {
@@ -104,10 +104,6 @@ public class SelectExchangeActivity extends MVPBaseActivity<SelectExchangePresen
         });
     }
 
-    @Override
-    public void showDailog(String msg) {
-
-    }
 
     @Override
     public void loadData() {
@@ -144,18 +140,8 @@ public class SelectExchangeActivity extends MVPBaseActivity<SelectExchangePresen
 
 
     @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-
-    }
-
-    @Override
     protected SelectExchangePresenter initPresenter() {
-        return new SelectExchangePresenter(this);
+        return new SelectExchangePresenter();
     }
 
     @OnClick({R.id.iv_title_left, R.id.iv_title_right})

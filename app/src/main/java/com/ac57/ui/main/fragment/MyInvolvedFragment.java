@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseFragment;
+import com.ac57.framework.base.BaseMVPFragment;
 import com.ac57.framework.refresh.RefreshLayout;
 import com.ac57.framework.tools.SPHelper;
 import com.ac57.ui.adapter.MyInvolvedAdapter;
@@ -24,8 +24,7 @@ import butterknife.BindView;
  * Desc :
  */
 
-public class MyInvolvedFragment extends MVPBaseFragment<MyReleaseAndInvoledPresenter, IMyReleaseAndInvoledView> implements IMyReleaseAndInvoledView {
-
+public class MyInvolvedFragment extends BaseMVPFragment<IMyReleaseAndInvoledView, MyReleaseAndInvoledPresenter> implements IMyReleaseAndInvoledView {
 
     @BindView(R.id.rv_content)
     RecyclerView rvContent;
@@ -57,6 +56,8 @@ public class MyInvolvedFragment extends MVPBaseFragment<MyReleaseAndInvoledPrese
     @Override
     protected void initView(View convertView, Bundle savedInstanceState) {
         adapter = new MyInvolvedAdapter(rvContent);
+        setEasyStatusView(esvMultipView);
+
     }
 
     @Override
@@ -88,6 +89,7 @@ public class MyInvolvedFragment extends MVPBaseFragment<MyReleaseAndInvoledPrese
 
     @Override
     protected void getData() {
+        loading();
         mPresenter.getMyReleaseData(page, type, id);
     }
 
@@ -112,26 +114,10 @@ public class MyInvolvedFragment extends MVPBaseFragment<MyReleaseAndInvoledPrese
         }
     }
 
-    @Override
-    public void showDailog(String msg) {
-        if (adapter.getItemCount() == 0) {
-            esvMultipView.loading();
-        }
-    }
-
-    @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-        esvMultipView.error();
-    }
 
     @Override
     protected MyReleaseAndInvoledPresenter initPresenter() {
-        return new MyReleaseAndInvoledPresenter(this);
+        return new MyReleaseAndInvoledPresenter();
     }
 
 }

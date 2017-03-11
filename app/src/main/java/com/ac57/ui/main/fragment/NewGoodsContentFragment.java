@@ -5,11 +5,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseFragment;
+import com.ac57.framework.base.BaseMVPFragment;
 import com.ac57.framework.refresh.RefreshLayout;
 import com.ac57.ui.adapter.NewGoodsAdapter;
 import com.ac57.ui.entity.NewGoodsEntity;
@@ -25,7 +24,7 @@ import butterknife.BindView;
  * A simple {@link Fragment} subclass.
  * 新品申购 / 托管 内容呈现
  */
-public class NewGoodsContentFragment extends MVPBaseFragment<NewGoodsContentPresenter, INewGoodsContentView> implements INewGoodsContentView {
+public class NewGoodsContentFragment extends BaseMVPFragment<INewGoodsContentView, NewGoodsContentPresenter> implements INewGoodsContentView {
     @BindView(R.id.rv_content)
     RecyclerView xRecyclerView;
     @BindView(R.id.esv_multip_view)
@@ -58,6 +57,7 @@ public class NewGoodsContentFragment extends MVPBaseFragment<NewGoodsContentPres
 
     @Override
     protected void initView(View convertView, Bundle savedInstanceState) {
+        setEasyStatusView(easyStatusView);
         adapter = new NewGoodsAdapter(xRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         xRecyclerView.setLayoutManager(linearLayoutManager);
@@ -91,20 +91,10 @@ public class NewGoodsContentFragment extends MVPBaseFragment<NewGoodsContentPres
 
     @Override
     protected void getData() {
+        loading();
         mPresenter.getNewGoodsData(page, ex_id, type);
     }
 
-    @Override
-    public void showDailog(String msg) {
-        if (adapter == null || adapter.getData().size() == 0) {
-            esvMultipView.loading();
-        }
-    }
-
-    @Override
-    public void disDailog() {
-
-    }
 
     @Override
     public void getNewGoodsData(List<NewGoodsEntity> newGoodsEntities) {
@@ -129,12 +119,7 @@ public class NewGoodsContentFragment extends MVPBaseFragment<NewGoodsContentPres
     }
 
     @Override
-    public void showError(String msg) {
-        esvMultipView.error();
-    }
-
-    @Override
     protected NewGoodsContentPresenter initPresenter() {
-        return new NewGoodsContentPresenter(this);
+        return new NewGoodsContentPresenter();
     }
 }

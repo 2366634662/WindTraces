@@ -1,6 +1,7 @@
 package com.ac57.framework.retrofit;
 
 import android.accounts.NetworkErrorException;
+import android.util.Log;
 
 import com.google.gson.JsonSyntaxException;
 
@@ -11,12 +12,6 @@ import java.net.UnknownHostException;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
 
-/**
- * Created by Du_Li on 2016/10/12.
- * 观察着模式  继承这个Subscriber方法   来判断是否网络请求成功
- * 判断是否将网络请求到的数据解析成功
- * 如过成功或失败   将请求的结果回调过去
- */
 
 public abstract class DefaultSubscriber<T> extends Subscriber<T> {
 
@@ -44,6 +39,7 @@ public abstract class DefaultSubscriber<T> extends Subscriber<T> {
         } else {
             reason = "其他错误";
         }
+        Log.e("error", reason);
         _onError(reason);
     }
 

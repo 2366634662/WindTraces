@@ -2,9 +2,9 @@ package com.ac57.ui.presenter;
 
 import com.ac57.framework.base.BasePresenter;
 import com.ac57.framework.retrofit.DefaultSubscriber;
-import com.ac57.ui.service.UserRepository;
 import com.ac57.ui.entity.InteractEventEntity;
 import com.ac57.ui.presenter.view.IInteractEventView;
+import com.ac57.ui.service.UserRepository;
 
 import java.util.List;
 
@@ -12,23 +12,22 @@ import java.util.List;
  */
 
 public class InteractEventPresenter extends BasePresenter<IInteractEventView> {
-    public InteractEventPresenter(IInteractEventView model) {
-        super(model);
-    }
 
     public void getInteractEventData(int page) {
-        model.showDailog("");
+        if (getView() != null)
+            getView().loading();
         UserRepository.getInstance().getInteractEventListData(page + "").subscribe(new DefaultSubscriber<List<InteractEventEntity>>() {
             @Override
             public void _onNext(List<InteractEventEntity> entity) {
-                model.disDailog();
-                model.getInteractEventData(entity);
+                if (getView() != null) {
+                    getView().content();
+                    getView().getInteractEventData(entity);
+                }
             }
-
             @Override
             public void _onError(String e) {
-                model.showError("获取数据失败");
-                model.disDailog();
+                if (getView() != null)
+                    getView().error(e);
             }
         });
     }

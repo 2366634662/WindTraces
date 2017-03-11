@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseFragment;
+import com.ac57.framework.base.BaseMVPFragment;
 import com.ac57.framework.refresh.RefreshLayout;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.framework.utils.StringUtils;
@@ -24,7 +24,6 @@ import com.ac57.ui.presenter.view.IHomeView;
 import com.ac57.ui.utils.DiskLruCacheTagUtils;
 import com.ac57.ui.utils.GsonUtils;
 import com.ac57.ui.view.EasyStatusView;
-import com.ac57.ui.view.customtoast.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.google.gson.reflect.TypeToken;
 
@@ -35,7 +34,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bingoogolapple.bgabanner.BGABanner;
 
-public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> implements IHomeView, RefreshLayout.BGARefreshLayoutDelegate {
+public class HomeFragment extends BaseMVPFragment<IHomeView, HomePresenter> implements IHomeView, RefreshLayout.BGARefreshLayoutDelegate {
 
     @BindView(R.id.xrv_home)
     RecyclerView xrvHome;
@@ -51,7 +50,6 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
     private HomeListInfoAdapter infoAdapter;
 
     private int page = 1;
-    private boolean isFirst = true;
 
 
     public static HomeFragment newInstance() {
@@ -70,6 +68,8 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
 
     @Override
     protected void initView(View convertView, Bundle savedInstanceState) {
+        setEasyStatusView(esvHomeMultip);
+        loading();
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.bga_banner_layout, null);
         banner = (BGABanner) view.findViewById(R.id.banner);
         mRefreshLayout.setDelegate(this);
@@ -121,6 +121,7 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
 
     @Override
     public void getHomeBannerData(List<HomeBannerEntity> entity) {
+
         if (entity == null)
             return;
         banner.setAdapter(new BGABanner.Adapter<ImageView, HomeBannerEntity>() {
@@ -164,28 +165,10 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
         }
     }
 
-    @Override
-    public void showDailog(String msg) {
-        if (infoAdapter == null) {
-            isFirst = false;
-            esvHomeMultip.loading();
-        }
-    }
-
-    @Override
-    public void disDailog() {
-        esvHomeMultip.content();
-    }
-
-    @Override
-    public void showError(String msg) {
-        esvHomeMultip.error();
-        ToastUtils.success(msg);
-    }
 
     @Override
     protected HomePresenter initPresenter() {
-        return new HomePresenter(this, getActivity());
+        return new HomePresenter();
     }
 
 
@@ -198,7 +181,6 @@ public class HomeFragment extends MVPBaseFragment<HomePresenter, IHomeView> impl
     @Override
     public boolean onBGARefreshLayoutBeginLoadingMore(RefreshLayout refreshLayout) {
         page++;
-//        mPresenter.getHomeInfoListData("all", page);
         getData();
         return true;
     }

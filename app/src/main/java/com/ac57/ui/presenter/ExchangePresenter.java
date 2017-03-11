@@ -14,25 +14,22 @@ import java.util.List;
  */
 
 public class ExchangePresenter extends BasePresenter<IExchangeView> {
-    public ExchangePresenter(IExchangeView model) {
-        super(model);
-    }
 
     public void getExchangeData() {
-        model.showDailog("");
         UserRepository.getInstance().getExchangeData(1).subscribe(new DefaultSubscriber<List<ExchangeEntity>>() {
             @Override
             public void _onNext(List<ExchangeEntity> entity) {
-                model.disDailog();
-                model.getExchangeData(entity);
+                if (getView() != null) {
+                    getView().content();
+                    getView().getExchangeData(entity);
+                }
             }
 
             @Override
             public void _onError(String e) {
-                model.disDailog();
-                model.showError(e);
+                if (getView() != null)
+                    getView().error(e);
             }
         });
     }
-
 }

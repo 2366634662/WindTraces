@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseActivity;
+import com.ac57.framework.base.BaseMVPActivity;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.presenter.RegisterPresenter;
 import com.ac57.ui.presenter.view.IRegisterView;
@@ -20,7 +20,7 @@ import com.ac57.ui.view.statusbar.StatusBarUtil;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class RegisterActivity extends MVPBaseActivity<RegisterPresenter, IRegisterView> implements IRegisterView {
+public class RegisterActivity extends BaseMVPActivity<IRegisterView, RegisterPresenter> implements IRegisterView {
 
     @BindView(R.id.register_one_back)
     ImageView registerOneBack;
@@ -83,21 +83,7 @@ public class RegisterActivity extends MVPBaseActivity<RegisterPresenter, IRegist
 
     @Override
     protected RegisterPresenter initPresenter() {
-        return new RegisterPresenter(this);
+        return new RegisterPresenter();
     }
 
-    @Override
-    public void showDailog(String msg) {
-
-    }
-
-    @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-
-    }
 }

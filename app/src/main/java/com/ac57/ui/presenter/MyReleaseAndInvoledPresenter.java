@@ -14,23 +14,20 @@ import java.util.List;
  */
 
 public class MyReleaseAndInvoledPresenter extends BasePresenter<IMyReleaseAndInvoledView> {
-    public MyReleaseAndInvoledPresenter(IMyReleaseAndInvoledView model) {
-        super(model);
-    }
 
     public void getMyReleaseData(int page, String type, String id) {
-        model.showDailog("");
         UserRepository.getInstance().getMyReleaseData(page, type, id).subscribe(new DefaultSubscriber<List<MyReleaseAndInvoledEntity>>() {
             @Override
             public void _onNext(List<MyReleaseAndInvoledEntity> entity) {
-                model.disDailog();
-                model.getMyReleaseData(entity);
+                if (getView() != null) {
+                    getView().content();
+                    getView().getMyReleaseData(entity);
+                }
             }
-
             @Override
             public void _onError(String e) {
-                model.disDailog();
-                model.showError(e);
+                if (getView() != null)
+                    getView().error(e);
             }
         });
     }

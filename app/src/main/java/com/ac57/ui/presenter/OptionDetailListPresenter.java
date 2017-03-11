@@ -16,39 +16,37 @@ import java.util.List;
  */
 
 public class OptionDetailListPresenter extends BasePresenter<IOptionDetailListView> {
-    public OptionDetailListPresenter(IOptionDetailListView model) {
-        super(model);
-    }
 
     public void getTopData(String id) {
 
         UserRepository.getInstance().getOptionDetailTopData(id).subscribe(new DefaultSubscriber<OptionDetailListTopEntity>() {
             @Override
             public void _onNext(OptionDetailListTopEntity entity) {
-                model.getTopData(entity);
+                if (getView() != null) {
+                    getView().content();
+                    getView().getTopData(entity);
+                }
             }
-
             @Override
             public void _onError(String e) {
-                model.showError(e);
+                if (getView() != null)
+                    getView().error(e);
             }
         });
 
     }
 
     public void getListData(int page, String id, int stats) {
-        model.showDailog("");
         UserRepository.getInstance().getOptionDetailListData(page, id, stats).subscribe(new DefaultSubscriber<List<OptionDetailListEntity>>() {
             @Override
             public void _onNext(List<OptionDetailListEntity> entity) {
-                model.disDailog();
-                model.getListData(entity);
+                getView().content();
+                getView().getListData(entity);
             }
 
             @Override
             public void _onError(String e) {
-                model.disDailog();
-                model.showError(e);
+                getView().error(e);
             }
         });
     }

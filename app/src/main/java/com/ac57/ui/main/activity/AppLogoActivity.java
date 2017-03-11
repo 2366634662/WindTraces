@@ -3,14 +3,13 @@ package com.ac57.ui.main.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseActivity;
+import com.ac57.framework.base.BaseMVPActivity;
 import com.ac57.framework.tools.SPHelper;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.AppContext;
@@ -31,7 +30,7 @@ import butterknife.OnClick;
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 
-public class AppLogoActivity extends MVPBaseActivity<LoginPresenter, ILoginActivityView> implements ILoginActivityView {
+public class AppLogoActivity extends BaseMVPActivity<ILoginActivityView, LoginPresenter> implements ILoginActivityView {
 
     @BindView(R.id.btn_login_or_reg)
     Button btnLoginOrReg;
@@ -51,6 +50,7 @@ public class AppLogoActivity extends MVPBaseActivity<LoginPresenter, ILoginActiv
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
         StatusBarUtil.setTransparent(this);
     }
 
@@ -140,24 +140,10 @@ public class AppLogoActivity extends MVPBaseActivity<LoginPresenter, ILoginActiv
         finish();
     }
 
-    @Override
-    public void showDailog(String msg) {
-
-    }
-
-    @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-        Log.e("tag", "" + msg);
-    }
 
     @Override
     protected LoginPresenter initPresenter() {
-        return new LoginPresenter(this, this);
+        return new LoginPresenter(this);
     }
 
     public void saveUser(UserInfoData bean) {

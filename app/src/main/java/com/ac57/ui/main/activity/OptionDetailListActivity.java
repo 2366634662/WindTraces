@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseActivity;
+import com.ac57.framework.base.BaseMVPActivity;
 import com.ac57.framework.refresh.RefreshLayout;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.entity.OptionDetailListEntity;
@@ -28,7 +28,7 @@ import butterknife.OnClick;
 import cn.bingoogolapple.androidcommon.adapter.BGARecyclerViewAdapter;
 import cn.bingoogolapple.androidcommon.adapter.BGAViewHolderHelper;
 
-public class OptionDetailListActivity extends MVPBaseActivity<OptionDetailListPresenter, IOptionDetailListView> implements IOptionDetailListView {
+public class OptionDetailListActivity extends BaseMVPActivity<IOptionDetailListView, OptionDetailListPresenter> implements IOptionDetailListView {
 
 
     @BindView(R.id.img_option_title_back)
@@ -95,6 +95,7 @@ public class OptionDetailListActivity extends MVPBaseActivity<OptionDetailListPr
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
         setStatusBarColor(Color.parseColor("#242438"));
     }
 
@@ -159,13 +160,6 @@ public class OptionDetailListActivity extends MVPBaseActivity<OptionDetailListPr
         mPresenter.getListData(page, id, stats);
     }
 
-
-    @Override
-    public void showDailog(String msg) {
-        if (adapter.getData().size() == 0) {
-            esvStatusView.loading();
-        }
-    }
 
     @Override
     public void getTopData(OptionDetailListTopEntity entity) {
@@ -237,16 +231,6 @@ public class OptionDetailListActivity extends MVPBaseActivity<OptionDetailListPr
     }
 
 
-    @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-        esvStatusView.error();
-    }
-
     @OnClick({R.id.img_option_title_back, R.id.llayout_app_title_right})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -260,6 +244,6 @@ public class OptionDetailListActivity extends MVPBaseActivity<OptionDetailListPr
 
     @Override
     protected OptionDetailListPresenter initPresenter() {
-        return new OptionDetailListPresenter(this);
+        return new OptionDetailListPresenter();
     }
 }

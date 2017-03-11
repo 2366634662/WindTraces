@@ -51,5 +51,7 @@ public class UrlUtils {
     //某用户的主页
     public static final String OTHER_USER_INFO_URL = "Index/My/homePage";
     //其他用户的话题列表
-    public static final String OTHSER_ONE_TWO_LIST_INFO_URL ="Index/My/myTopicList";
+    public static final String OTHSER_ONE_TWO_LIST_INFO_URL = "Index/My/myTopicList";
+    //主动更新文章的阅读状态
+    public static final String SET_IS_READ_INFO_URL = "Index/Extend/advertRead";
 }

@@ -13,25 +13,22 @@ import com.ac57.ui.service.UserRepository;
 
 public class OtherUserInfoPresenter extends BasePresenter<IOtherUserInfoView> {
 
-    public OtherUserInfoPresenter(IOtherUserInfoView model) {
-        super(model);
-    }
 
     public void getOtherUserInfoData(String show_user_id) {
-        model.showDailog("");
 
         UserRepository.getInstance().getOtherUserInfoData(show_user_id).subscribe(new DefaultSubscriber<OtherUserInfoEntity>() {
             @Override
             public void _onNext(OtherUserInfoEntity entity) {
-                model.disDailog();
-                model.getOtherUserInfoData(entity);
-
+                if (getView() != null) {
+                    getView().content();
+                    getView().getOtherUserInfoData(entity);
+                }
             }
 
             @Override
             public void _onError(String e) {
-                model.disDailog();
-                model.showError(e);
+                if (getView() != null)
+                    getView().error(e);
             }
         });
     }

@@ -2,17 +2,15 @@ package com.ac57.ui.main.fragment;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseFragment;
+import com.ac57.framework.base.BaseMVPFragment;
 import com.ac57.framework.refresh.RefreshLayout;
 import com.ac57.ui.adapter.CoustomCollectionAdapter;
 import com.ac57.ui.entity.CoustomCollectionEntity;
@@ -28,9 +26,8 @@ import butterknife.OnClick;
 
 
 /**
- * A simple {@link Fragment} subclass.
  */
-public class CoustomCollectionFragment extends MVPBaseFragment<CoustomCollectionPresenter, ICoustomCollectionView> implements ICoustomCollectionView {
+public class CoustomCollectionFragment extends BaseMVPFragment<ICoustomCollectionView, CoustomCollectionPresenter> implements ICoustomCollectionView {
 
     @BindView(R.id.llayout_coustom_collection)
     LinearLayout llayoutCoustomCollection;
@@ -64,6 +61,8 @@ public class CoustomCollectionFragment extends MVPBaseFragment<CoustomCollection
 
     @Override
     protected void initView(View convertView, Bundle savedInstanceState) {
+        setEasyStatusView(esvMultipView);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         adapter = new CoustomCollectionAdapter(xRecyclerView);
         xRecyclerView.setLayoutManager(linearLayoutManager);
@@ -74,7 +73,6 @@ public class CoustomCollectionFragment extends MVPBaseFragment<CoustomCollection
 
     @Override
     protected void initData() {
-
         mRefreshLayout.setDelegate(new RefreshLayout.BGARefreshLayoutDelegate() {
             @Override
             public void onBGARefreshLayoutBeginRefreshing(RefreshLayout refreshLayout) {
@@ -104,6 +102,7 @@ public class CoustomCollectionFragment extends MVPBaseFragment<CoustomCollection
 
     @Override
     protected void getData() {
+        loading();
         mPresenter.getCoustomCollectionData(page, is_desc);
     }
 
@@ -125,12 +124,6 @@ public class CoustomCollectionFragment extends MVPBaseFragment<CoustomCollection
         }
     }
 
-    @Override
-    public void showDailog(String msg) {
-        if (adapter == null || adapter.getData().size() == 0) {
-            esvMultipView.loading();
-        }
-    }
 
     @Override
     public void getCoustomCollectionData(List<CoustomCollectionEntity> entity) {
@@ -160,25 +153,9 @@ public class CoustomCollectionFragment extends MVPBaseFragment<CoustomCollection
         }
     }
 
-
-    @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-        if (msg.equals("删除失败")) {
-            Toast.makeText(getActivity(), "删除失败", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        esvMultipView.error();
-
-    }
-
     @Override
     protected CoustomCollectionPresenter initPresenter() {
-        return new CoustomCollectionPresenter(this);
+        return new CoustomCollectionPresenter();
     }
 
 

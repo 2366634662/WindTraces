@@ -15,23 +15,22 @@ import java.util.List;
  */
 
 public class CoustomCollectionPresenter extends BasePresenter<ICoustomCollectionView> {
-    public CoustomCollectionPresenter(ICoustomCollectionView model) {
-        super(model);
-    }
 
     public void getCoustomCollectionData(int page, String is_desc) {
-        model.showDailog("加载中。。。");
+        getView().loading();
         UserRepository.getInstance().getCoustomCollectionData(page, is_desc).subscribe(new DefaultSubscriber<List<CoustomCollectionEntity>>() {
             @Override
             public void _onNext(List<CoustomCollectionEntity> entity) {
-                model.disDailog();
-                model.getCoustomCollectionData(entity);
+                if (getView() != null) {
+                    getView().content();
+                    getView().getCoustomCollectionData(entity);
+                }
             }
 
             @Override
             public void _onError(String e) {
-                model.disDailog();
-                model.showError("" + e);
+                if (getView() != null)
+                    getView().error(e);
             }
         });
     }
@@ -40,13 +39,16 @@ public class CoustomCollectionPresenter extends BasePresenter<ICoustomCollection
         UserRepository.getInstance().deleteCoustomCollectionData(trade_id, "102").subscribe(new DefaultSubscriber<DeleteCoustomCollectionData>() {
             @Override
             public void _onNext(DeleteCoustomCollectionData entity) {
-                model.deleteCoustomCollectionData(entity);
+                if (getView() != null) {
+                    getView().deleteCoustomCollectionData(entity);
+                    getView().content();
+                }
             }
 
             @Override
             public void _onError(String e) {
                 Log.e("tag", "'" + e);
-                model.showError("删除失败");
+                getView().error(e);
             }
         });
     }

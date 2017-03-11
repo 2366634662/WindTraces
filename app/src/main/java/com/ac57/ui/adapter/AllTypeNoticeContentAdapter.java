@@ -2,11 +2,14 @@ package com.ac57.ui.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.View;
 import android.widget.TextView;
 
 import com.ac57.R;
 import com.ac57.framework.utils.StringUtils;
 import com.ac57.ui.entity.NoticeEntity;
+
+import org.simple.eventbus.EventBus;
 
 import cn.bingoogolapple.androidcommon.adapter.BGAAdapterViewAdapter;
 import cn.bingoogolapple.androidcommon.adapter.BGAViewHolderHelper;
@@ -48,5 +51,13 @@ public class AllTypeNoticeContentAdapter extends BGAAdapterViewAdapter<NoticeEnt
         } else {
             tv_title.setBackgroundColor(Color.BLACK);
         }
+
+        tv_title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(item.id, "my_mssage");
+            }
+        });
+
     }
 }

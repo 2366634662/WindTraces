@@ -12,23 +12,20 @@ import java.util.List;
  */
 
 public class NewGoodsContentPresenter extends BasePresenter<INewGoodsContentView> {
-    public NewGoodsContentPresenter(INewGoodsContentView model) {
-        super(model);
-    }
 
     public void getNewGoodsData(int page, String exc_id, String type) {
-        model.showDailog("加载中");
         UserRepository.getInstance().getNewGoodsData(page + "", exc_id, type).subscribe(new DefaultSubscriber<List<NewGoodsEntity>>() {
             @Override
             public void _onNext(List<NewGoodsEntity> entity) {
-                model.disDailog();
-                model.getNewGoodsData(entity);
+                if (getView() != null) {
+                    getView().content();
+                    getView().getNewGoodsData(entity);
+                }
             }
-
             @Override
             public void _onError(String e) {
-                model.disDailog();
-                model.showError("加载错误了");
+                if (getView() != null)
+                    getView().error(e);
             }
         });
     }

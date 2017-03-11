@@ -10,23 +10,21 @@ import com.ac57.ui.service.UserRepository;
  */
 
 public class SelfPresenter extends BasePresenter<ISelfView> {
-    public SelfPresenter(ISelfView model) {
-        super(model);
-    }
 
     public void getUserDetailData() {
-        model.showDailog("获取个人信息中");
         UserRepository.getInstance().getUserDetailData().subscribe(new DefaultSubscriber<UserInfoDetailEntity>() {
             @Override
             public void _onNext(UserInfoDetailEntity entity) {
-                model.disDailog();
-                model.getUserInfoDetail(entity);
+                if (getView() != null) {
+                    getView().content();
+                    getView().getUserInfoDetail(entity);
+                }
             }
 
             @Override
             public void _onError(String e) {
-                model.disDailog();
-                model.showError("" + e);
+                if (getView() != null)
+                    getView().error(e);
             }
         });
     }

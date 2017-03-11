@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseFragment;
+import com.ac57.framework.base.BaseMVPFragment;
 import com.ac57.ui.entity.ReleaseOrInvoledEntity;
 import com.ac57.ui.presenter.ReleaseOrInvoledPresneter;
 import com.ac57.ui.presenter.view.IReleaseOrInvoledView;
@@ -16,7 +16,7 @@ import java.util.List;
  * Desc :
  */
 
-public class OtherTwoFragment extends MVPBaseFragment<ReleaseOrInvoledPresneter, IReleaseOrInvoledView> implements IReleaseOrInvoledView  {
+public class OtherTwoFragment extends BaseMVPFragment<IReleaseOrInvoledView, ReleaseOrInvoledPresneter> implements IReleaseOrInvoledView {
 
     public static OtherTwoFragment newInstance(String id) {
         Bundle bundle = new Bundle();
@@ -33,7 +33,7 @@ public class OtherTwoFragment extends MVPBaseFragment<ReleaseOrInvoledPresneter,
 
     @Override
     protected void initView(View convertView, Bundle savedInstanceState) {
-
+        setEasyStatusView(easyStatusView);
     }
 
     @Override
@@ -43,6 +43,7 @@ public class OtherTwoFragment extends MVPBaseFragment<ReleaseOrInvoledPresneter,
 
     @Override
     protected void getData() {
+        loading();
     }
 
     @Override
@@ -51,22 +52,7 @@ public class OtherTwoFragment extends MVPBaseFragment<ReleaseOrInvoledPresneter,
     }
 
     @Override
-    public void showDailog(String msg) {
-
-    }
-
-    @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-
-    }
-
-    @Override
     protected ReleaseOrInvoledPresneter initPresenter() {
-        return null;
+        return new ReleaseOrInvoledPresneter();
     }
 }

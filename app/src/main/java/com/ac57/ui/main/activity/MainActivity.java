@@ -32,7 +32,9 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.vp_main_page)
     MyViewPager vp_main_page;
 
-    private String[] mTitles = {"新品", "公告", "咨询", "互动", "看盘"};
+    private String[] mTitles = {
+            "新品", "公告",
+            "咨询", "互动", "看盘"};
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private int[] mIconUnselectIds = {
             R.drawable.tab_newgoods,

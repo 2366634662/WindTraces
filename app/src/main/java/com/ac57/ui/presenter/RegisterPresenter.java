@@ -12,8 +12,5 @@ public class RegisterPresenter extends BasePresenter<IRegisterView> {
      *
      * @param model
      */
-    public RegisterPresenter(IRegisterView model) {
-        super(model);
-    }
 
 }

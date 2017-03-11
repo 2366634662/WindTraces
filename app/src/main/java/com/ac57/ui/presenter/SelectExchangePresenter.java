@@ -12,24 +12,21 @@ import com.ac57.ui.service.UserRepository;
  */
 
 public class SelectExchangePresenter extends BasePresenter<ISelectExchangeView> {
-    public SelectExchangePresenter(ISelectExchangeView model) {
-        super(model);
-    }
 
 
     public void getSelectExchangeData() {
-        model.showDailog("");
         UserRepository.getInstance().getSelectExchangeData().subscribe(new DefaultSubscriber<SelectExchangeEntity>() {
             @Override
             public void _onNext(SelectExchangeEntity entity) {
-                model.disDailog();
-                model.getSelectExchangeData(entity);
-            }
+                if (getView() != null){
+                    getView().content();
+                getView().getSelectExchangeData(entity);
+            }}
 
             @Override
             public void _onError(String e) {
-                model.disDailog();
-                model.showError(e);
+                if (getView() != null)
+                    getView().error(e);
             }
         });
     }

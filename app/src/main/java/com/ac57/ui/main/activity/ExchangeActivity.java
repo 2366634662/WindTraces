@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseActivity;
+import com.ac57.framework.base.BaseMVPActivity;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.adapter.ExchangeAdapter;
 import com.ac57.ui.entity.ExchangeEntity;
@@ -26,7 +26,7 @@ import butterknife.OnClick;
 /**
  * 定制的文交所
  */
-public class ExchangeActivity extends MVPBaseActivity<ExchangePresenter, IExchangeView> implements IExchangeView {
+public class ExchangeActivity extends BaseMVPActivity<IExchangeView, ExchangePresenter> implements IExchangeView {
 
     @BindView(R.id.iv_title_left)
     ImageView ivTitleLeft;
@@ -54,6 +54,7 @@ public class ExchangeActivity extends MVPBaseActivity<ExchangePresenter, IExchan
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
         setStatusBarColor(Color.WHITE, 30);
     }
 
@@ -70,10 +71,6 @@ public class ExchangeActivity extends MVPBaseActivity<ExchangePresenter, IExchan
         mPresenter.getExchangeData();
     }
 
-    @Override
-    public void showDailog(String msg) {
-
-    }
 
     @Override
     public void getExchangeData(List<ExchangeEntity> entities) {
@@ -83,19 +80,10 @@ public class ExchangeActivity extends MVPBaseActivity<ExchangePresenter, IExchan
 
     }
 
-    @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-
-    }
 
     @Override
     protected ExchangePresenter initPresenter() {
-        return new ExchangePresenter(this);
+        return new ExchangePresenter();
     }
 
     @OnClick({R.id.iv_title_left, R.id.iv_title_right, R.id.tv_exchange_skip, R.id.tv_exchange_confim})

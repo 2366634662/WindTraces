@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseActivity;
+import com.ac57.framework.base.BaseMVPActivity;
 import com.ac57.framework.refresh.RefreshLayout;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.adapter.SelfMessageAdapter;
@@ -17,14 +17,13 @@ import com.ac57.ui.entity.SelfMessageEntity;
 import com.ac57.ui.presenter.SelfMessagePresenter;
 import com.ac57.ui.presenter.view.ISelfMessageView;
 import com.ac57.ui.view.EasyStatusView;
-import com.ac57.ui.view.customtoast.ToastUtils;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class SelfMessageActivity extends MVPBaseActivity<SelfMessagePresenter, ISelfMessageView> implements ISelfMessageView {
+public class SelfMessageActivity extends BaseMVPActivity<ISelfMessageView, SelfMessagePresenter> implements ISelfMessageView {
 
     @BindView(R.id.rv_content)
     RecyclerView rvContent;
@@ -51,7 +50,9 @@ public class SelfMessageActivity extends MVPBaseActivity<SelfMessagePresenter, I
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
         setStatusBarColor(Color.WHITE);
+        setEasyStatusView(esvMultipView);
         ivTitleCenter.setVisibility(View.GONE);
         tvTitleCenter.setVisibility(View.VISIBLE);
         tvTitleCenter.setText("消息中心");
@@ -88,6 +89,7 @@ public class SelfMessageActivity extends MVPBaseActivity<SelfMessagePresenter, I
 
     @Override
     public void loadData() {
+        loading();
         mPresenter.getSelfMessageData(page);
     }
 
@@ -112,26 +114,10 @@ public class SelfMessageActivity extends MVPBaseActivity<SelfMessagePresenter, I
         }
     }
 
-    @Override
-    public void showDailog(String msg) {
-        if (adapter.getItemCount() == 0) {
-            esvMultipView.loading();
-        }
-    }
-
-    @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-        esvMultipView.error();
-    }
 
     @Override
     protected SelfMessagePresenter initPresenter() {
-        return new SelfMessagePresenter(this);
+        return new SelfMessagePresenter();
     }
 
 
@@ -142,7 +128,6 @@ public class SelfMessageActivity extends MVPBaseActivity<SelfMessagePresenter, I
                 IntentUtils.finishActivity(this);
                 break;
             case R.id.iv_title_right:
-                ToastUtils.success("点击了右边");
                 break;
         }
     }

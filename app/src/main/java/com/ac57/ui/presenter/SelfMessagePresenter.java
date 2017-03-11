@@ -14,23 +14,19 @@ import java.util.List;
 
 public class SelfMessagePresenter extends BasePresenter<ISelfMessageView> {
 
-    public SelfMessagePresenter(ISelfMessageView model) {
-        super(model);
-    }
-
     public void getSelfMessageData(int page) {
-        model.showDailog("加载中");
         UserRepository.getInstance().getSelfMessageData(page).subscribe(new DefaultSubscriber<List<SelfMessageEntity>>() {
             @Override
             public void _onNext(List<SelfMessageEntity> entity) {
-                model.disDailog();
-                model.getSelfMessageData(entity);
+                if (getView() != null) {
+                    getView().content();
+                    getView().getSelfMessageData(entity);
+                }
             }
-
             @Override
             public void _onError(String e) {
-                model.disDailog();
-                model.showError("" + e);
+                if (getView() != null)
+                    getView().error(e);
             }
         });
     }

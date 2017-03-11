@@ -1,6 +1,6 @@
 package com.ac57.ui.presenter.view;
 
-import com.ac57.framework.base.BaseViewController;
+import com.ac57.framework.base.IBaseStatusView;
 import com.ac57.ui.entity.OptionDetailListEntity;
 import com.ac57.ui.entity.OptionDetailListTopEntity;
 
@@ -12,7 +12,7 @@ import java.util.List;
  * Desc:
  */
 
-public interface IOptionDetailListView extends BaseViewController {
+public interface IOptionDetailListView extends IBaseStatusView {
     void getTopData(OptionDetailListTopEntity entity);
 
     void getListData(List<OptionDetailListEntity> entities);

@@ -19,6 +19,7 @@ import android.view.inputmethod.InputMethodManager;
 import com.ac57.R;
 import com.ac57.framework.tools.AppManager;
 import com.ac57.ui.utils.EventBusUtils;
+import com.ac57.ui.view.EasyStatusView;
 import com.ac57.ui.view.statusbar.StatusBarUtil;
 
 import org.simple.eventbus.EventBus;
@@ -69,6 +70,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BGASwipe
     private Unbinder mUnbinder;
     protected BGASwipeBackHelper mSwipeBackHelper;
 
+    protected EasyStatusView easyStatusView;
+
+    public void setEasyStatusView(EasyStatusView easyStatusView) {
+        this.easyStatusView = easyStatusView;
+    }
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         initSwipeBackFinish();
@@ -92,7 +100,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BGASwipe
      */
     private void initSwipeBackFinish() {
         mSwipeBackHelper = new BGASwipeBackHelper(this, this);
-
         // 「必须在 Application 的 onCreate 方法中执行 BGASwipeBackManager.getInstance().init(this) 来初始化滑动返回」
         // 设置滑动返回是否可用。默认值为 true
         mSwipeBackHelper.setSwipeBackEnable(true);

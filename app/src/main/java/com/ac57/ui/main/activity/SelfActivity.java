@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseActivity;
+import com.ac57.framework.base.BaseMVPActivity;
 import com.ac57.framework.utils.IntentUtils;
 import com.ac57.ui.entity.UserInfoDetailEntity;
 import com.ac57.ui.presenter.SelfPresenter;
@@ -27,7 +27,7 @@ import static com.ac57.R.id.self_top_linear1;
 import static com.ac57.R.id.self_top_linear2;
 import static com.ac57.R.id.self_view;
 
-public class SelfActivity extends MVPBaseActivity<SelfPresenter, ISelfView> implements ISelfView {
+public class SelfActivity extends BaseMVPActivity<ISelfView, SelfPresenter> implements ISelfView {
 
     @BindView(R.id.iv_self_back)
     ImageView ivSelfBack;
@@ -65,6 +65,7 @@ public class SelfActivity extends MVPBaseActivity<SelfPresenter, ISelfView> impl
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
         draw = new int[]{R.drawable.level1,
                 R.drawable.level2,
                 R.drawable.level3,
@@ -118,21 +119,6 @@ public class SelfActivity extends MVPBaseActivity<SelfPresenter, ISelfView> impl
         }
     }
 
-    @Override
-    public void showDailog(String msg) {
-
-    }
-
-    @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-        setViewIsGone(View.VISIBLE, View.GONE);
-    }
-
     @OnClick({R.id.civ_self_head, R.id.self_stv_tab1, R.id.self_stv_tab2, R.id.self_stv_tab3, R.id.self_stv_tab4, R.id.self_stv_tab5, R.id.self_stv_tab6, R.id.self_stv_tab7})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -175,6 +161,6 @@ public class SelfActivity extends MVPBaseActivity<SelfPresenter, ISelfView> impl
 
     @Override
     protected SelfPresenter initPresenter() {
-        return new SelfPresenter(this);
+        return new SelfPresenter();
     }
 }

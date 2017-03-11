@@ -1,22 +1,44 @@
 package com.ac57.framework.base;
 
-import android.app.Activity;
+import java.lang.ref.WeakReference;
 
 /**
+ * Created on 2017/2/27.
+ * Desc :
  */
 
-public abstract class BasePresenter<V extends BaseViewController> {
+public class BasePresenter<T> {
 
-    public V model;
+    protected WeakReference<T> mView;
 
     /**
-     * 在子类的构造函数中，设定参数为model，这时候可以presenter调用接口来实现对界面的操作。
+     * Presenter 和 View 进行绑定
+     *
+     * @param view
      */
-    public BasePresenter(V model) {
-        this.model = model;
+    public void attachView(T view) {
+        mView = new WeakReference<T>(view);
     }
 
-    public BasePresenter(V model, Activity activity) {
-        this.model = model;
+    /**
+     * Presenter 和 View 解除绑定
+     */
+    public void detacheView() {
+        if (mView != null) {
+            mView.clear();
+            mView = null;
+        }
+    }
+
+    public T getView() {
+        if (mView != null) {
+            return mView.get();
+        } else {
+            return null;
+        }
+    }
+
+    public boolean isViewAttached() {
+        return mView != null && mView.get() != null;
     }
 }

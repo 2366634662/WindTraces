@@ -1,5 +1,6 @@
 package com.ac57.ui.main.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -11,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ac57.R;
-import com.ac57.framework.base.MVPBaseActivity;
+import com.ac57.framework.base.BaseMVPActivity;
 import com.ac57.ui.adapter.MyFragmentPageAdapter;
 import com.ac57.ui.entity.OtherUserInfoEntity;
 import com.ac57.ui.main.fragment.OtherOneFragment;
@@ -34,7 +35,7 @@ import static com.ac57.R.id.otheruser_pager;
 /**
  * 个人主页
  */
-public class OtherUserActivity extends MVPBaseActivity<OtherUserInfoPresenter, IOtherUserInfoView> implements IOtherUserInfoView {
+public class OtherUserActivity extends BaseMVPActivity<IOtherUserInfoView, OtherUserInfoPresenter> implements IOtherUserInfoView {
 
     @BindView(R.id.iv_title_left)
     ImageView ivTitleLeft;
@@ -89,6 +90,8 @@ public class OtherUserActivity extends MVPBaseActivity<OtherUserInfoPresenter, I
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
+        setStatusBarColor(Color.WHITE, 30);
         tvs = new TextView[]{otheruserCenterTab1, otheruserCenterTab2, otheruserCenterTab3};
         draw = new int[]{R.drawable.level1,
                 R.drawable.level2,
@@ -96,7 +99,6 @@ public class OtherUserActivity extends MVPBaseActivity<OtherUserInfoPresenter, I
                 R.drawable.level4,
                 R.drawable.level5,
                 R.drawable.level6};
-
     }
 
     @Override
@@ -212,22 +214,7 @@ public class OtherUserActivity extends MVPBaseActivity<OtherUserInfoPresenter, I
 
 
     @Override
-    public void showDailog(String msg) {
-
-    }
-
-    @Override
-    public void disDailog() {
-
-    }
-
-    @Override
-    public void showError(String msg) {
-
-    }
-
-    @Override
     protected OtherUserInfoPresenter initPresenter() {
-        return new OtherUserInfoPresenter(this);
+        return new OtherUserInfoPresenter();
     }
 }

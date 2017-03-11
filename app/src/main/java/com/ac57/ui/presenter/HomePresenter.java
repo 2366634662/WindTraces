@@ -1,13 +1,11 @@
 package com.ac57.ui.presenter;
 
-import android.app.Activity;
-
 import com.ac57.framework.base.BasePresenter;
 import com.ac57.framework.retrofit.DefaultSubscriber;
-import com.ac57.ui.service.UserRepository;
 import com.ac57.ui.entity.HomeBannerEntity;
 import com.ac57.ui.entity.HomeInfoListEntity;
 import com.ac57.ui.presenter.view.IHomeView;
+import com.ac57.ui.service.UserRepository;
 
 import java.util.List;
 
@@ -16,43 +14,42 @@ import java.util.List;
 
 public class HomePresenter extends BasePresenter<IHomeView> {
 
-    public HomePresenter(IHomeView model, Activity activity) {
-        super(model, activity);
-    }
-
     public void getHomeBannerData() {
-        model.showDailog("加载中");
         UserRepository.getInstance().getHomeBannerData().subscribe(new DefaultSubscriber<List<HomeBannerEntity>>() {
 
             @Override
             public void _onNext(List<HomeBannerEntity> entity) {
-                model.disDailog();
-                model.getHomeBannerData(entity);
+                if (getView() != null) {
+                    getView().content();
+                    getView().getHomeBannerData(entity);
 
+                }
             }
 
             @Override
             public void _onError(String e) {
-                model.showError("加载失败");
-                model.disDailog();
+                if (getView() != null)
+                    getView().error(e);
             }
         });
     }
 
     public void getHomeInfoListData(String art_type, int page) {
-        model.showDailog("加载中");
         UserRepository.getInstance().getHomeInfoListData(art_type, page + "").subscribe(new DefaultSubscriber<List<HomeInfoListEntity>>() {
 
             @Override
             public void _onNext(List<HomeInfoListEntity> entity) {
-                model.getHomeInfoData(entity);
-                model.disDailog();
+                if (getView() != null) {
+                    getView().getHomeInfoData(entity);
+                    getView().content();
+                }
+
             }
 
             @Override
             public void _onError(String e) {
-                model.showError("加载数据失败");
-                model.disDailog();
+                if (getView() != null)
+                    getView().error(e);
             }
         });
     }

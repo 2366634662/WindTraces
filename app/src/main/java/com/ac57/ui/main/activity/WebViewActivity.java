@@ -127,4 +127,19 @@ public class WebViewActivity extends BaseActivity {
         overridePendingTransition(R.anim.enter_lefttoright,
                 R.anim.exit_lefttoright);
     }
+
+
+    @OnClick({R.id.iv_web_back, R.id.tv_web_title, R.id.web_line, R.id.webview_all_type})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_web_back:
+                break;
+            case R.id.tv_web_title:
+                break;
+            case R.id.web_line:
+                break;
+            case R.id.webview_all_type:
+                break;
+        }
+    }
 }

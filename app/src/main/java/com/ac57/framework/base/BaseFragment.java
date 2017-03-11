@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ac57.ui.view.EasyStatusView;
+
 import org.simple.eventbus.EventBus;
 
 import butterknife.ButterKnife;
@@ -33,6 +35,7 @@ public abstract class BaseFragment extends Fragment {
             convertView = inflater.inflate(getLayoutId(), container, false);
             mUnbinder = ButterKnife.bind(this, convertView);
             mViews = new SparseArray<>();
+            initPersenter();
             initView(convertView, savedInstanceState);
             isInitView = true;
             try {
@@ -42,7 +45,6 @@ public abstract class BaseFragment extends Fragment {
             }
             initData();
             lazyLoadData();
-
         }
         ViewGroup parent = (ViewGroup) convertView.getParent();
         if (parent != null) {
@@ -51,11 +53,20 @@ public abstract class BaseFragment extends Fragment {
         return convertView;
     }
 
+    public void initPersenter() {
+
+    }
+
+    protected EasyStatusView easyStatusView;
+
+    public void setEasyStatusView(EasyStatusView easyStatusView) {
+        this.easyStatusView = easyStatusView;
+    }
+
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-
         if (!hidden) {
             isVisible = true;
             lazyLoadData();
@@ -66,13 +77,13 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
             isVisible = true;
             lazyLoadData();
         } else {
             isVisible = false;
         }
-        super.setUserVisibleHint(isVisibleToUser);
     }
 
     private void lazyLoadData() {
